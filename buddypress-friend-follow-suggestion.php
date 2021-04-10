@@ -37,6 +37,16 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION', '1.0.0' );
 
+
+if ( ! defined( 'BFFS_PLUGIN_VERSION' ) ) {
+	define( 'BFFS_PLUGIN_VERSION', '1.0.0' );
+}
+if ( ! defined( 'BFFS_PLUGIN_FILE' ) ) {
+	define( 'BFFS_PLUGIN_FILE', __FILE__ );
+}
+define( 'BFFS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BFFS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-buddypress-friend-follow-suggestion-activator.php
@@ -64,6 +74,8 @@ register_deactivation_hook( __FILE__, 'deactivate_buddypress_friend_follow_sugge
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-friend-follow-suggestion.php';
 
+
+require plugin_dir_path(__FILE__) . 'edd-license/edd-plugin-license.php';
 /**
  * Begins execution of the plugin.
  *

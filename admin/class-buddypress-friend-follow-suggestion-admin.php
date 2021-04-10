@@ -99,5 +99,82 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	
+	public function bffs_add_submenu_page_admin_settings() {
+		
+		if ( empty( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
+			add_menu_page( esc_html__( 'WB Plugins', 'buddypress-friend-follow-suggestion' ), esc_html__( 'WB Plugins', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'wbcomplugins', array( $this, 'bffs_admin_options_page' ), 'dashicons-lightbulb', 59 );
+			add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'buddypress-friend-follow-suggestion' ), esc_html__( 'General', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'wbcomplugins' );
+		}
+		add_submenu_page( 'wbcomplugins', esc_html__( 'Admin Settings For Buddypress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ), esc_html__( 'BP Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'bffss-settings', array( $this, 'bffs_admin_options_page' ) );
+	}
+	
+	public function bffs_plugin_settings() {
+		$this->plugin_settings_tabs['bffs-general'] = esc_html__( 'General', 'buddypress-friend-follow-suggestion' );
+		register_setting( 'bffs_admin_general_options', 'bffs_admin_general_options' );
+		add_settings_section( 'bffs-general', ' ', array( $this, 'bffs_admin_general_content' ), 'bffs-general' );
+	}
+	
+	public function bffs_admin_general_content() {
+			require_once BFFS_PLUGIN_PATH . 'admin/inc/buddypress-friend-follow-suggestion-general-settings.php';
+		}
+	
+	public function bffs_admin_register_settings() {
+		if(isset($_POST['bffs_settings'])){				
+			update_site_option('bffs_settings',$_POST['bffs_settings']);
+			wp_redirect($_POST['_wp_http_referer']);
+			exit();
+		}
+	}
+	
+	
+	/**
+	 * Actions performed to create a submenu page content.
+	 *
+	 * @since    1.0.0
+	 * @access public
+	 */
+	public function bffs_admin_options_page() {
+
+		global $allowedposttags;
+		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-general';
+		?>
+		<div class="wrap">
+			<div class="bffs-header">
+				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+				<h1 class="wbcom-plugin-heading">
+					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion Settings', 'buddypress-friend-follow-suggestion' ); ?>
+				</h1>
+			</div>
+			<div class="wbcom-admin-settings-page">
+				<?php
+				settings_errors();
+				$this->bffs_plugin_settings_tabs();
+				settings_fields( $tab );
+				do_settings_sections( $tab );
+				?>
+			</div>
+		</div>
+		<?php
+
+	}
+	
+	/**
+	 * Actions performed to create tabs on the sub menu page.
+	 *
+	 * @since    1.0.0
+	 * @access public
+	 */
+	public function bffs_plugin_settings_tabs() {
+
+		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bpgp-general';
+		// xprofile setup tab.
+		echo '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
+		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
+			$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
+			echo '<a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=bpgp-settings' . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a>';
+		}
+		echo '</h2></div>';
+	}
 
 }
