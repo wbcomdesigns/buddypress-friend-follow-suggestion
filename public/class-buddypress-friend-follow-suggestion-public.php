@@ -39,6 +39,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+	
+	private $profile_fields = null;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -98,6 +100,137 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+	
+	
+	/**
+	 * Display user compatibility match.
+	 *
+	 * @since    1.0.0
+	 */
+	
+	public function buddypress_friend_follow_compatibility_match() {
+		global $bp;
+		
+		if ( is_user_logged_in() && ! bp_is_my_profile() ) {
+			echo '<div class="bffs-matching-wrap">';
+			echo esc_html__('Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
+			echo '</div>';
+		}
+	}
+	
+	/**
+	 * retuyrn  user compatibility match score.
+	 *
+	 * @since    1.0.0
+	 */
+	
+	public function buddypress_friend_follow_compatibility_score( $user_id1 = false, $user_id2 = false ) {
+		
+		if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
+			$bffs_general_setting = get_site_option( 'bffs_general_setting' );
+		} else {
+			$bffs_general_setting = get_option( 'bffs_general_setting' );
+		}
+		
+		$score = isset( $bffs_general_setting['profile_st_percentage'] ) ? $bffs_general_setting['profile_st_percentage'] : 0;
+
+		if ( ! $user_id1 || ! $user_id2 ) {
+			return $score;
+		}
+				
+		$all_fields = $this->get_profile_fields();
+		//bffs_match_data
+		if ( !empty($bffs_general_setting['bffs_match_data']) ) {
+			
+				foreach($bffs_general_setting['bffs_match_data'] as $bffs_match_data  ) {
+
+				$field1 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id1 );
+				$field2 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id2 );
+				
+				//multi type
+				if ( isset( $all_fields[$bffs_match_data['field_id']]['options'] ) ) {
+
+					if ( $field1 && $field2 ) {
+
+						$intersect = array_intersect( (array) $field1, (array) $field2 );
+
+						if ( count( $intersect ) >= 1 ) {
+							$score += $bffs_match_data['percentage'] * count( $intersect );
+						} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+							return $score;
+						}
+					} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+						return $score;
+					}
+
+				} else {
+					//single type
+					
+					if ( $field1 && $field2 && $field1 == $field2 ) {
+						$score += $bffs_match_data['percentage'];
+					} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+						return $score;
+					}
+				}
+			}
+		}
+		
+		if ( $score > 100 ) {
+			$score = 100;
+		}
+
+		return $score;
+	}
+	
+	/**
+	 * get user profile fields.
+	 *
+	 * @since    1.0.0
+	 */
+	public function get_profile_fields() {
+		if ( $this->profile_fields !== null ) {
+			return $this->profile_fields;
+		}
+
+		$fields = [];
+		if ( function_exists( 'bp_is_active' ) && bp_is_active( 'xprofile' ) ) {
+			if ( function_exists( 'bp_has_profile' ) ) {
+				if ( bp_has_profile( 'hide_empty_fields=0' ) ) {
+
+					while ( bp_profile_groups() ) {
+						bp_the_profile_group();
+						while ( bp_profile_fields() ) {
+							bp_the_profile_field();
+
+							switch ( bp_get_the_profile_field_type() ) {
+
+								case 'multiselectbox':
+								case 'checkbox':
+									$field_type = 'multi';
+									break;
+
+								default:
+									$field_type = 'single';
+									break;
+							}
+							$profile_field_id            = bp_get_the_profile_field_id();
+							$fields[ $profile_field_id ] = [
+								'id' => $profile_field_id,
+								'name' => bp_get_the_profile_field_name(),
+							];
+
+							if ( $field_type == 'multi' ) {
+								$fields[ $profile_field_id ]['options'] = 'true';
+							}
+						}
+					}
+				}
+			}
+		}
+		$this->profile_fields = $fields;
+
+		return $fields;
 	}
 
 }
