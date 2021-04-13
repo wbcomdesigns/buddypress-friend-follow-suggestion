@@ -79,6 +79,13 @@
 			$( this ).parent().parent().remove();
 			
 		});
+		
+		$( document ).on( 'change', '#bprm_enable_profile_match', function (e){
+			e.preventDefault();
+			$('#profile_st_percentage').toggle( 'slow' );
+			$('#bffs-profile-match-fields').toggle( 'slow' );
+			
+		});
 	});
 
 })( jQuery );

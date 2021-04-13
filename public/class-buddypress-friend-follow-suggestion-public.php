@@ -113,9 +113,17 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		global $bp;
 		
 		if ( is_user_logged_in() && ! bp_is_my_profile() ) {
-			echo '<div class="bffs-matching-wrap">';
-			echo esc_html__('Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
-			echo '</div>';
+			if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
+				$bffs_general_setting = get_site_option( 'bffs_general_setting' );
+			} else {
+				$bffs_general_setting = get_option( 'bffs_general_setting' );
+			}
+			
+			if ( isset($bffs_general_setting['enable_profile_match'])) {
+				echo '<div class="bffs-matching-wrap">';
+				echo esc_html__('Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
+				echo '</div>';
+			}
 		}
 	}
 	
@@ -132,6 +140,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		} else {
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 		}
+			
 		
 		$score = isset( $bffs_general_setting['profile_st_percentage'] ) ? $bffs_general_setting['profile_st_percentage'] : 0;
 
