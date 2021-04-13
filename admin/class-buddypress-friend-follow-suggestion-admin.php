@@ -204,7 +204,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 			<span class="bffs-col3">
 				<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][percentage]">
 			</span>
-			<span class="bffs-col3">
+			<span class="bffs-col4">
 				<input class="bffs-check bffs-match-stop-match" type="checkbox" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][stop_match]" value='1'>
 			</span>
 			<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-friend-follow-suggestion');?></a></span>

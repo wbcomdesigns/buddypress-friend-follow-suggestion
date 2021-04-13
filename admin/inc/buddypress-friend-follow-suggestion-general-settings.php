@@ -63,7 +63,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 									<span class="bffs-col3">
 										<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][percentage]" value="<?php echo $bffs_match_data['percentage'];?>">
 									</span>
-									<span class="bffs-col3">
+									<span class="bffs-col4">
 										<input class="bffs-check bffs-match-stop-match" type="checkbox" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][stop_match]" value='1' <?php checked( $stop_match , 1);?>>
 									</span>
 									<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-profile-pro');?></a></span>									

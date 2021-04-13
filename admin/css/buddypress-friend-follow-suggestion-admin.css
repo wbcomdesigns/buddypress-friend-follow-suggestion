@@ -1,4 +1,67 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.bffs-field-header span,
+.add-bffs-match-field,
+.delete_bffs_field {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 1em 0;
+}
+
+#add-bffs-match-field {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.bffs-profile-match-fields select {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+.bffs-profile-match-fields input[type="text"] {
+    width: 100%;
+}
+
+.bffs-field-content a {
+    text-decoration: none;
+}
+
+.bffs-col1 {
+    display: inline-block;
+    width: 2%;
+    cursor: move;
+}
+
+.bffs-col2 {
+    display: inline-block;
+    width: 20%;
+}
+
+.bffs-col3 {
+    display: inline-block;
+    width: 20%;
+}
+
+.bffs-col4 {
+    display: inline-block;
+    width: 20%;
+}
+
+.bffs-col5 {
+    display: inline-block;
+    width: 16%;
+}
+
+.bffs-field-content input.bffs-check {
+    margin-left: 20%;
+}
+
+.delete_bffs_field {
+    display: inline-block;
+    color: #aa0000;
+    margin: 7px 0;
+}
+
+.delete_bffs_field:hover {
+    color: #ef3e46;
+}
