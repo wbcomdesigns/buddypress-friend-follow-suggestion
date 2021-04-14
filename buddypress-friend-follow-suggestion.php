@@ -123,7 +123,7 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 					$f->name = str_replace ('&amp;', '&', stripslashes ($field->name));					
 					$f->description = str_replace ('&amp;', '&', stripslashes ($field->description));
 					$f->type = $field->type;
-					$f->options = bprm_profile_fields_xprofile_options ($field);					
+					$f->options = bffs_profile_fields_xprofile_options ($field);					
 					$fields[] = $f;
 				}
 			}
@@ -156,4 +156,31 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 
 	<?php
 	return ob_get_clean();
+}
+
+function bffs_profile_fields_xprofile_options ($field) {
+	
+	$options = array ();
+
+	if ($field->type_obj->supports_options == false)  return $options;
+
+	$rows = $field->get_children ();
+	if (is_array ($rows))  foreach ($rows as $row)
+	{
+		if ($field->type == 'gender')
+		{
+			if ($row->option_order == 1)
+				$options['his_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
+			elseif ($row->option_order == 2)
+				$options['her_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
+			else
+				$options['their_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
+		}
+		else
+		{
+			$options[stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
+		}
+	}
+
+	return $options;
 }
