@@ -4,7 +4,7 @@ define( 'EDD_BFFS_STORE_URL', 'https://wbcomdesigns.com/' ); // you should use y
 
 // the name of your product. This should match the download name in EDD exactly
 // you should use your own CONSTANT name, and be sure to replace it throughout this file
-define( 'EDD_BFFS_ITEM_NAME', 'BuddyPress Giphy' );
+define( 'EDD_BFFS_ITEM_NAME', 'BuddyPress Friend & Follow Suggestion' );
 
 // the name of the settings page for the license input to be displayed
 define( 'EDD_BFFS_PLUGIN_LICENSE_PAGE', 'wbcom-license-page' );
