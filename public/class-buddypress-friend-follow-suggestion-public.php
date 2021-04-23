@@ -39,20 +39,20 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	
+
 	private $profile_fields = null;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -101,64 +101,63 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, false );
 
 	}
-	
-	
+
+
 	/**
 	 * Display user compatibility match.
 	 *
 	 * @since    1.0.0
 	 */
-	
+
 	public function buddypress_friend_follow_compatibility_match() {
 		global $bp;
-		
+
 		if ( is_user_logged_in() && ! bp_is_my_profile() ) {
 			if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
 				$bffs_general_setting = get_site_option( 'bffs_general_setting' );
 			} else {
 				$bffs_general_setting = get_option( 'bffs_general_setting' );
 			}
-			
-			if ( isset($bffs_general_setting['enable_profile_match'])) {
+
+			if ( isset( $bffs_general_setting['enable_profile_match'] ) ) {
 				echo '<div class="bffs-matching-wrap">';
-				echo esc_html__('Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
+				echo esc_html__( 'Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
 				echo '</div>';
 			}
 		}
 	}
-	
+
 	/**
 	 * retuyrn  user compatibility match score.
 	 *
 	 * @since    1.0.0
 	 */
-	
+
 	public function buddypress_friend_follow_compatibility_score( $user_id1 = false, $user_id2 = false ) {
-		
+
 		if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
 			$bffs_general_setting = get_site_option( 'bffs_general_setting' );
 		} else {
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 		}
-			
-		
+
 		$score = isset( $bffs_general_setting['profile_st_percentage'] ) ? $bffs_general_setting['profile_st_percentage'] : 0;
 
 		if ( ! $user_id1 || ! $user_id2 ) {
 			return $score;
 		}
-				
+
 		$all_fields = $this->get_profile_fields();
-		//bffs_match_data
-		if ( !empty($bffs_general_setting['bffs_match_data']) ) {
-			
-				foreach($bffs_general_setting['bffs_match_data'] as $bffs_match_data  ) {
+		// bffs_match_data
+		if ( ! empty( $bffs_general_setting['bffs_match_data'] ) ) {
+
+			foreach ( $bffs_general_setting['bffs_match_data'] as $bffs_match_data ) {
 
 				$field1 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id1 );
 				$field2 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id2 );
-				
-				//multi type
-				if ( isset( $all_fields[$bffs_match_data['field_id']]['options'] ) ) {
+
+				// multi type
+				if ( isset( $all_fields[ $bffs_match_data['field_id'] ]['options'] ) ) {
 
 					if ( $field1 && $field2 ) {
 
@@ -166,32 +165,31 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 
 						if ( count( $intersect ) >= 1 ) {
 							$score += $bffs_match_data['percentage'] * count( $intersect );
-						} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+						} elseif ( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
 							return $score;
 						}
-					} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+					} elseif ( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
 						return $score;
 					}
-
 				} else {
-					//single type
-					
+					// single type
+
 					if ( $field1 && $field2 && $field1 == $field2 ) {
 						$score += $bffs_match_data['percentage'];
-					} elseif( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
+					} elseif ( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
 						return $score;
 					}
 				}
 			}
 		}
-		
+
 		if ( $score > 100 ) {
 			$score = 100;
 		}
 
 		return $score;
 	}
-	
+
 	/**
 	 * get user profile fields.
 	 *
@@ -202,7 +200,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			return $this->profile_fields;
 		}
 
-		$fields = [];
+		$fields = array();
 		if ( function_exists( 'bp_is_active' ) && bp_is_active( 'xprofile' ) ) {
 			if ( function_exists( 'bp_has_profile' ) ) {
 				if ( bp_has_profile( 'hide_empty_fields=0' ) ) {
@@ -224,10 +222,10 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 									break;
 							}
 							$profile_field_id            = bp_get_the_profile_field_id();
-							$fields[ $profile_field_id ] = [
-								'id' => $profile_field_id,
+							$fields[ $profile_field_id ] = array(
+								'id'   => $profile_field_id,
 								'name' => bp_get_the_profile_field_name(),
-							];
+							);
 
 							if ( $field_type == 'multi' ) {
 								$fields[ $profile_field_id ]['options'] = 'true';

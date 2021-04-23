@@ -100,6 +100,11 @@ class Buddypress_Friend_Follow_Suggestion {
 	private function load_dependencies() {
 
 		/**
+		 * Plugin genral functions that are used throught the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/buddypress-friend-follow-suggestions-functions.php';
+
+		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
@@ -115,12 +120,15 @@ class Buddypress_Friend_Follow_Suggestion {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-buddypress-friend-follow-suggestion-admin.php';
-		
+
 		/* Enqueue wbcom plugin folder file. */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-admin-settings.php';
 
 		/* Enqueue wbcom plugin folder file. */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-paid-plugin-settings.php';
+
+		/* Enqueue suggestion widget  */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-suggestion.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -162,13 +170,12 @@ class Buddypress_Friend_Follow_Suggestion {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		
+
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'bffs_add_submenu_page_admin_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bffs_plugin_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bffs_admin_register_settings' );
-		
-		$this->loader->add_action( 'wp_ajax_bffs_get_profile_field', $plugin_admin, 'bffs_get_profile_field' );
 
+		$this->loader->add_action( 'wp_ajax_bffs_get_profile_field', $plugin_admin, 'bffs_get_profile_field' );
 	}
 
 	/**
