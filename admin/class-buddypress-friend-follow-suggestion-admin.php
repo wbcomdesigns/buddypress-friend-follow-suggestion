@@ -44,16 +44,24 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
-
+	/**
+	 * Define Plugin slug.
+	 *
+	 * @author  wbcomdesigns
+	 * @since   1.0.0
+	 * @access  private
+	 * @var     $plugin_slug contains plugin slug.
+	 */
+		private $plugin_slug = 'bffs-settings';
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
@@ -72,7 +80,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		
+
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'bffs-settings' || $_GET['page'] == 'wbcomplugins' ) ) {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
 		}
@@ -97,47 +105,46 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		
+
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'bffs-settings' || $_GET['page'] == 'wbcomplugins' ) ) {
-			
+
 			if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 			}
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
-			
+
 		}
-		
 
 	}
-	
+
 	public function bffs_add_submenu_page_admin_settings() {
-		
+
 		if ( empty( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
 			add_menu_page( esc_html__( 'WB Plugins', 'buddypress-friend-follow-suggestion' ), esc_html__( 'WB Plugins', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'wbcomplugins', array( $this, 'bffs_admin_options_page' ), 'dashicons-lightbulb', 59 );
 			add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'buddypress-friend-follow-suggestion' ), esc_html__( 'General', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'wbcomplugins' );
 		}
 		add_submenu_page( 'wbcomplugins', esc_html__( 'Admin Settings For Buddypress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ), esc_html__( 'BP Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ), 'manage_options', 'bffs-settings', array( $this, 'bffs_admin_options_page' ) );
 	}
-	
+
 	public function bffs_plugin_settings() {
 		$this->plugin_settings_tabs['bffs-general'] = esc_html__( 'General', 'buddypress-friend-follow-suggestion' );
 		register_setting( 'bffs_admin_general_options', 'bffs_general_setting' );
 		add_settings_section( 'bffs-general', ' ', array( $this, 'bffs_admin_general_content' ), 'bffs-general' );
 	}
-	
+
 	public function bffs_admin_general_content() {
 			require_once BFFS_PLUGIN_PATH . 'admin/inc/buddypress-friend-follow-suggestion-general-settings.php';
-		}
-	
+	}
+
 	public function bffs_admin_register_settings() {
-		if(isset($_POST['bffs_general_setting'])){			
-			update_site_option('bffs_general_setting',$_POST['bffs_general_setting']);
-			wp_redirect($_POST['_wp_http_referer']);
+		if ( isset( $_POST['bffs_general_setting'] ) ) {
+			update_site_option( 'bffs_general_setting', $_POST['bffs_general_setting'] );
+			wp_redirect( $_POST['_wp_http_referer'] );
 			exit();
 		}
 	}
-	
-	
+
+
 	/**
 	 * Actions performed to create a submenu page content.
 	 *
@@ -168,7 +175,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		<?php
 
 	}
-	
+
 	/**
 	 * Actions performed to create tabs on the sub menu page.
 	 *
@@ -177,17 +184,17 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 */
 	public function bffs_plugin_settings_tabs() {
 
-		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bpgp-general';
+		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
 		// xprofile setup tab.
 		echo '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
 		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 			$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=bpgp-settings' . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a>';
+			echo '<a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=' . esc_attr( $this->plugin_slug ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a>';
 		}
 		echo '</h2></div>';
 	}
-	
-	
+
+
 	/**
 	 * Function used to gert the profile fields
 	 *
@@ -195,23 +202,24 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 */
 	public function bffs_get_profile_field() {
 		$j = $_POST['count'];
-		?>		
+		?>
+				
 		<div class="search_field">
 			<span class="bffs-col1">&nbsp;&#x21C5;</span>
 			<span class="bffs-col2">
-				<?php echo bffs_profile_fields_dropdown( '', $j);?>
+				<?php echo bffs_profile_fields_dropdown( '', $j ); ?>
 			</span>		
 			<span class="bffs-col3">
-				<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][percentage]">
+				<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo $j; ?>][percentage]">
 			</span>
 			<span class="bffs-col4">
-				<input class="bffs-check bffs-match-stop-match" type="checkbox" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][stop_match]" value='1'>
+				<input class="bffs-check bffs-match-stop-match" type="checkbox" name="bffs_general_setting[bffs_match_data][<?php echo $j; ?>][stop_match]" value='1'>
 			</span>
-			<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-friend-follow-suggestion');?></a></span>
+			<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-friend-follow-suggestion' ); ?></a></span>
 			<span class="bffs_spinner"></span>
 		</div>
 		<?php
-		
+
 		wp_die();
 	}
 
