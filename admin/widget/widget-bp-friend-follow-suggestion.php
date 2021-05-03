@@ -70,6 +70,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 
 		$max_members         = (int) $settings['max_members'];
 		$percentage_criteria = (int) $settings['percentage_criteria'];
+		$suggest             = $settings['suggest'];
 		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria );
 
 		// Setup args for querying members.
@@ -98,13 +99,19 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 					<div class="item">
 						<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
 						<div class="item-meta">
-							<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span>
+							<ul>
+								<li>
+									<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span>
+								</li>
+								<li>
+								<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
+									<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>	
+								<?php elseif ( bp_is_active( 'friends' ) ) : ?>									
+									<?php echo bp_get_add_friend_button( bp_get_member_user_id() ); ?>
+								<?php endif; ?>
+								</li>	
+							</ul>	
 						</div>
-						<?php if ( bp_nouveau_member_has_meta() ) : ?>
-							<p class="item-meta last-activity">
-								<?php bp_nouveau_member_meta(); ?>
-							</p><!-- .item-meta -->
-						<?php endif; ?>
 					</div>
 				</li>
 			<?php endwhile; ?>
@@ -176,7 +183,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
   </p>
 	<p>
 	<label for="<?php echo $this->get_field_id( 'percentage_criteria' ); ?>">
-			<?php esc_html_e( 'Percentage Critatia:', 'buddypress-friend-follow-suggestion' ); ?>
+			<?php esc_html_e( 'Percentage Criteria:', 'buddypress-friend-follow-suggestion' ); ?>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'percentage_criteria' ); ?>" name="<?php echo $this->get_field_name( 'percentage_criteria' ); ?>" type="number" min="1" max="100" value="<?php echo esc_attr( $percentage_criteria ); ?>" style="width: 30%" />
 		%
 	</label>

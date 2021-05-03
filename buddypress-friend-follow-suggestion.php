@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -75,7 +74,7 @@ register_deactivation_hook( __FILE__, 'deactivate_buddypress_friend_follow_sugge
 require plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-friend-follow-suggestion.php';
 
 
-require plugin_dir_path(__FILE__) . 'edd-license/edd-plugin-license.php';
+require plugin_dir_path( __FILE__ ) . 'edd-license/edd-plugin-license.php';
 /**
  * Begins execution of the plugin.
  *
@@ -102,83 +101,91 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 
 	$groups = array();
 
-	if ( bp_is_active ('xprofile') ) {
+	if ( bp_is_active( 'xprofile' ) ) {
 
 		global $group, $field;
 
 		$fields = array();
-		$args = array ('hide_empty_fields' => false, 'member_type' => bp_get_member_types ());
-		if (bp_has_profile ($args)) {
-			while (bp_profile_groups ()) {
-				bp_the_profile_group ();
-				$group_name = str_replace ('&amp;', '&', stripslashes ($group->name));
+		$args   = array(
+			'hide_empty_fields' => false,
+			'member_type'       => bp_get_member_types(),
+		);
+		if ( bp_has_profile( $args ) ) {
+			while ( bp_profile_groups() ) {
+				bp_the_profile_group();
+				$group_name = str_replace( '&amp;', '&', stripslashes( $group->name ) );
 
-				while (bp_profile_fields ()) {
-					bp_the_profile_field ();
-					$f = new stdClass;
+				while ( bp_profile_fields() ) {
+					bp_the_profile_field();
+					$f = new stdClass();
 
-					$f->group = $group_name;
-					$f->id = $field->id;
-					$f->code = $field->id;
-					$f->name = str_replace ('&amp;', '&', stripslashes ($field->name));					
-					$f->description = str_replace ('&amp;', '&', stripslashes ($field->description));
-					$f->type = $field->type;
-					$f->options = bffs_profile_fields_xprofile_options ($field);					
-					$fields[] = $f;
+					$f->group       = $group_name;
+					$f->id          = $field->id;
+					$f->code        = $field->id;
+					$f->name        = str_replace( '&amp;', '&', stripslashes( $field->name ) );
+					$f->description = str_replace( '&amp;', '&', stripslashes( $field->description ) );
+					$f->type        = $field->type;
+					$f->options     = bffs_profile_fields_xprofile_options( $field );
+					$fields[]       = $f;
 				}
 			}
 		}
 
-		foreach ($fields as $f)  {
-			$groups[$f->group][] = array ('id' => $f->code, 'name' => $f->name);
-			$fields[$f->code] = $f;
+		foreach ( $fields as $f ) {
+			$groups[ $f->group ][] = array(
+				'id'   => $f->code,
+				'name' => $f->name,
+			);
+			$fields[ $f->code ]    = $f;
 		}
 
-		list ($groups, ) = array ($groups, $fields);
-		//unset($groups['Base']);
+		list ($groups, ) = array( $groups, $fields );
+		// unset($groups['Base']);
 	}
 
 	ob_start();
 	?>
-	<select class="bffs_profile_field_name" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][field_id]">
-		<option value=""><?php esc_html_e( 'Select a field', 'buddypress-friend-follow-suggestion');?></option>
-		<?php foreach ($groups as $group => $fields) {
-			$group = esc_attr ($group);
+	<select class="bffs_profile_field_name" name="bffs_general_setting[bffs_match_data][<?php echo $j; ?>][field_id]">
+		<option value=""><?php esc_html_e( 'Select a field', 'buddypress-friend-follow-suggestion' ); ?></option>
+		<?php
+		foreach ( $groups as $group => $fields ) {
+			$group = esc_attr( $group );
 			echo "<optgroup label='$group'>\n";
-			foreach ($fields as $field)
-			{
-				$selected = $field['id'] == $field_value? " selected='selected'": '';
-				echo "<option value='$field[id]'$selected data-field-name='".$field['name']."'>".$field['name']."</option>\n";
+			foreach ( $fields as $field ) {
+				$selected = $field['id'] == $field_value ? " selected='selected'" : '';
+				echo "<option value='$field[id]'$selected data-field-name='" . $field['name'] . "'>" . $field['name'] . "</option>\n";
 			}
 			echo "</optgroup>\n";
-		} ?>
+		}
+		?>
 	</select>
 
 	<?php
 	return ob_get_clean();
 }
 
-function bffs_profile_fields_xprofile_options ($field) {
-	
-	$options = array ();
+function bffs_profile_fields_xprofile_options( $field ) {
 
-	if ($field->type_obj->supports_options == false)  return $options;
+	$options = array();
 
-	$rows = $field->get_children ();
-	if (is_array ($rows))  foreach ($rows as $row)
-	{
-		if ($field->type == 'gender')
-		{
-			if ($row->option_order == 1)
-				$options['his_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
-			elseif ($row->option_order == 2)
-				$options['her_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
-			else
-				$options['their_'. stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
-		}
-		else
-		{
-			$options[stripslashes (trim ($row->name))] = stripslashes (trim ($row->name));
+	if ( $field->type_obj->supports_options == false ) {
+		return $options;
+	}
+
+	$rows = $field->get_children();
+	if ( is_array( $rows ) ) {
+		foreach ( $rows as $row ) {
+			if ( $field->type == 'gender' ) {
+				if ( $row->option_order == 1 ) {
+					$options[ 'his_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
+				} elseif ( $row->option_order == 2 ) {
+					$options[ 'her_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
+				} else {
+					$options[ 'their_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
+				}
+			} else {
+				$options[ stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
+			}
 		}
 	}
 
