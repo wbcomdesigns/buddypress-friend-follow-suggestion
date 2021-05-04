@@ -119,7 +119,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		<?php else : ?>
 
 			<div class="widget-error">
-				<?php esc_html_e( 'No one has signed up yet!', 'buddypress' ); ?>
+				<?php esc_html_e( 'No one has signed up yet!', 'buddypress-friend-follow-suggestion' ); ?>
 			</div>
 				<?php
 		endif;

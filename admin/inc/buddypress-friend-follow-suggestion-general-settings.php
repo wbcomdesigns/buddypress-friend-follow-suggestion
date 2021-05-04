@@ -42,9 +42,9 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields" <?php if ( !isset( $bffs_general_setting['enable_profile_match'] ) || $bffs_general_setting['enable_profile_match'] == '' ):?> style="display:none;"<?php endif;?>>
 					<div class="bffs-field-header">
 						<span class="bffs-col1">&nbsp;</span>
-						<span class="bffs-col2"><strong><?php esc_html_e( 'Profile Field', 'buddypress-profile-pro' );?></strong></span>
-						<span class="bffs-col3"><strong><?php esc_html_e( 'Percentage', 'buddypress-profile-pro' );?></strong></span>
-						<span class="bffs-col4"><strong><?php esc_html_e( 'Stop if no match ', 'buddypress-profile-pro' );?></strong></span>						
+						<span class="bffs-col2"><strong><?php esc_html_e( 'Profile Field', 'buddypress-friend-follow-suggestion' );?></strong></span>
+						<span class="bffs-col3"><strong><?php esc_html_e( 'Percentage', 'buddypress-friend-follow-suggestion' );?></strong></span>
+						<span class="bffs-col4"><strong><?php esc_html_e( 'Stop if no match ', 'buddypress-friend-follow-suggestion' );?></strong></span>						
 						<span class="bffs-col5">&nbsp;</span>
 					</div>
 					
@@ -66,7 +66,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 									<span class="bffs-col4">
 										<input class="bffs-check bffs-match-stop-match" type="checkbox" name="bffs_general_setting[bffs_match_data][<?php echo $j;?>][stop_match]" value='1' <?php checked( $stop_match , 1);?>>
 									</span>
-									<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-profile-pro');?></a></span>									
+									<span class="bffs-col5"><a href="javascript:void(0)" class="delete_bffs_field"><?php esc_html_e( 'Delete', 'buddypress-friend-follow-suggestion');?></a></span>									
 								</div>
 							<?php 
 							$j++;
@@ -75,7 +75,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 					</div>
 					
 					<div class="bffs-add-field">
-						<a href="javascript:void(0)" id="add-bffs-match-field" class="add-bffs-match-field" ><?php esc_html_e('Add Field', 'buddypress-profile-pro')?></a>
+						<a href="javascript:void(0)" id="add-bffs-match-field" class="add-bffs-match-field" ><?php esc_html_e('Add Field', 'buddypress-friend-follow-suggestion')?></a>
 					</div>
 				
 				</div>

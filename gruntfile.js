@@ -49,7 +49,7 @@ module.exports = function ( grunt ) {
 						domainPath: 'languages/', // Where to save the POT file.
 						exclude: [ 'node_modules/*', 'options/framework/*' ], // List of files or directories to ignore.
 						mainFile: 'index.php', // Main project file.
-						potFilename: 'buddypress-friend-follow-suggestion.pot', // Name of the POT file.
+						potFilename: 'buddypress-friend-follow-suggestion-translation.pot', // Name of the POT file.
 						potHeaders: { // Headers to add to the generated POT file.
 							poedit: true, // Includes common Poedit headers.
 							'Last-Translator': 'Varun Dubey',
