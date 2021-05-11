@@ -81,7 +81,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'bffs-settings' || $_GET['page'] == 'wbcomplugins' ) ) {
+		if ( isset( $_GET['page'] ) && ( 'bffs-settings' === $_GET['page'] || 'wbcomplugins' === $_GET['page'] ) ) {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
 		}
 
@@ -106,13 +106,11 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'bffs-settings' || $_GET['page'] == 'wbcomplugins' ) ) {
-
+		if ( isset( $_GET['page'] ) && ( 'bffs-settings' === $_GET['page'] || 'wbcomplugins' === $_GET['page'] ) ) {
 			if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 			}
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
-
 		}
 
 	}
@@ -203,12 +201,12 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	public function bffs_get_profile_field() {
 		$j = $_POST['count'];
 		?>
-				
+
 		<div class="search_field">
 			<span class="bffs-col1">&nbsp;&#x21C5;</span>
 			<span class="bffs-col2">
 				<?php echo bffs_profile_fields_dropdown( '', $j ); ?>
-			</span>		
+			</span>
 			<span class="bffs-col3">
 				<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo $j; ?>][percentage]">
 			</span>
