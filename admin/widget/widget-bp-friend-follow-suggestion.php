@@ -51,7 +51,9 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		global $members_template;
-
+		global $follower_id;
+		global $leader_id;
+		global $button_args;
 		// Get widget settings.
 		$settings = $this->parse_settings( $instance );
 
@@ -72,7 +74,10 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		$percentage_criteria = (int) $settings['percentage_criteria'];
 		$suggest             = $settings['suggest'];
 		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria );
-
+		$bb_follow_buttons   = false;
+		if ( function_exists( 'bp_admin_setting_callback_enable_activity_follow' ) ) {
+			$bb_follow_buttons = bp_is_activity_follow_active();
+		}
 		// Setup args for querying members.
 		$members_args = array(
 			'user_ids'        => $matched_members,
@@ -81,10 +86,9 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 			'populate_extras' => true,
 			'search_terms'    => false,
 		);
-
+		
 		// Back up the global.
 		$old_members_template = $members_template;
-
 		if ( bp_has_members( $members_args ) ) :    ?>
 
 		<ul id="members-list" class="item-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
@@ -106,8 +110,19 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 								<li>
 								<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
 									<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>	
+								<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
+									<?php
+
+								$button_args = wp_parse_args( $button_args, get_class_vars( 'BP_Button' ) );
+								
+									if ( function_exists( 'bp_add_follow_button' ) ) {
+										bp_add_follow_button( bp_get_member_user_id(), bp_loggedin_user_id(), $button_args );
+									}
+									?>
 								<?php elseif ( bp_is_active( 'friends' ) ) : ?>									
-									<?php echo bp_get_add_friend_button( bp_get_member_user_id() ); ?>
+									<?php
+										echo bp_get_add_friend_button( bp_get_member_user_id() );
+									?>
 								<?php endif; ?>
 								</li>	
 							</ul>	
@@ -167,20 +182,24 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		$max_members         = intval( $settings['max_members'] );
 		$percentage_criteria = intval( $settings['percentage_criteria'] );
 		$suggest             = isset( $settings['suggest'] ) ? strip_tags( $settings['suggest'] ) : 'friends';
+		$bb_follow_button    = false;
+		if ( function_exists( 'bp_admin_setting_callback_enable_activity_follow' ) ) {
+			$bb_follow_button = bp_is_activity_follow_active();
+		}
 
 		?>
-  <p>
+<p>
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>">
-		  <?php esc_html_e( 'Title:', 'buddypress-friend-follow-suggestion' ); ?>
-	  <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 100%" />
+		<?php esc_html_e( 'Title:', 'buddypress-friend-follow-suggestion' ); ?>
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 100%" />
 	</label>
-  </p>
-  <p>
+</p>
+<p>
 	<label for="<?php echo $this->get_field_id( 'max_members' ); ?>">
-		  <?php esc_html_e( 'Max members to show:', 'buddypress-friend-follow-suggestion' ); ?>
-	  <input class="widefat" id="<?php echo $this->get_field_id( 'max_members' ); ?>" name="<?php echo $this->get_field_name( 'max_members' ); ?>" type="number" min="1" max="100" value="<?php echo esc_attr( $max_members ); ?>" style="width: 30%" />
+		<?php esc_html_e( 'Max members to show:', 'buddypress-friend-follow-suggestion' ); ?>
+	<input class="widefat" id="<?php echo $this->get_field_id( 'max_members' ); ?>" name="<?php echo $this->get_field_name( 'max_members' ); ?>" type="number" min="1" max="100" value="<?php echo esc_attr( $max_members ); ?>" style="width: 30%" />
 	</label>
-  </p>
+</p>
 	<p>
 	<label for="<?php echo $this->get_field_id( 'percentage_criteria' ); ?>">
 			<?php esc_html_e( 'Percentage Criteria:', 'buddypress-friend-follow-suggestion' ); ?>
@@ -194,7 +213,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 			<?php esc_attr_e( 'Friends Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
 		</label>
 	</p>
-		<?php if ( bp_is_active( 'follow' ) ) : ?>
+		<?php if ( bp_is_active( 'follow' ) || true === $bb_follow_button ) : ?>
 	<p>
 		<label>
 			<input type="radio" value="follow" name="<?php echo $this->get_field_name( 'suggest' ); ?>" <?php checked( $suggest, 'follow' ); ?> id="<?php echo $this->get_field_id( 'suggest' ); ?>" />
