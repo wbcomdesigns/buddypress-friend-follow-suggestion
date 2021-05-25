@@ -105,9 +105,6 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 						<div class="item-meta">
 							<ul>
 								<li>
-									<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span>
-								</li>
-								<li>
 								<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
 									<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>	
 								<?php elseif ( 'follow' === $settings['suggest'] ) : ?>

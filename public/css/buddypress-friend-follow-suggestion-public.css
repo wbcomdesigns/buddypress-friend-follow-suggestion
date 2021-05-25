@@ -1,4 +1,63 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Global
+# Theme Specific Fixes
+    # BuddyBoss
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Global
+--------------------------------------------------------------*/
+.widget_bp_friend_follow_suggestion_widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.widget_bp_friend_follow_suggestion_widget > ul > li {
+    margin: 0 0 15px;
+}
+
+.widget_bp_friend_follow_suggestion_widget .item-meta {
+    margin-top: 5px !important;
+}
+
+.widget_bp_friend_follow_suggestion_widget .item-meta ul li {
+    margin-bottom: 0 !important;
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button a {
+    background: #fff;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0;
+    color: #555;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    outline: 0;
+    padding: .3em .5em;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    min-height: 100%;
+    line-height: 1;
+    display: inline-block;
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button a:hover {
+    background: #ededed;
+    color: #555;
+}
+
+/*--------------------------------------------------------------
+## BuddyBoss
+--------------------------------------------------------------*/
+.widget_bp_friend_follow_suggestion_widget .bp-tooltip:before,
+.widget_bp_friend_follow_suggestion_widget .bp-tooltip:after {
+    display: none !important;
+}
