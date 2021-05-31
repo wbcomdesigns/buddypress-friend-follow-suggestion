@@ -191,3 +191,15 @@ function bffs_profile_fields_xprofile_options( $field ) {
 
 	return $options;
 }
+
+/**
+ * redirect to plugin settings page after activated
+ */
+add_action( 'activated_plugin', 'bffs_activation_redirect_settings' );
+function bffs_activation_redirect_settings( $plugin ){
+
+	if( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) ) ;
+		exit;
+	}
+}
