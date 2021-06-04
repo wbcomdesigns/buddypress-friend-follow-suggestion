@@ -125,9 +125,18 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	}
 
 	public function bffs_plugin_settings() {
+            
+                $this->plugin_settings_tabs['bffs-welcome'] = esc_html__( 'Welcome', 'buddypress-friend-follow-suggestion' );
+		register_setting( 'bffs_admin_welcome_options', 'bffs_welcome_setting' );
+		add_settings_section( 'bffs-welcome', ' ', array( $this, 'bffs_admin_welcome_content' ), 'bffs-welcome' );
+            
 		$this->plugin_settings_tabs['bffs-general'] = esc_html__( 'General', 'buddypress-friend-follow-suggestion' );
 		register_setting( 'bffs_admin_general_options', 'bffs_general_setting' );
 		add_settings_section( 'bffs-general', ' ', array( $this, 'bffs_admin_general_content' ), 'bffs-general' );
+	}
+        
+        public function bffs_admin_welcome_content() {
+			require_once BFFS_PLUGIN_PATH . 'admin/inc/bffs-welcome-page.php';
 	}
 
 	public function bffs_admin_general_content() {
@@ -152,9 +161,11 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	public function bffs_admin_options_page() {
 
 		global $allowedposttags;
-		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-general';
+		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-welcome';
 		?>
 		<div class="wrap">
+                    <hr class="wp-header-end">
+                    <div class="wbcom-wrap">
 			<div class="bffs-header">
 				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 				<h1 class="wbcom-plugin-heading">
@@ -169,6 +180,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 				do_settings_sections( $tab );
 				?>
 			</div>
+                    </div>
 		</div>
 		<?php
 
@@ -182,14 +194,14 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 */
 	public function bffs_plugin_settings_tabs() {
 
-		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
+		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-welcome';
 		// xprofile setup tab.
-		echo '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
+		echo '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 			$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=' . esc_attr( $this->plugin_slug ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a>';
+			echo '<li><a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=' . esc_attr( $this->plugin_slug ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a></li>';
 		}
-		echo '</h2></div>';
+		echo '</div></ul></div>';
 	}
 
 
