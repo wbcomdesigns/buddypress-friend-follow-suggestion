@@ -73,22 +73,22 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		$max_members         = (int) $settings['max_members'];
 		$percentage_criteria = (int) $settings['percentage_criteria'];
 		$suggest             = $settings['suggest'];
-		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria );
+		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria , $settings['suggest']);
 		$bb_follow_buttons   = false;
 		if ( function_exists( 'bp_admin_setting_callback_enable_activity_follow' ) ) {
 			$bb_follow_buttons = bp_is_activity_follow_active();
 		}
 		// Setup args for querying members.
 		$members_args = array(
-			'user_ids'        => $matched_members,
+			'include'         => $matched_members,
 			'per_page'        => $max_members,
 			'max'             => $max_members,
 			'populate_extras' => true,
 			'search_terms'    => false,
-		);
+		);		
 
 		// Back up the global.
-		$old_members_template = $members_template;
+		//$old_members_template = $members_template;
 		if ( bp_has_members( $members_args ) ) :    ?>
 
 		<ul id="members-list" class="item-list members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">

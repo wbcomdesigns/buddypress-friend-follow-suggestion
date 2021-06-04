@@ -11,7 +11,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 	 *
 	 * @return  array
 	 */
-	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria ) {
+	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria, $suggest = '' ) {
 		if ( ! empty( $user_id ) ) {
 
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
@@ -20,15 +20,48 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 			$users                = get_users( array( 'number' => $max_members ) );
 			$match_data           = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
 			$percentage_criteria  = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
-			$matched_members      = array();
+			$matched_members      = array();			
 			foreach ( $users as $key => $user ) {
 				if ( $user_id !== $user->ID ) {
 					$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
 					if ( $percentage_criteria <= $matche_score ) {
-						$matched_members[] = $user->ID;
+						if ( $suggest == 'friends') {
+						
+							$is_friend = bp_is_friend( $user->ID );
+							if ( $is_friend == 'not_friends' ) {
+								$matched_members[] = $user->ID;
+							}
+						}else if ( $suggest == 'follow') {
+							if ( function_exists( 'bp_add_follow_button' ) ) {
+								$is_following = bp_is_following(
+														array(
+															'leader_id'   => $user->ID,
+															'follower_id' => $user_id,
+														)
+													);
+								if ( $is_following == 0 ) {
+									$matched_members[] = $user->ID;
+								} 
+							}
+							
+							if ( function_exists( 'bp_follow_add_follow_button' ) ) {
+								$is_following = bp_follow_is_following(
+														array(
+															'leader_id'   => $user->ID,
+															'follower_id' => $user_id,
+														)
+													);
+								if ( $is_following == 0 ) {
+									$matched_members[] = $user->ID;
+								} 
+							}
+						} else {
+							$matched_members[] = $user->ID;
+						}
 					}
 				}
-			}
+			}			
+			
 			return $matched_members;
 		}
 	}
