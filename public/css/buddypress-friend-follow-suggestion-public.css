@@ -20,6 +20,14 @@
     margin: 0 0 15px;
 }
 
+.widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
 .widget_bp_friend_follow_suggestion_widget .item-meta {
     margin-top: 5px !important;
 }
