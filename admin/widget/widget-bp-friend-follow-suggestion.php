@@ -81,15 +81,16 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		// Setup args for querying members.
 		$members_args = array(
 			'include'         => $matched_members,
+			'exclude'         => array(bp_loggedin_user_id()),
 			'per_page'        => $max_members,
 			'max'             => $max_members,
 			'populate_extras' => true,
 			'search_terms'    => false,
-		);		
+		);
+		
 
-		// Back up the global.
-		//$old_members_template = $members_template;
-		if ( bp_has_members( $members_args ) ) :    ?>
+		// Back up the global.		
+		if ( bp_has_members( $members_args ) && !empty($matched_members) ) :    ?>
 
 		<ul id="members-list" class="item-list members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
@@ -133,12 +134,12 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		<?php else : ?>
 
 			<div class="widget-error">
-				<?php esc_html_e( 'No one has signed up yet!', 'buddypress-friend-follow-suggestion' ); ?>
+				<?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?>
 			</div>
 				<?php
 		endif;
 
-			echo $args['after_widget'];
+		echo $args['after_widget'];
 
 	}
 

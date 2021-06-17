@@ -60,7 +60,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 						}
 					}
 				}
-			}			
+			}
 			
 			return $matched_members;
 		}
