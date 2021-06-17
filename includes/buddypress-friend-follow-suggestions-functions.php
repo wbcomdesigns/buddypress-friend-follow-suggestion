@@ -25,7 +25,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 				if ( $user_id !== $user->ID ) {
 					$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
 					if ( $percentage_criteria <= $matche_score ) {
-						if ( $suggest == 'friends') {
+						if ( $suggest == 'friends' && function_exists( 'bp_is_friend' ) ) {
 						
 							$is_friend = bp_is_friend( $user->ID );
 							if ( $is_friend == 'not_friends' ) {
