@@ -13,11 +13,23 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 	 */
 	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria, $suggest = '' ) {
 		if ( ! empty( $user_id ) ) {
-
+			global $wpdb;
+			
+			$exclude_user = array();
+			if ( $suggest == 'friends' ) {
+				$sql = "select friend_user_id from {$wpdb->prefix}bp_friends where initiator_user_id = {$user_id}";
+				$exclude_user = $wpdb->get_col($sql);
+			} else if ($suggest == 'follow' ) {
+				$sql = "select leader_id from {$wpdb->prefix}bp_follow where follower_id = {$user_id}";
+				$exclude_user = $wpdb->get_col($sql);
+			}
+			
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 			$matche_obj           = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION );
 			$max_members          = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
-			$users                = get_users( array( 'number' => $max_members ) );
+			
+			$users                = get_users( array( 'exclude'=> $exclude_user) );
+			
 			$match_data           = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
 			$percentage_criteria  = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
 			$matched_members      = array();			
