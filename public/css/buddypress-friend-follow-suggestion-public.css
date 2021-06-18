@@ -17,18 +17,24 @@
 }
 
 .widget_bp_friend_follow_suggestion_widget > ul > li {
-    margin: 0 0 15px;
+    margin-bottom: 1em;
 }
 
 .widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    width: 100%;
+}
+
+.buddypress.widget.widget_bp_friend_follow_suggestion_widget ul.item-list li .item-avatar,
+.widget_bp_friend_follow_suggestion_widget > ul > li .item-avatar {
+    float: left;
+}
+
+.widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap .item {
+    margin-left: 70px;
 }
 
 .widget_bp_friend_follow_suggestion_widget .item-meta {
+    font-size: 12px;
     margin-top: 5px !important;
 }
 
