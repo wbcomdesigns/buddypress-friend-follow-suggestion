@@ -15,7 +15,7 @@
  * Plugin Name:       BuddyPress Friend & Follow Suggestion
  * Plugin URI:        https://wbcomdesigns.com/downloads/buddypress-friend-follow-suggestion
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Wbcom Designs
  * Author URI:        https://wbcomdesigns.com/
  * License:           GPL-2.0+
