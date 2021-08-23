@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 5.7.3
-Stable tag: 1.2.0
+Tested up to: 5.8.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,14 +52,16 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.2.1 =
+
 = 1.2.0 =
-Fix: Managed UI with buddypress 8.0.0
-Fix: #9 - Fatal Error: When friend component is not activated
-Fix: #10 - Show a message "No suggestion found"
-Fix: Update generic button UI
+* Fix: Managed UI with buddypress 8.0.0
+* Fix: #9 - Fatal Error: When friend component is not activated
+* Fix: #10 - Show a message "No suggestion found"
+* Fix: Update generic button UI
 
 = 1.1.0 =
-Fix: (#5)Fixed follow button not working with buddyboss
+* Fix: (#5) Fixed follow button not working with buddyboss
 
 = 1.0.0 =
 * Initial Release
