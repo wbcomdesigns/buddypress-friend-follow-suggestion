@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -25,7 +24,6 @@
  * @author     WBComDesigns <admin@wbcomdesigns.com>
  */
 class Buddypress_Friend_Follow_Suggestion_i18n {
-
 
 	/**
 	 * Load the plugin text domain for translation.

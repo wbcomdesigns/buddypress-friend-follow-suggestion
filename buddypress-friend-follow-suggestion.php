@@ -96,6 +96,8 @@ run_buddypress_friend_follow_suggestion();
  * Function used return profile field dropdown
  *
  * @since    1.0.0
+ * @param field_value $field_value field_value.
+ * @param j           $j j.
  */
 function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 
@@ -140,7 +142,7 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 		}
 
 		list ($groups, ) = array( $groups, $fields );
-		// unset($groups['Base']);
+		// Unset($groups['Base']);.
 	}
 
 	ob_start();
@@ -150,10 +152,10 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 		<?php
 		foreach ( $groups as $group => $fields ) {
 			$group = esc_attr( $group );
-			echo "<optgroup label='$group'>\n";
+			echo '<optgroup label="' . esc_attr( $group ) . '">\n';
 			foreach ( $fields as $field ) {
 				$selected = $field['id'] == $field_value ? " selected='selected'" : '';
-				echo "<option value='$field[id]'$selected data-field-name='" . $field['name'] . "'>" . $field['name'] . "</option>\n";
+				echo "<option value='$field[id]'$selected data-field-name='" . esc_attr( $field['name'] ) . "'>" . esc_attr( $field['name'] ) . "</option>\n";
 			}
 			echo "</optgroup>\n";
 		}
@@ -164,21 +166,26 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 	return ob_get_clean();
 }
 
+/**
+ * Bffs_profile_fields_xprofile_options
+ *
+ * @param field $field field.
+ */
 function bffs_profile_fields_xprofile_options( $field ) {
 
 	$options = array();
 
-	if ( $field->type_obj->supports_options == false ) {
+	if ( false === $field->type_obj->supports_options ) {
 		return $options;
 	}
 
 	$rows = $field->get_children();
 	if ( is_array( $rows ) ) {
 		foreach ( $rows as $row ) {
-			if ( $field->type == 'gender' ) {
-				if ( $row->option_order == 1 ) {
+			if ( 'gender' === $field->type ) {
+				if ( 1 == $row->option_order ) {
 					$options[ 'his_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
-				} elseif ( $row->option_order == 2 ) {
+				} elseif ( 2 == $row->option_order ) {
 					$options[ 'her_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
 				} else {
 					$options[ 'their_' . stripslashes( trim( $row->name ) ) ] = stripslashes( trim( $row->name ) );
@@ -192,14 +199,17 @@ function bffs_profile_fields_xprofile_options( $field ) {
 	return $options;
 }
 
-/**
- * redirect to plugin settings page after activated
- */
 add_action( 'activated_plugin', 'bffs_activation_redirect_settings' );
-function bffs_activation_redirect_settings( $plugin ){
 
-	if( $plugin == plugin_basename( __FILE__ ) ) {
-		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) ) ;
+/**
+ * Redirect to plugin settings page after activated
+ *
+ * @param plugin $plugin plugin.
+ */
+function bffs_activation_redirect_settings( $plugin ) {
+
+	if ( plugin_basename( __FILE__ ) === $plugin ) {
+		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
 		exit;
 	}
 }

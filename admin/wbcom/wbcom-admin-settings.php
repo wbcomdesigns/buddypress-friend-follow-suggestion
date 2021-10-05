@@ -5,6 +5,7 @@
  * @author   Wbcom Designs
  * @package  BuddyPress_Member_Reviews
  */
+
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 

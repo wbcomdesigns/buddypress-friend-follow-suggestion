@@ -1,6 +1,11 @@
 <?php
+/**
+ * EDD plugin updater
+ *
+ * @package Buddypress_Friend_Follow_Suggestion
+ */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -13,14 +18,54 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class EDD_BFFS_Plugin_Updater {
 
+	/**
+	 * Api_url
+	 *
+	 * @var api_url $api_url api_url.
+	 */
+	private $api_url = '';
 
-	private $api_url     = '';
-	private $api_data    = array();
-	private $name        = '';
-	private $slug        = '';
-	private $version     = '';
+	/**
+	 * Api_data
+	 *
+	 * @var api_data $api_data api_data.
+	 */
+	private $api_data = array();
+
+	/**
+	 * Name
+	 *
+	 * @var name $name name.
+	 */
+	private $name = '';
+
+	/**
+	 * Slug
+	 *
+	 * @var slug $slug slug.
+	 */
+	private $slug = '';
+
+	/**
+	 * Version
+	 *
+	 * @var version $version version.
+	 */
+	private $version = '';
+
+	/**
+	 * Wp_override
+	 *
+	 * @var wp_override $wp_override wp_override.
+	 */
 	private $wp_override = false;
-	private $cache_key   = '';
+
+	/**
+	 * Cache_key
+	 *
+	 * @var cache_key $cache_key cache_key.
+	 */
+	private $cache_key = '';
 
 	/**
 	 * Class constructor.
@@ -85,7 +130,7 @@ class EDD_BFFS_Plugin_Updater {
 			$_transient_data = new stdClass();
 		}
 
-		if ( 'plugins.php' == $pagenow && is_multisite() ) {
+		if ( 'plugins.php' === $pagenow && is_multisite() ) {
 			return $_transient_data;
 		}
 
@@ -120,10 +165,10 @@ class EDD_BFFS_Plugin_Updater {
 	}
 
 	/**
-	 * show update nofication row -- needed for multisite subsites, because WP won't tell you otherwise!
+	 * Show update nofication row -- needed for multisite subsites, because WP won't tell you otherwise!
 	 *
-	 * @param string $file
-	 * @param array  $plugin
+	 * @param string $file file.
+	 * @param array  $plugin plugin.
 	 */
 	public function show_update_notification( $file, $plugin ) {
 		if ( is_network_admin() ) {
@@ -142,7 +187,7 @@ class EDD_BFFS_Plugin_Updater {
 			return;
 		}
 
-		// Remove our filter on the site transient
+		// Remove our filter on the site transient.
 		remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ), 10 );
 
 		$update_cache = get_site_transient( 'update_plugins' );
@@ -180,14 +225,14 @@ class EDD_BFFS_Plugin_Updater {
 			$version_info = $update_cache->response[ $this->name ];
 		}
 
-		// Restore our filter
+		// Restore our filter.
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ) );
 
 		if ( ! empty( $update_cache->response[ $this->name ] ) && version_compare( $this->version, $version_info->new_version, '<' ) ) {
-			// build a plugin list row, with update notification
+			// build a plugin list row, with update notification.
 			$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
-			// <tr class="plugin-update-tr"><td colspan="' . $wp_list_table->get_column_count() . '" class="plugin-update colspanchange">
-			echo '<tr class="plugin-update-tr" id="' . $this->slug . '-update" data-slug="' . $this->slug . '" data-plugin="' . $this->slug . '/' . $file . '">';
+
+			echo '<tr class="plugin-update-tr" id="' . esc_attr( $this->slug ) . '-update" data-slug="' . esc_attr( $this->slug ) . '" data-plugin="' . esc_attr( $this->slug ) . '/' . esc_attr( $file ) . '">';
 			echo '<td colspan="3" class="plugin-update colspanchange">';
 			echo '<div class="update-message notice inline notice-warning notice-alt">';
 
@@ -195,7 +240,7 @@ class EDD_BFFS_Plugin_Updater {
 
 			if ( empty( $version_info->download_link ) ) {
 				printf(
-					__( 'There is a new version of %1$s available. %2$sView version %3$s details%4$s.', 'buddypress-friend-follow-suggestion' ),
+					esc_html__( 'There is a new version of %1$s available. %2$sView version %3$s details%4$s.', 'buddypress-friend-follow-suggestion' ),
 					esc_html( $version_info->name ),
 					'<a target="_blank" class="thickbox" href="' . esc_url( $changelog_link ) . '">',
 					esc_html( $version_info->new_version ),
@@ -203,7 +248,7 @@ class EDD_BFFS_Plugin_Updater {
 				);
 			} else {
 				printf(
-					__( 'There is a new version of %1$s available. %2$sView version %3$s details%4$s or %5$supdate now%6$s.', 'buddypress-friend-follow-suggestion' ),
+					esc_html__( 'There is a new version of %1$s available. %2$sView version %3$s details%4$s or %5$supdate now%6$s.', 'buddypress-friend-follow-suggestion' ),
 					esc_html( $version_info->name ),
 					'<a target="_blank" class="thickbox" href="' . esc_url( $changelog_link ) . '">',
 					esc_html( $version_info->new_version ),
@@ -224,13 +269,13 @@ class EDD_BFFS_Plugin_Updater {
 	 *
 	 * @uses api_request()
 	 *
-	 * @param mixed  $_data
-	 * @param string $_action
-	 * @param object $_args
-	 * @return object $_data
+	 * @param mixed  $_data data.
+	 * @param string $_action action.
+	 * @param object $_args args.
+	 * @return object $_data data.
 	 */
 	public function plugins_api_filter( $_data, $_action = '', $_args = null ) {
-		if ( $_action != 'plugin_information' ) {
+		if ( 'plugin_information' !== $_action ) {
 			return $_data;
 		}
 
@@ -249,14 +294,14 @@ class EDD_BFFS_Plugin_Updater {
 
 		$cache_key = 'edd_api_request_' . md5( serialize( $this->slug . $this->api_data['license'] . $this->beta ) );
 
-		// Get the transient where we store the api request for this plugin for 24 hours
+		// Get the transient where we store the api request for this plugin for 24 hours.
 		$edd_api_request_transient = $this->get_cached_version_info( $cache_key );
 
 		// If we have no transient-saved value, run the API, set a fresh transient with the API value, and return that value too right now.
 		if ( empty( $edd_api_request_transient ) ) {
 			$api_response = $this->api_request( 'plugin_information', $to_send );
 
-			// Expires in 3 hours
+			// Expires in 3 hours.
 			$this->set_version_info_cache( $api_response, $cache_key );
 
 			if ( false !== $api_response ) {
@@ -292,8 +337,8 @@ class EDD_BFFS_Plugin_Updater {
 	/**
 	 * Disable SSL verification in order to prevent download update failures
 	 *
-	 * @param array  $args
-	 * @param string $url
+	 * @param array  $args args.
+	 * @param string $url url.
 	 * @return object $array
 	 */
 	public function http_request_args( $args, $url ) {
@@ -325,7 +370,7 @@ class EDD_BFFS_Plugin_Updater {
 		}
 
 		if ( $this->api_url == trailingslashit( home_url() ) ) {
-			return false; // Don't allow a plugin to ping itself
+			return false; // Don't allow a plugin to ping itself.
 		}
 
 		$api_params = array(

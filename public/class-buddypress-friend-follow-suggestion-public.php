@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -40,6 +39,13 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	 */
 	private $version;
 
+	/**
+	 * The profile fields.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $profile_fields    The profile fields.
+	 */
 	private $profile_fields = null;
 
 	/**
@@ -108,7 +114,6 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	 *
 	 * @since    1.0.0
 	 */
-
 	public function buddypress_friend_follow_compatibility_match() {
 		global $bp;
 
@@ -128,11 +133,12 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	}
 
 	/**
-	 * retuyrn  user compatibility match score.
+	 * Return  user compatibility match score.
 	 *
 	 * @since    1.0.0
+	 * @param user_id1 $user_id1 user_id1.
+	 * @param user_id2 $user_id2 user_id2.
 	 */
-
 	public function buddypress_friend_follow_compatibility_score( $user_id1 = false, $user_id2 = false ) {
 
 		if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
@@ -148,7 +154,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		}
 
 		$all_fields = $this->get_profile_fields();
-		// bffs_match_data
+		// bffs_match_data.
 		if ( ! empty( $bffs_general_setting['bffs_match_data'] ) ) {
 
 			foreach ( $bffs_general_setting['bffs_match_data'] as $bffs_match_data ) {
@@ -156,7 +162,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				$field1 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id1 );
 				$field2 = xprofile_get_field_data( $bffs_match_data['field_id'], $user_id2 );
 
-				// multi type
+				// multi type.
 				if ( isset( $all_fields[ $bffs_match_data['field_id'] ]['options'] ) ) {
 
 					if ( $field1 && $field2 ) {
@@ -172,7 +178,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 						return $score;
 					}
 				} else {
-					// single type
+					// single type.
 
 					if ( $field1 && $field2 && $field1 == $field2 ) {
 						$score += $bffs_match_data['percentage'];
@@ -191,12 +197,12 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	}
 
 	/**
-	 * get user profile fields.
+	 * Get user profile fields.
 	 *
 	 * @since    1.0.0
 	 */
 	public function get_profile_fields() {
-		if ( $this->profile_fields !== null ) {
+		if ( null !== $this->profile_fields ) {
 			return $this->profile_fields;
 		}
 
