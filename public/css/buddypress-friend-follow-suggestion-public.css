@@ -20,8 +20,15 @@
     margin-bottom: 1em;
 }
 
+.bp-nouveau .widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap,
 .widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .buddypress.widget.widget_bp_friend_follow_suggestion_widget ul.item-list li .item-avatar,
@@ -29,13 +36,23 @@
     float: left;
 }
 
+.bp-nouveau .widget-area .widget.buddypress.widget_bp_friend_follow_suggestion_widget #members-list li .item,
 .widget_bp_friend_follow_suggestion_widget > ul > li .list-wrap .item {
-    margin-left: 70px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 0;
 }
 
 .widget_bp_friend_follow_suggestion_widget .item-meta {
     font-size: 12px;
-    margin-top: 5px !important;
 }
 
 .widget_bp_friend_follow_suggestion_widget .item-meta ul li {
@@ -62,6 +79,43 @@
     min-height: 100%;
     line-height: 1;
     display: inline-block;
+    font-size: 0;
+    border-radius: 4px;
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button a:before,
+.widget_bp_friend_follow_suggestion_widget .generic-button button:before {
+    content: "\f234";
+    font-family: "bpffs-icons" !important;
+    font-size: 16px;
+    width: 35px;
+    height: 35px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button.pending_friend a:before,
+.widget_bp_friend_follow_suggestion_widget .generic-button.pending_friend button:before {
+    content: "\f235";
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button.follow-button a:before,
+.widget_bp_friend_follow_suggestion_widget .generic-button.follow-button button:before {
+    content: "\f4fc";
+}
+
+.widget_bp_friend_follow_suggestion_widget .generic-button.follow-button.following a:before,
+.widget_bp_friend_follow_suggestion_widget .generic-button.follow-button.following button:before {
+    content: "\f235";
 }
 
 .widget_bp_friend_follow_suggestion_widget .generic-button a:hover,

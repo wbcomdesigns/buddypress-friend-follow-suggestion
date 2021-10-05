@@ -81,6 +81,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		 * class.
 		 */
 
+		wp_enqueue_style( '$bpffs-icon', plugin_dir_url( __FILE__ ) . 'css/bpffs-icons.css', array(), $this->version, 'all' );
+                
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );
 
 	}
