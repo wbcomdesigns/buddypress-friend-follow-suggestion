@@ -146,8 +146,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		} else {
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 		}
-
-		$score = isset( $bffs_general_setting['profile_st_percentage'] ) ? $bffs_general_setting['profile_st_percentage'] : 0;
+		
+		$score = ( isset( $bffs_general_setting['profile_st_percentage'] ) && $bffs_general_setting['profile_st_percentage'] != ''  ) ? $bffs_general_setting['profile_st_percentage'] : 0;
 
 		if ( ! $user_id1 || ! $user_id2 ) {
 			return $score;
@@ -180,7 +180,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				} else {
 					// single type.
 
-					if ( $field1 && $field2 && $field1 == $field2 ) {
+					if ( $field1 && $field2 && $field1 == $field2 ) {						
 						$score += $bffs_match_data['percentage'];
 					} elseif ( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
 						return $score;
