@@ -189,7 +189,7 @@ class Buddypress_Friend_Follow_Suggestion {
 		$plugin_public = new Buddypress_Friend_Follow_Suggestion_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts', 999 );
 		$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 
 	}
