@@ -208,8 +208,43 @@ add_action( 'activated_plugin', 'bffs_activation_redirect_settings' );
  */
 function bffs_activation_redirect_settings( $plugin ) {
 
-	if ( plugin_basename( __FILE__ ) === $plugin ) {
+	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
 		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
 		exit;
+	}
+}
+
+
+
+/**
+ *  Check if buddypress activate.
+ */
+function bffs_requires_buddypress() {
+
+	if ( ! class_exists( 'Buddypress' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		add_action( 'admin_notices', 'bffs_required_plugin_admin_notice' );
+		unset( $_GET['activate'] );
+	}
+}
+
+add_action( 'admin_init', 'bffs_requires_buddypress' );
+
+
+/**
+ * Throw an Alert to tell the Admin why it didn't activate.
+ *
+ * @author wbcomdesigns
+ * @since  2.3.0
+ */
+function bffs_required_plugin_admin_notice() {
+
+	$bpmb_plugin = esc_html__( ' BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' );
+	$bp_plugin   = esc_html__( 'BuddyPress', 'buddypress-friend-follow-suggestion' );
+	echo '<div class="error"><p>';
+	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-friend-follow-suggestion' ), '<strong>' . esc_html( $bpmb_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo '</p></div>';
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
 	}
 }
