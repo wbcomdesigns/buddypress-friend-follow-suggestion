@@ -61,26 +61,26 @@
 
 .widget_bp_friend_follow_suggestion_widget .generic-button a,
 .widget_bp_friend_follow_suggestion_widget .generic-button button {
-    background: #fff;
-    border-color: #ccc;
+    background: #fff !important;
+    border-color: #ccc !important;
     border-style: solid !important;
     border-width: 1px !important;
-    border-radius: 0;
-    color: #555;
+    border-radius: 0 !important;
+    color: #555 !important;
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
-    font-weight: 400;
+    font-weight: 400 !important;
     outline: 0;
-    padding: .3em .5em;
-    text-align: center;
+    padding: .3em .5em !important;
+    text-align: center !important;
     text-decoration: none;
-    width: auto;
-    min-height: 100%;
-    line-height: 1;
-    display: inline-block;
-    font-size: 0;
-    border-radius: 4px;
+    width: auto !important;
+    min-height: 100% !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    font-size: 0 !important;
+    border-radius: 4px !important;
 }
 
 .widget_bp_friend_follow_suggestion_widget .generic-button a:before,
@@ -119,9 +119,13 @@
 }
 
 .widget_bp_friend_follow_suggestion_widget .generic-button a:hover,
-.widget_bp_friend_follow_suggestion_widget .generic-button button:hover {
-    background: #ededed;
-    color: #555;
+.widget_bp_friend_follow_suggestion_widget .generic-button button:hover,
+#buddypress .widget_bp_friend_follow_suggestion_widget div.generic-button a:hover {
+    background: #ededed !important;
+    color: #555 !important;
+    border-color: #ccc !important;
+    border-style: solid !important;
+    border-width: 1px !important;
 }
 
 /*--------------------------------------------------------------
