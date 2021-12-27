@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 5.8.1
-Stable tag: 1.3.0
+Tested up to: 5.8.2
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,11 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.3.1 =
+* Fix: (#25) Managed widget UI with buddyboss
+* Fix: (#23) Managed widget UI in single member and group
+* Fix: (#06) Fixed notice and warning error
+
 = 1.3.0 =
 * Fix: #17 - Update friends, follow widget UI
 * Fix: #14 - Console error "bp is not defined"
