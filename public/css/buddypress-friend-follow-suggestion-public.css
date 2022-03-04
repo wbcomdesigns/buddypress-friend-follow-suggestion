@@ -140,3 +140,41 @@
 .bb-grid .widget_bp_friend_follow_suggestion_widget .generic-button button i {
     padding: .3em .5em !important;
 }
+
+/*--------------------------------------------------------------
+Youzify
+--------------------------------------------------------------*/
+.youzify-sidebar .widget_bp_friend_follow_suggestion_widget h3 {
+    margin: 0;
+    color: #858f94;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 15px 35px;
+    letter-spacing: initial;
+    background: #fff;
+    position: relative;
+    margin-bottom: 25px !important;
+    border-radius: 4px 4px 0 0;
+}
+.youzify-sidebar .widget_bp_friend_follow_suggestion_widget h3:before {
+    content: "\f129";
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+    font-family: "Font Awesome 5 Free";
+    font-size: 13px;
+    color: #8b8b8b;
+    font-weight: 700;
+    border-radius: 100px;
+    text-align: center;
+    display: inline-block;
+    background-color: #f2f2f2;
+}
+.youzify-sidebar .widget_bp_friend_follow_suggestion_widget .item-avatar {
+    margin-right: 10px;
+}
+.youzify-sidebar .widget_bp_friend_follow_suggestion_widget .generic-button a:before{
+    margin-right: 0;
+}

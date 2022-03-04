@@ -16,8 +16,11 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 <div class="wbcom-tab-content">
 	<div class="bffs-gen-settings-wrap">
 		<div class="bffs-gen-settings-container">
-			<h3><?php esc_html_e( 'BuddyPress Profile matching', 'buddypress-friend-follow-suggestion' ); ?></h3>
-			<p class="description"><?php esc_html_e( 'Here you can customize Buddypress profiles matching functionality.', 'buddypress-friend-follow-suggestion' ); ?></p>			
+			<div class="wbcom-wrapper-admin">
+			<div class="wbcom-admin-title-section">
+				<h3><?php esc_html_e( 'BuddyPress Profile matching', 'buddypress-friend-follow-suggestion' ); ?></h3></div>			
+			<div class="form-table buddypress-friend-follow wbcom-admin-option-wrap">
+			<p class="description description-title"><?php esc_html_e( 'Here you can customize Buddypress profiles matching functionality.', 'buddypress-friend-follow-suggestion' ); ?></p>			
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'bffs_admin_general_options' );
@@ -98,9 +101,10 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 					</div>
 
 				</div>
-
 				<?php submit_button(); ?>
 			</form>
+		</div>
+		</div>
 		</div>
 	</div>
 </div>

@@ -1,3 +1,62 @@
+/* Admin Tab Icons and UI */
+.wbcom-wrapper-admin {
+    position: relative;
+    font-size: 15px;
+    background: #f6f6f6;
+    padding: 0 15px 15px;
+    margin: 25px 0;
+}
+.wbcom-admin-title-section h3 {
+    padding: 18px 25px;
+    font-size: 15px;
+    background: #2094F3;
+    color: #fff;
+    margin: 0 -15px 20px;
+}
+.wbcom-welcome-support-info {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+.wbcom-welcome-support-info .three-col p {
+    min-height: 70px;
+}
+.wbcom-welcome-support-info a.button.button-primary.button-welcome-support {
+    padding: 5px 20px;
+    border-radius: 4px;
+}
+.wbcom-admin-option-wrap {
+    margin: 0 !important;
+    background: #fff;
+}
+.wbcom-wrapper-admin p.submit {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+.nav-tab-wrapper ul li #bffs-general-tab:before {
+    content: "\f111";
+}
+.form-table.wbcom-admin-option-wrap th {
+    padding: 15px;
+}
+p.description.description-title {
+    padding-left: 15px;
+    font-size: 16px;
+    padding-top: 20px;
+    display: block;
+}
+.wbcom-wrapper-admin .buddypress-friend-follow p.submit {
+    padding-bottom: 25px;
+    padding-left: 15px;
+}
+.buddypress-friend-follow #bffs-field-content .search_field {
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+    padding-left: 30px;
+    padding-bottom: 12px;
+}
+
 .bffs-field-header span,
 .add-bffs-match-field,
 .delete_bffs_field {
@@ -7,9 +66,15 @@
 }
 
 #add-bffs-match-field {
-    margin-top: 10px;
+    margin-top:10px;
     display: inline-block;
     text-decoration: none;
+    margin-left: 30px;
+    background: #38b570;
+    padding: 8px 25px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
 }
 
 .bffs-profile-match-fields select {
