@@ -207,7 +207,9 @@ add_action( 'activated_plugin', 'bffs_activation_redirect_settings' );
  * @param plugin $plugin plugin.
  */
 function bffs_activation_redirect_settings( $plugin ) {
-
+	if ( ! isset( $_GET['plugin'] ) ) {
+		return;
+	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
 		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
 		exit;
