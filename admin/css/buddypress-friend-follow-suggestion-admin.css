@@ -1,12 +1,14 @@
 /* Admin Tab Icons and UI */
-.wbcom-wrapper-admin {
+.wbcom-wrapper-admin,
+.wbcom-welcome-main-wrapper {
     position: relative;
     font-size: 15px;
     background: #f6f6f6;
     padding: 0 15px 15px;
     margin: 25px 0;
 }
-.wbcom-admin-title-section h3 {
+.wbcom-admin-title-section h3,
+.wbcom-welcome-head h2.wbcom-welcome-title {
     padding: 18px 25px;
     font-size: 15px;
     background: #2094F3;
