@@ -90,8 +90,14 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 
 		// Back up the global.
 		if ( bp_has_members( $members_args ) && ! empty( $matched_members ) ) :    ?>
-
-		<ul id="members-list" class="item-list members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
+		<?php
+			if( 'list_layout' == $settings['layout'] ){
+				$layout_class = '';
+			}else{
+				$layout_class = 'horizontal-layout';
+			}
+		?>	
+		<ul id="members-list" class="item-list members-list <?php echo esc_attr( $layout_class );?>" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
 			while ( bp_members() ) :
 				bp_the_member();
@@ -158,6 +164,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		$instance['suggest']             = strip_tags( $new_instance['suggest'] );
 		$instance['max_members']         = intval( $new_instance['max_members'] );
 		$instance['percentage_criteria'] = intval( $new_instance['percentage_criteria'] );
+		$instance['layout']              = ( ! empty ( $new_instance['layout'] ) ) ? $new_instance['layout'] : '';
 
 		return $instance;
 	}
@@ -172,7 +179,6 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 	 * @return void
 	 */
 	public function form( $instance ) {
-
 		// Get widget settings.
 		$settings            = $this->parse_settings( $instance );
 		$title               = strip_tags( $settings['title'] );
@@ -203,6 +209,13 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'percentage_criteria' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'percentage_criteria' ) ); ?>" type="number" min="1" max="100" value="<?php echo esc_attr( $percentage_criteria ); ?>" style="width: 30%" />
 				%
 			</label>
+			</p>
+			<p>
+				<label><?php esc_attr_e( 'Layout:', 'buddypress-friend-follow-suggestion' ); ?></label>
+					<select name="<?php echo esc_attr( $this->get_field_name( 'layout' ) ); ?>">
+						<option value="list_layout"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'list_layout' ) : ''; ?>><?php esc_html_e( 'List Layout', 'buddypress-friend-follow-suggestion' ); ?></option>
+						<option value="horizontal_layout"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'horizontal_layout' ) : ''; ?>><?php esc_html_e( 'Horizontal Layout', 'buddypress-friend-follow-suggestion' ); ?></option>
+					</select>				
 			</p>
 			<p>
 				<label>
@@ -239,6 +252,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 				'max_members'         => 5,
 				'percentage_criteria' => 10,
 				'suggest'             => 'friends',
+				'layout'                => 'list_layout',
 			),
 			'suggestion_widget_settings'
 		);
