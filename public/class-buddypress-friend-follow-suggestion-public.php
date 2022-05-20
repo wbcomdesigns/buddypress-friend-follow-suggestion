@@ -187,8 +187,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				} else {
 					// single type.
 
-					if ( $field1 && $field2 && $field1 == $field2 ) {						
-						$score += $bffs_match_data['percentage'];
+					if ( $field1 && $field2 && $field1 == $field2 ) {
+						$score += intval( $bffs_match_data['percentage'] );
 					} elseif ( isset( $bffs_match_data['stop_match'] ) && $bffs_match_data['stop_match'] == 1 ) {
 						return $score;
 					}
