@@ -1,14 +1,14 @@
-# Copyright (C) 2021
+# Copyright (C) 2022
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 05:24:33+00:00\n"
+"POT-Creation-Date: 2022-05-20 07:29:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Varun Dubey\n"
 "Language-Team: Wbcom Designs\n"
 "Language: en\n"
@@ -46,16 +46,13 @@ msgid "Welcome"
 msgstr ""
 
 #: admin/class-buddypress-friend-follow-suggestion-admin.php:176
-msgid "BuddyPress Friend & Follow Suggestion Settings"
+#: admin/inc/bffs-welcome-page.php:17
+msgid "BuddyPress Friend & Follow Suggestion"
 msgstr ""
 
 #: admin/class-buddypress-friend-follow-suggestion-admin.php:232
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:87
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:90
 msgid "Delete"
-msgstr ""
-
-#: admin/inc/bffs-welcome-page.php:17
-msgid "BuddyPress Friend & Follow Suggestion"
 msgstr ""
 
 #: admin/inc/bffs-welcome-page.php:18
@@ -66,99 +63,99 @@ msgid ""
 "percentages in the member header area."
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:28
+#: admin/inc/bffs-welcome-page.php:24
 msgid "Help &amp; Support Resources"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:29
+#: admin/inc/bffs-welcome-page.php:25
 msgid ""
 "Here are all the resources you may need to get help from us. Documentation "
 "is usually the best place to start. Should you require help anytime, our "
 "customer care team is available to assist you at the support center."
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:35
+#: admin/inc/bffs-welcome-page.php:31
 msgid "Documentation"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:36
+#: admin/inc/bffs-welcome-page.php:32
 msgid ""
 "We have prepared an extensive guide on BuddyPress Friend & Follow "
 "Suggestion to learn all aspects of the plugin. You will find most of your "
 "answers here."
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:37
+#: admin/inc/bffs-welcome-page.php:33
 msgid "Read Documentation"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:41
+#: admin/inc/bffs-welcome-page.php:37
 msgid "Support Center"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:42
+#: admin/inc/bffs-welcome-page.php:38
 msgid ""
 "We strive to offer the best customer care via our support center. Once your "
 "theme is activated, you can ask us for help anytime."
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:43
+#: admin/inc/bffs-welcome-page.php:39
 msgid "Get Support"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:47
+#: admin/inc/bffs-welcome-page.php:43
 msgid "Got Feedback?"
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:48
+#: admin/inc/bffs-welcome-page.php:44
 msgid ""
 "We want to hear about your experience with the plugin. We would also love "
 "to hear any suggestions you may for future updates."
 msgstr ""
 
-#: admin/inc/bffs-welcome-page.php:49
+#: admin/inc/bffs-welcome-page.php:45
 msgid "Send Feedback"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:19
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:21
 msgid "BuddyPress Profile matching"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:20
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:23
 msgid "Here you can customize Buddypress profiles matching functionality."
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:29
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:32
 msgid "Enable profile matching settings"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:37
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:40
 msgid ""
 "Enable this option if you want display member matching on member profile "
 "page. "
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:47
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:50
 msgid "Starting percentage"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:50
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:53
 msgid "Percentage will start from this value."
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:63
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:66
 msgid "Profile Field"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:64
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:67
 msgid "Percentage"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:65
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:68
 msgid "Stop if no match "
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:97
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:100
 msgid "Add Field"
 msgstr ""
 
@@ -200,34 +197,21 @@ msgstr ""
 msgid "Paid Addons"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-plugins-page.php:28
+#: admin/wbcom/templates/wbcom-plugins-page.php:29
+#: admin/wbcom/templates/wbcom-plugins-page.php:43
 #: admin/wbcom/templates/wbcom-themes-page.php:118
 #: admin/wbcom/templates/wbcom-themes-page.php:139
 msgid "View"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-plugins-page.php:37
+#: admin/wbcom/templates/wbcom-plugins-page.php:38
 msgid "Free Addons"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-plugins-page.php:43
-msgid "Install"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-plugins-page.php:47
-#: admin/wbcom/wbcom-admin-settings.php:500
-msgid "Activate"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-plugins-page.php:51
-#: admin/wbcom/wbcom-admin-settings.php:501
-msgid "Deactivate"
-msgstr ""
-
 #: admin/wbcom/templates/wbcom-support-page.php:5
-#: admin/wbcom/wbcom-admin-settings.php:559
-#: admin/wbcom/wbcom-admin-settings.php:560
-#: admin/wbcom/wbcom-admin-settings.php:653
+#: admin/wbcom/wbcom-admin-settings.php:514
+#: admin/wbcom/wbcom-admin-settings.php:515
+#: admin/wbcom/wbcom-admin-settings.php:608
 msgid "Support"
 msgstr ""
 
@@ -430,141 +414,141 @@ msgstr ""
 msgid "Create Knowledge base"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:185
+#: admin/wbcom/wbcom-admin-settings.php:140
 msgid "Custom Font Uploader"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:187
+#: admin/wbcom/wbcom-admin-settings.php:142
 msgid ""
 "It also allows you to upload your own custom font to your site and use them "
 "using custom css."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:193
+#: admin/wbcom/wbcom-admin-settings.php:148
 msgid "BuddyPress Activity Filter"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:195
+#: admin/wbcom/wbcom-admin-settings.php:150
 msgid "Admin can set default and customised activities to be listed on front-end."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:201
+#: admin/wbcom/wbcom-admin-settings.php:156
 msgid "BuddyPress Activity Social Share"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:203
+#: admin/wbcom/wbcom-admin-settings.php:158
 msgid ""
 "This plugin allows anyone easily share BuddyPress Activites on major social "
 "media (Facebook, Twitter, Google+, Linkedin )."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:209
+#: admin/wbcom/wbcom-admin-settings.php:164
 msgid "BuddyPress Create Group Type"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:211
+#: admin/wbcom/wbcom-admin-settings.php:166
 msgid "It will help to create group type for BuddyPress Groups."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:217
+#: admin/wbcom/wbcom-admin-settings.php:172
 msgid "BuddyPress Member Reviews"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:219
+#: admin/wbcom/wbcom-admin-settings.php:174
 msgid ""
 "This plugin allows only site members to add reviews to the buddypress "
 "members on the site and even rate the member’s profile out of 5 points with "
 "multiple review criteria."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:225
+#: admin/wbcom/wbcom-admin-settings.php:180
 msgid "BuddyPress Group Reviews"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:227
+#: admin/wbcom/wbcom-admin-settings.php:182
 msgid ""
 "This plugin allows the BuddyPress Members to give reviews to the BuddyPress "
 "groups on the site. The review form allows the users to give text review, "
 "even rate the group on the basis of multiple criterias."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:233
+#: admin/wbcom/wbcom-admin-settings.php:188
 msgid "BuddyPress Favorite Notification"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:235
+#: admin/wbcom/wbcom-admin-settings.php:190
 msgid ""
 "BuddyPress Favorite Notification adds a notification for BuddyPress "
 "activity."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:241
+#: admin/wbcom/wbcom-admin-settings.php:196
 msgid "Custom Email Options"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:243
+#: admin/wbcom/wbcom-admin-settings.php:198
 msgid "Override default email options of WordPress."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:249
+#: admin/wbcom/wbcom-admin-settings.php:204
 msgid "BuddyPress Checkins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:251
+#: admin/wbcom/wbcom-admin-settings.php:206
 msgid ""
 "This plugin allows BuddyPress members to share their location when they are "
 "posting activities, you can add places where you visited, nearby locations "
 "based on google places."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:257
+#: admin/wbcom/wbcom-admin-settings.php:212
 msgid "BuddyPress Job Manager"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:259
+#: admin/wbcom/wbcom-admin-settings.php:214
 msgid ""
 "Incorporates BuddyPress with the WP Job Manager plugin by creating specific "
 "tabs in employer’s and candidate’s profiles."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:265
+#: admin/wbcom/wbcom-admin-settings.php:220
 msgid "BuddyPress user ToDo List"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:267
+#: admin/wbcom/wbcom-admin-settings.php:222
 msgid ""
 "This plugin allows you to create your personal task list with timestamp. "
 "You can mark them complete when you are done with them. It will also send "
 "reminder when you have any overdue task."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:273
+#: admin/wbcom/wbcom-admin-settings.php:228
 msgid "Shortcodes for BuddyPress"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:275
+#: admin/wbcom/wbcom-admin-settings.php:230
 msgid ""
 "This plugin will add an extended feature to the big name “BuddyPress” that "
 "will generate Shortcode for Listing Activity Streams , Members and Groups "
 "on any post/page in website."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:281
+#: admin/wbcom/wbcom-admin-settings.php:236
 msgid "Woo Open Graph"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:283
+#: admin/wbcom/wbcom-admin-settings.php:238
 msgid ""
 "This plugin will add an extended feature to the big name “WooCommerce” that "
 "will adds well executed and accurate Open Graph Meta Tags to your site with "
 "title,description and WooCommerce featured image."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:289
+#: admin/wbcom/wbcom-admin-settings.php:244
 msgid "BuddyPress Lock"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:291
+#: admin/wbcom/wbcom-admin-settings.php:246
 msgid ""
 "This plugin allows the administrator to lock the certain parts of their "
 "site. It help to create private BuddyPress community by locking certain "
@@ -572,22 +556,22 @@ msgid ""
 "without using any membership plugin."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:297
+#: admin/wbcom/wbcom-admin-settings.php:252
 msgid "Woo Audio Preview"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:299
+#: admin/wbcom/wbcom-admin-settings.php:254
 msgid ""
 "This plugin Allows playing the audio files in sample mode to prevent "
 "unauthorized downloading of the audio files. It helps to display sample "
 "files at single product page."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:305
+#: admin/wbcom/wbcom-admin-settings.php:260
 msgid "WordPress System Log"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:307
+#: admin/wbcom/wbcom-admin-settings.php:262
 msgid ""
 "This plugin helps administrators of the site see their environment on which "
 "the site is currently running that includes WordPress environment, tha "
@@ -595,69 +579,69 @@ msgid ""
 "activated on the site."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:313
+#: admin/wbcom/wbcom-admin-settings.php:268
 msgid "BP Post From Anywhere"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:315
+#: admin/wbcom/wbcom-admin-settings.php:270
 msgid ""
 "This plugin will generate shortcode and widgets for post updates section "
 "for activities so you can post update from anywhere, it might be sidebar, "
 "some page or any template file."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:321
+#: admin/wbcom/wbcom-admin-settings.php:276
 msgid "Woo Document Preview"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:323
+#: admin/wbcom/wbcom-admin-settings.php:278
 msgid ""
 "This will allow you to add document preview at single product page. Which "
 "helps to offer more better idea when you are selling ebooks, pdf or some "
 "documents."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:329
+#: admin/wbcom/wbcom-admin-settings.php:284
 msgid "WordPress Media Category"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:331
-#: admin/wbcom/wbcom-admin-settings.php:347
+#: admin/wbcom/wbcom-admin-settings.php:286
+#: admin/wbcom/wbcom-admin-settings.php:302
 msgid ""
 "This plugin helps administrators of the site categorize their wordpress "
 "media."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:337
+#: admin/wbcom/wbcom-admin-settings.php:292
 msgid "Woo Price Quotes"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:339
+#: admin/wbcom/wbcom-admin-settings.php:294
 msgid ""
 "This plugin helps in quoting the products that admin wishes to hide its "
 "purchasing details."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:345
+#: admin/wbcom/wbcom-admin-settings.php:300
 msgid "EDD Service Extended"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:353
+#: admin/wbcom/wbcom-admin-settings.php:308
 msgid "WB Ads Rotator with Split Test"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:355
+#: admin/wbcom/wbcom-admin-settings.php:310
 msgid ""
 "This plugin is designed for the SPLIT TESTING, you can check performance of "
 "your ads layout and on the basis of them you can select one of them for "
 "your regular use."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:373
+#: admin/wbcom/wbcom-admin-settings.php:328
 msgid "BuddyPress Moderation Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:374
+#: admin/wbcom/wbcom-admin-settings.php:329
 msgid ""
 "BuddyPress Community Moderation offers a solution for site owners to keep "
 "their communities straight. With community policing strategy, members of "
@@ -665,22 +649,22 @@ msgid ""
 "content created within the various components."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:379
+#: admin/wbcom/wbcom-admin-settings.php:334
 msgid "BuddyPress Polls"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:380
+#: admin/wbcom/wbcom-admin-settings.php:335
 msgid ""
 "Use BuddyPress Polls plugin to create polls inside the activity, let your "
 "user response to your polls. Members can create pools like activities, "
 "easily votes on them."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:385
+#: admin/wbcom/wbcom-admin-settings.php:340
 msgid "BuddyPress Resume Manager"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:386
+#: admin/wbcom/wbcom-admin-settings.php:341
 msgid ""
 "BuddyPress Resume Manager adds a separate BuddyPress Resume menu at a "
 "user’s BuddyPress Profile Page to display individual member resume. We have "
@@ -688,51 +672,59 @@ msgid ""
 "disable them."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:391
+#: admin/wbcom/wbcom-admin-settings.php:346
 msgid "BuddyPress Profanity"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:392
+#: admin/wbcom/wbcom-admin-settings.php:347
 msgid ""
 "Use BuddyPress Profanity plugin to censor content in your community! Easily "
 "Censor all the unwanted words in activities, private messages contents by "
 "specifying a list of keywords to be filtered."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:397
+#: admin/wbcom/wbcom-admin-settings.php:352
 msgid "BuddyPress Private Community Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:398
+#: admin/wbcom/wbcom-admin-settings.php:353
 msgid ""
 "This plugin offers a lockdown for BuddyPress Component and will ask users "
 "to log in go further to check profile or any other protected details."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:403
+#: admin/wbcom/wbcom-admin-settings.php:358
 msgid "BuddyPress Profile Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:404
+#: admin/wbcom/wbcom-admin-settings.php:359
 msgid ""
 "This plugin gives you the power to extend BuddyPress Profiles with repeater "
 "fields and groups. You can easily add multiple field groups and display "
 "them at member’s profile."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:543
-#: admin/wbcom/wbcom-admin-settings.php:544
-#: admin/wbcom/wbcom-admin-settings.php:641
+#: admin/wbcom/wbcom-admin-settings.php:455
+msgid "Activate"
+msgstr ""
+
+#: admin/wbcom/wbcom-admin-settings.php:456
+msgid "Deactivate"
+msgstr ""
+
+#: admin/wbcom/wbcom-admin-settings.php:498
+#: admin/wbcom/wbcom-admin-settings.php:499
+#: admin/wbcom/wbcom-admin-settings.php:596
 msgid "Our Plugins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:551
-#: admin/wbcom/wbcom-admin-settings.php:552
-#: admin/wbcom/wbcom-admin-settings.php:647
+#: admin/wbcom/wbcom-admin-settings.php:506
+#: admin/wbcom/wbcom-admin-settings.php:507
+#: admin/wbcom/wbcom-admin-settings.php:602
 msgid "Our Themes"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:635
+#: admin/wbcom/wbcom-admin-settings.php:590
 msgid "Settings"
 msgstr ""
 
@@ -777,15 +769,15 @@ msgstr ""
 msgid "Select a field"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:242
+#: buddypress-friend-follow-suggestion.php:244
 msgid " BuddyPress Friend & Follow Suggestion"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:243
+#: buddypress-friend-follow-suggestion.php:245
 msgid "BuddyPress"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:245
+#: buddypress-friend-follow-suggestion.php:247
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
 
@@ -852,7 +844,7 @@ msgstr ""
 msgid "Activate License"
 msgstr ""
 
-#: public/class-buddypress-friend-follow-suggestion-public.php:131
+#: public/class-buddypress-friend-follow-suggestion-public.php:133
 msgid "Profile Match: "
 msgstr ""
 
