@@ -84,6 +84,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		$rtl_css = is_rtl() ? '-rtl' : '';
 
 		wp_enqueue_style( '$bpffs-icon', plugin_dir_url( __FILE__ ) . 'css/bpffs-icons.css', array(), $this->version, 'all' );
+		wp_enqueue_style( '$buddypress-friend-follow-suggestion-swiper-slider', plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-swiper-slider.min.css', array(), $this->version, 'all' );
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $rtl_css . '/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );
 
@@ -109,6 +110,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, true );
+
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ), $this->version, true );
 
 	}
 

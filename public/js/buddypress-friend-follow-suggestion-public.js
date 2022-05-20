@@ -46,4 +46,21 @@
     BPFrienFollow.init();
   });
 
+  var swiper = new Swiper(".horizontal-layout", {
+    spaceBetween:20,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
 })(jQuery);
