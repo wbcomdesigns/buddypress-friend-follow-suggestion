@@ -173,7 +173,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 			<div class="bffs-header">
 				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 				<h1 class="wbcom-plugin-heading">
-					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion Settings', 'buddypress-friend-follow-suggestion' ); ?>
+					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
 				</h1>
 			</div>
 			<div class="wbcom-admin-settings-page">
