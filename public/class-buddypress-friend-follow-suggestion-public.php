@@ -84,8 +84,12 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		$rtl_css = is_rtl() ? '-rtl' : '';
 
 		wp_enqueue_style( '$bpffs-icon', plugin_dir_url( __FILE__ ) . 'css/bpffs-icons.css', array(), $this->version, 'all' );
-		wp_enqueue_style( '$buddypress-friend-follow-suggestion-swiper-slider', plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-swiper-slider.min.css', array(), $this->version, 'all' );
-
+		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
+		foreach ( $widget_layout as $layout_widget ) {
+			if ( 'horizontal_layout' == $layout_widget['layout'] ) {
+				wp_enqueue_style( '$buddypress-friend-follow-suggestion-swiper-slider', plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-swiper-slider.min.css', array(), $this->version, 'all' );
+			}
+		}
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $rtl_css . '/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );
 
 	}
@@ -110,11 +114,13 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, true );
-
-		wp_enqueue_script( $this->plugin_name. '-slider', plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
-
+		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
+		foreach ( $widget_layout as $layout_widget ) {
+			if ( 'horizontal_layout' == $layout_widget['layout'] ) {
+				wp_enqueue_script( $this->plugin_name . '-slider', plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
+			}
+		}
 	}
-
 
 	/**
 	 * Display user compatibility match.
@@ -153,8 +159,8 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		} else {
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 		}
-		
-		$score = ( isset( $bffs_general_setting['profile_st_percentage'] ) && $bffs_general_setting['profile_st_percentage'] != ''  ) ? $bffs_general_setting['profile_st_percentage'] : 0;
+
+		$score = ( isset( $bffs_general_setting['profile_st_percentage'] ) && $bffs_general_setting['profile_st_percentage'] != '' ) ? $bffs_general_setting['profile_st_percentage'] : 0;
 
 		if ( ! $user_id1 || ! $user_id2 ) {
 			return $score;

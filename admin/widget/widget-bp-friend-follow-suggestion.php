@@ -90,52 +90,15 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 
 		// Back up the global.
 		if ( bp_has_members( $members_args ) && ! empty( $matched_members ) ) :    ?>
-		<?php
-			if( 'list_layout' == $settings['layout'] ){
-				$layout_class = '';
-			}else{
-				$layout_class = 'horizontal-layout';
-			}
-		?>	
-		<ul id="members-list" class="item-list members-list <?php echo esc_attr( $layout_class );?>" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
-			while ( bp_members() ) :
-				bp_the_member();
-				?>
-				<li <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
-					<div class="list-wrap">
-						<div class="item-avatar">
-							<a href="<?php bp_member_permalink(); ?>" class="bp-tooltip" data-bp-tooltip="<?php bp_member_name(); ?>"><?php bp_member_avatar(); ?></a>
-						</div>
-						<div class="item">
-							<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
-							<div class="item-meta">
-								<ul>
-									<li>
-										<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-											<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>
-										<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
-											<?php
-
-											$button_args = wp_parse_args( $button_args, get_class_vars( 'BP_Button' ) );
-
-											if ( function_exists( 'bp_add_follow_button' ) ) {
-												bp_add_follow_button( bp_get_member_user_id(), bp_loggedin_user_id(), $button_args );
-											}
-											?>
-										<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-											<?php
-											echo bp_get_add_friend_button( bp_get_member_user_id() );
-											?>
-										<?php endif; ?>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</li>
-			<?php endwhile; ?>
-		</ul>
+			if ( 'list_layout' == $settings['layout'] ) {
+				require BFFS_PLUGIN_PATH . 'templates/list-layout.php';
+			} else {
+				require BFFS_PLUGIN_PATH . 'templates/horizontal-layout.php';
+			}
+			?>
+			
+		
 		<?php else : ?>
 
 			<div class="widget-error">
@@ -164,7 +127,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 		$instance['suggest']             = strip_tags( $new_instance['suggest'] );
 		$instance['max_members']         = intval( $new_instance['max_members'] );
 		$instance['percentage_criteria'] = intval( $new_instance['percentage_criteria'] );
-		$instance['layout']              = ( ! empty ( $new_instance['layout'] ) ) ? $new_instance['layout'] : '';
+		$instance['layout']              = ( ! empty( $new_instance['layout'] ) ) ? $new_instance['layout'] : '';
 
 		return $instance;
 	}
