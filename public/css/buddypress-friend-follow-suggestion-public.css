@@ -199,6 +199,12 @@
     margin:12px 0 0;
     width: 100%;
     transition: all 0.3s;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button a:hover,
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button button:hover{
@@ -225,7 +231,7 @@
     margin-right: 0 !important;
 }
 
-.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .friendship-button {
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta div.generic-button{
     position: relative;
     display: flex;
     justify-content: center;
