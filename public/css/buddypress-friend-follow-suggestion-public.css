@@ -163,6 +163,114 @@
 }
 
 /*--------------------------------------------------------------
+## Layout 2
+--------------------------------------------------------------*/
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout{
+  overflow: hidden;
+  position: relative;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-slide .list-wrap{
+    border-radius: 7px;
+    overflow: hidden !important;
+    border: 1px solid #ddd;
+    padding:0 !important;
+    margin: 0 !important;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item {
+    padding: 15px !important;
+    margin:0 !important;
+    text-align: center;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button a,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button button {
+    position: relative;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    padding: 12px 22px !important;
+    line-height: 1 !important;
+    border:none !important;
+    border-radius: 6px !important;
+    color: #fff !important;
+    background: #0964c7 !important;
+    display: flex !important;
+    margin:12px 0 0;
+    width: 100%;
+    transition: all 0.3s;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button a:hover,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button button:hover{
+    background: #0856b7 !important;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .friendship-button .friendship-button:after{
+  display: none !important;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .generic-button a:before,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .generic-button button:before{
+  height: auto;
+  width: auto;
+  margin-right: 8px;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-avatar img.avatar {
+    width: 100% !important;
+    height: 230px !important;
+    object-fit: cover;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-avatar {
+    margin-right: 0 !important;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .friendship-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-next:after,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-prev:after {
+    font-size: 18px;
+    color: #000;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-prev,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-next {
+    background: rgba(255,255,255,0.6);
+    padding: 5px;
+    height: 35px;
+    left: -20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(10px, 0);
+    transition: all 0.3s ease-in-out 0s;
+    border-radius: 5px;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-next{
+  left: auto;
+  right: -20px;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-prev,
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-next {
+  left: -2px;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-next {
+  left: auto;
+  right:-2px;
+}
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout #members-list li{
+  margin:0 !important
+}
+
+
+
+
+/*--------------------------------------------------------------
 ## BuddyBoss
 --------------------------------------------------------------*/
 .widget_bp_friend_follow_suggestion_widget .bp-tooltip:before,

@@ -87,7 +87,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
 		foreach ( $widget_layout as $layout_widget ) {
 			if ( 'horizontal_layout' == $layout_widget['layout'] ) {
-				wp_enqueue_style( '$buddypress-friend-follow-suggestion-swiper-slider', plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-swiper-slider.min.css', array(), $this->version, 'all' );
+				wp_enqueue_style( 'buddypress-friend-follow-suggestion-swiper-slider', plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-swiper-slider.min.css', array(), $this->version, 'all' );
 			}
 		}
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $rtl_css . '/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );

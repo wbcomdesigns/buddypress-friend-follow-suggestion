@@ -176,7 +176,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 			<p>
 				<label><?php esc_attr_e( 'Layout:', 'buddypress-friend-follow-suggestion' ); ?></label>
 					<select name="<?php echo esc_attr( $this->get_field_name( 'layout' ) ); ?>">
-						<option value="list_layout"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'list_layout' ) : ''; ?>><?php esc_html_e( 'List Layout', 'buddypress-friend-follow-suggestion' ); ?></option>
+						<option value="list_layout"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'list_layout' ) : ''; ?>><?php esc_html_e( 'Vertical Layout', 'buddypress-friend-follow-suggestion' ); ?></option>
 						<option value="horizontal_layout"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'horizontal_layout' ) : ''; ?>><?php esc_html_e( 'Horizontal Layout', 'buddypress-friend-follow-suggestion' ); ?></option>
 					</select>				
 			</p>
