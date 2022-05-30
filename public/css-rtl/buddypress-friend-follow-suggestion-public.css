@@ -33,7 +33,7 @@
 
 .buddypress.widget.widget_bp_friend_follow_suggestion_widget ul.item-list li .item-avatar,
 .widget_bp_friend_follow_suggestion_widget > ul > li .item-avatar {
-    float: left;
+    float: right;
 }
 
 .bp-nouveau .widget-area .widget.buddypress.widget_bp_friend_follow_suggestion_widget #members-list li .item,
@@ -48,7 +48,7 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
-    margin-left: 0;
+    margin-right: 0;
 }
 
 .widget_bp_friend_follow_suggestion_widget .item-meta {
@@ -137,10 +137,10 @@
     position: absolute;
     z-index: 99999;
     top: 6px;
-    left: -85px;
+    right: -85px;
     opacity: 0;
     visibility: hidden;
-    transform: translate(10px, 0);
+    transform: translate(-10px, 0);
     transition: all 0.3s ease-in-out 0s;
     padding: 0 15px;
     border-radius: 100px;
@@ -159,7 +159,7 @@
 }
 .widget_bp_friend_follow_suggestion_widget .generic-button button.pending_friend.requested:after {
     content: attr(data-title-displayed) !important;
-    left: -108px !important;
+    right: -108px !important;
 }
 
 /*--------------------------------------------------------------
@@ -217,7 +217,7 @@
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .generic-button button:before{
   height: auto;
   width: auto;
-  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-avatar img.avatar {
@@ -228,7 +228,7 @@
     max-width: 100% !important;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-avatar {
-    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta div.generic-button{
@@ -247,27 +247,27 @@
     background: rgba(255,255,255,0.6);
     padding: 5px;
     height: 35px;
-    left: -20px;
+    right: -20px;
     opacity: 0;
     visibility: hidden;
-    transform: translate(10px, 0);
+    transform: translate(-10px, 0);
     transition: all 0.3s ease-in-out 0s;
     border-radius: 5px;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .bffs-button-next{
-  left: auto;
-  right: -20px;
+  right: auto;
+  left: -20px;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-prev,
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-next {
-  left: -2px;
+  right: -2px;
   opacity: 1;
   visibility: visible;
   transform: translate(0, 0);
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout:hover .bffs-button-next {
-  left: auto;
-  right:-2px;
+  right: auto;
+  left:-2px;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout #members-list li{
   margin:0 !important
@@ -310,7 +310,7 @@ Youzify
     width: 35px;
     height: 35px;
     line-height: 35px;
-    margin-right: 10px;
+    margin-left: 10px;
     font-family: "Font Awesome 5 Free";
     font-size: 13px;
     color: #8b8b8b;
@@ -321,8 +321,10 @@ Youzify
     background-color: #f2f2f2;
 }
 .youzify-sidebar .widget_bp_friend_follow_suggestion_widget .item-avatar {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .youzify-sidebar .widget_bp_friend_follow_suggestion_widget .generic-button a:before{
-    margin-right: 0;
+    margin-left: 0;
 }
+
+/*# sourceMappingURL=buddypress-friend-follow-suggestion-public.css.map */

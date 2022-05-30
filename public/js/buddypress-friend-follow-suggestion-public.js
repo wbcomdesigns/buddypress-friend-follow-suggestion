@@ -46,4 +46,17 @@
     BPFrienFollow.init();
   });
 
+// Suggestions Slider
+  var bffs = new Bffs(".bffs_horizontal_layout", {
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".bffs-button-next",
+      prevEl: ".bffs-button-prev",
+    },
+  });
 })(jQuery);
