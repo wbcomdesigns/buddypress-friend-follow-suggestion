@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 07:29:57+00:00\n"
+"POT-Creation-Date: 2022-05-30 19:46:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -737,31 +737,43 @@ msgstr ""
 msgid "A dynamic suggestion list of matched members to your profile."
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:136
+#: admin/widget/widget-bp-friend-follow-suggestion.php:105
 msgid "No suggestion found."
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:190
+#: admin/widget/widget-bp-friend-follow-suggestion.php:159
 msgid "Title:"
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:196
+#: admin/widget/widget-bp-friend-follow-suggestion.php:165
 msgid "Max members to show:"
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:202
+#: admin/widget/widget-bp-friend-follow-suggestion.php:171
 msgid "Percentage Criteria:"
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:210
+#: admin/widget/widget-bp-friend-follow-suggestion.php:177
+msgid "Layout:"
+msgstr ""
+
+#: admin/widget/widget-bp-friend-follow-suggestion.php:179
+msgid "Vertical Layout"
+msgstr ""
+
+#: admin/widget/widget-bp-friend-follow-suggestion.php:180
+msgid "Horizontal Layout"
+msgstr ""
+
+#: admin/widget/widget-bp-friend-follow-suggestion.php:186
 msgid "Friends Suggestion"
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:217
+#: admin/widget/widget-bp-friend-follow-suggestion.php:193
 msgid "Follow Suggestion"
 msgstr ""
 
-#: admin/widget/widget-bp-friend-follow-suggestion.php:238
+#: admin/widget/widget-bp-friend-follow-suggestion.php:214
 msgid "Suggestions"
 msgstr ""
 
@@ -844,7 +856,7 @@ msgstr ""
 msgid "Activate License"
 msgstr ""
 
-#: public/class-buddypress-friend-follow-suggestion-public.php:133
+#: public/class-buddypress-friend-follow-suggestion-public.php:142
 msgid "Profile Match: "
 msgstr ""
 
