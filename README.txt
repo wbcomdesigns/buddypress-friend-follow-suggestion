@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 5.8.2
-Stable tag: 1.3.1
+Tested up to: 6.0.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,19 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.0 =
+* Fix: managed Cancel Friendship tooltip
+* Fix: Added default option
+* Fix: Fixed array offset issue
+* Fix: (#45) Follow button align
+* Fix: (#30) Add layout setting vertical and horizontal layout
+* Fix: Added widget layout template
+* Fix: (#41)Fixed php error
+* Fix: Add option in widget
+* Fix: add swiper slider js and css
+* Fix: (#29) friend follow button add tool tip
+* Fix: (#44) Added RTL support
+
 = 1.3.1 =
 * Fix: (#25) Managed widget UI with buddyboss
 * Fix: (#23) Managed widget UI in single member and group
