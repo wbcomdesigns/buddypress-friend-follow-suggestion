@@ -139,7 +139,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 
 			if ( isset( $bffs_general_setting['enable_profile_match'] ) ) {
 				echo '<div class="bffs-matching-wrap">';
-				echo esc_html__( 'Profile Match: ', 'buddypress-friend-follow-suggestion' ) . $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) . '%';
+				echo esc_html__( 'Profile Match: ', 'buddypress-friend-follow-suggestion' ) . esc_html( $this->buddypress_friend_follow_compatibility_score( $bp->loggedin_user->id, bp_displayed_user_id() ) ) . '%';
 				echo '</div>';
 			}
 		}

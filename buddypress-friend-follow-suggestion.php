@@ -147,7 +147,7 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 
 	ob_start();
 	?>
-	<select class="bffs_profile_field_name" name="bffs_general_setting[bffs_match_data][<?php echo $j; ?>][field_id]">
+	<select class="bffs_profile_field_name" name="bffs_general_setting[bffs_match_data][<?php echo esc_attr( $j ); ?>][field_id]">
 		<option value=""><?php esc_html_e( 'Select a field', 'buddypress-friend-follow-suggestion' ); ?></option>
 		<?php
 		foreach ( $groups as $group => $fields ) {
@@ -155,7 +155,7 @@ function bffs_profile_fields_dropdown( $field_value = '', $j ) {
 			echo '<optgroup label="' . esc_attr( $group ) . '">\n';
 			foreach ( $fields as $field ) {
 				$selected = $field['id'] == $field_value ? " selected='selected'" : '';
-				echo "<option value='$field[id]'$selected data-field-name='" . esc_attr( $field['name'] ) . "'>" . esc_attr( $field['name'] ) . "</option>\n";
+				echo "<option value='$field[id]'$selected data-field-name='" . esc_attr( $field['name'] ) . "'>" . esc_attr( $field['name'] ) . "</option>\n"; //phpcs:ignore
 			}
 			echo "</optgroup>\n";
 		}

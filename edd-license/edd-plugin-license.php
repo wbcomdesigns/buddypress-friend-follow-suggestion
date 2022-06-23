@@ -282,10 +282,10 @@ function edd_wbcom_BFFS_admin_notices() {
 	if ( isset( $_GET['bpgp_activation'] ) && ! empty( $_GET['message'] ) ) {
 		switch ( $_GET['bpgp_activation'] ) {
 			case 'false':
-				$message = urldecode( $_GET['message'] );
+				$message = urldecode( sanitize_text_field( wp_unslash( $_GET['message'] ) ) );
 				?>
 				<div class="error">
-					<p><?php echo $message; ?></p>
+				<p><?php echo esc_html( $message ); ?></p>
 				</div>
 				<?php
 				break;
@@ -334,18 +334,18 @@ function wbcom_BFFS_render_license_section() {
 				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'buddypress-friend-follow-suggestion' ); ?></td>
 				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'buddypress-friend-follow-suggestion' ); ?></td>
 				<td class="wb-plugin-license-key"><input id="edd_wbcom_BFFS_license_key" name="edd_wbcom_BFFS_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-friend-follow-suggestion' ); ?>" /></td>
-				<td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'buddypress-friend-follow-suggestion' ); ?></td>
+				<td class="wb-license-status <?php echo esc_attr( $status_class ); ?>"><?php echo esc_html( $status_text ); ?></td>
 				<td class="wb-license-action">
 					<?php
 					if ( $status !== false && $status == 'valid' ) {
 						wp_nonce_field( 'edd_wbcom_BFFS_nonce', 'edd_wbcom_BFFS_nonce' );
 						?>
-						 <input type="submit" class="button-secondary" name="edd_BFFS_license_deactivate" value="<?php _e( 'Deactivate License', 'buddypress-friend-follow-suggestion' ); ?>"/>
+						 <input type="submit" class="button-secondary" name="edd_BFFS_license_deactivate" value="<?php esc_attr_e( 'Deactivate License', 'buddypress-friend-follow-suggestion' ); ?>"/>
 						<?php
 					} else {
 						wp_nonce_field( 'edd_wbcom_BFFS_nonce', 'edd_wbcom_BFFS_nonce' );
 						?>
-						 <input type="submit" class="button-secondary" name="edd_BFFS_license_activate" value="<?php _e( 'Activate License', 'buddypress-friend-follow-suggestion' ); ?>"/>
+						 <input type="submit" class="button-secondary" name="edd_BFFS_license_activate" value="<?php esc_attr_e( 'Activate License', 'buddypress-friend-follow-suggestion' ); ?>"/>
 					<?php } ?>
 				</td>
 			</tr>
@@ -363,7 +363,7 @@ function edd_wbcom_BFFS_activate_license_button() {
 		}
 
 		// retrieve the license from the database
-		$license = ! empty( $_POST['edd_wbcom_BFFS_license_key'] ) ? trim( $_POST['edd_wbcom_BFFS_license_key'] ) : '';
+		$license = ! empty( $_POST['edd_wbcom_BFFS_license_key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['edd_wbcom_BFFS_license_key'] ) ) ) : '';
 
 		// data to send in our API request
 		$api_params = array(

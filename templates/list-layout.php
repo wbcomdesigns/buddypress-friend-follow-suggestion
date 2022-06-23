@@ -26,7 +26,7 @@
 											?>
 										<?php elseif ( bp_is_active( 'friends' ) ) : ?>
 											<?php
-											echo bp_get_add_friend_button( bp_get_member_user_id() );
+											echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) );
 											?>
 										<?php endif; ?>
 									</li>

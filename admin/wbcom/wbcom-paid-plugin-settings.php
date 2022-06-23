@@ -38,7 +38,7 @@ if ( !class_exists( 'Wbcom_Paid_Plugin_Settings' ) ) {
 			$license_page_active = filter_input( INPUT_GET, 'page' ) == 'wbcom-license-page' ? 'is_active' : '';
 			?>
 			<li class="wb_admin_nav_item <?php echo esc_attr( $license_page_active ); ?>">
-				<a href="<?php echo get_admin_url() . 'admin.php?page=wbcom-license-page'; ?>" id="wb_admin_nav_trigger_support">
+				<a href="<?php echo esc_url( get_admin_url() ) . 'admin.php?page=wbcom-license-page'; ?>" id="wb_admin_nav_trigger_support">
 					<i class="fa fa-wpforms" aria-hidden="true"></i>
 					<h4><?php esc_html_e( 'License', 'buddypress-friend-follow-suggestion' ); ?></h4>
 				</a>
@@ -47,6 +47,11 @@ if ( !class_exists( 'Wbcom_Paid_Plugin_Settings' ) ) {
 
 	}
 
+	/**
+	 * Instantiate_wbcom_manager
+	 *
+	 * @return void
+	 */
 	function instantiate_wbcom_manager() {
 		new Wbcom_Paid_Plugin_Settings();
 	}

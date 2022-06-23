@@ -80,7 +80,9 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ( 'bffs-settings' === wp_unslash( $_GET['page'] ) || 'wbcomplugins' === wp_unslash( $_GET['page'] ) ) ) {
+		$bffs_style = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+
+		if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) ) ) {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
 		}
 
@@ -105,7 +107,9 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ( 'bffs-settings' === wp_unslash( $_GET['page'] ) || 'wbcomplugins' === wp_unslash( $_GET['page'] ) ) ) {
+		$bffs_scripts = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+
+		if ( isset( $bffs_scripts ) && ( 'bffs-settings' === wp_unslash( $bffs_scripts ) || 'wbcomplugins' === wp_unslash( $bffs_scripts ) ) ) {
 			if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 			}
@@ -148,9 +152,10 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 
 	/** Bffs_admin_register_settings */
 	public function bffs_admin_register_settings() {
-		if ( isset( $_POST['bffs_general_setting'] ) ) {
-			update_site_option( 'bffs_general_setting', $_POST['bffs_general_setting'] );
-			wp_redirect( $_POST['_wp_http_referer'] );
+		$bffs_general_setting = filter_input( INPUT_POST, 'bffs_general_setting', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( isset( $bffs_general_setting ) ) {
+			update_site_option( 'bffs_general_setting', $bffs_general_setting );
+			wp_redirect( $_POST['_wp_http_referer'] ); // phpcs:ignore
 			exit();
 		}
 	}
@@ -215,13 +220,13 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 * @since    1.0.0
 	 */
 	public function bffs_get_profile_field() {
-		$j = wp_unslash( $_POST['count'] );
+		$j = isset( $_POST['count'] ) ? sanitize_text_field( wp_unslash( $_POST['count'] ) ) : ''; //phpcs:ignore
 		?>
 
 		<div class="search_field">
 			<span class="bffs-col1">&nbsp;&#x21C5;</span>
 			<span class="bffs-col2">
-				<?php echo bffs_profile_fields_dropdown( '', $j ); ?>
+				<?php echo bffs_profile_fields_dropdown( '', $j ); //phpcs:ignore?>
 			</span>
 			<span class="bffs-col3">
 				<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo esc_attr( $j ); ?>][percentage]">

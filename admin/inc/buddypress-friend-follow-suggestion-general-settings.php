@@ -79,7 +79,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 								<div class="search_field">
 									<span class="bffs-col1">&nbsp;&#x21C5;</span>
 									<span class="bffs-col2">
-										<?php echo bffs_profile_fields_dropdown( $bffs_match_data['field_id'], $j ); ?>
+										<?php echo bffs_profile_fields_dropdown( $bffs_match_data['field_id'], $j ); //phpcs:ignore?>
 									</span>
 									<span class="bffs-col3">
 										<input type="text" class="bffs-input bffs-match-percentage" placeholder="Percentage" name="bffs_general_setting[bffs_match_data][<?php echo esc_attr( $j ); ?>][percentage]" value="<?php echo esc_attr( $bffs_match_data['percentage'] ); ?>">

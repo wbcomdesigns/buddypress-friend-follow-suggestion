@@ -434,7 +434,7 @@ class EDD_BFFS_Plugin_Updater {
 		}
 
 		if ( ! current_user_can( 'update_plugins' ) ) {
-			wp_die( __( 'You do not have permission to install plugin updates', 'buddypress-friend-follow-suggestion' ), __( 'Error', 'buddypress-friend-follow-suggestion' ), array( 'response' => 403 ) );
+			wp_die( esc_html_e( 'You do not have permission to install plugin updates', 'buddypress-friend-follow-suggestion' ), esc_html_e( 'Error', 'buddypress-friend-follow-suggestion' ), array( 'response' => 403 ) );
 		}
 
 		$data         = $edd_plugin_data[ $_REQUEST['slug'] ];
