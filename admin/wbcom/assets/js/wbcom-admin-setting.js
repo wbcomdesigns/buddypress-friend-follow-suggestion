@@ -5,7 +5,6 @@ jQuery( document ).ready( function ( event ) {
             jQuery( this ).addClass( 'hidden' );
         }
     } );
-
     //Admin Header Animation Effect
     var ink, d, x, y;
     jQuery( '#wb_admin_header #wb_admin_nav ul li' ).on( "click", function ( e ) {
@@ -33,37 +32,16 @@ jQuery( document ).ready( function ( event ) {
 } );
 
 ( function( $ ) {
-
-    'use strict';
-
+  'use strict';
 	$( document ).ready( function () {
-	
-	/**
-        * Responsive Navbar Menu
-        */
-        var wb_panel_tabs = $( '.nav-tab-wrapper > ul' );
-
-        $( '.wb-toggle-btn' ).change( function( e ) {
-                $.initResponsivePanel();
-        });
-
-        $.initResponsivePanel = function () {
-                if ( $( '.wb-toggle-btn' ).is( ':checked' ) ) {
-                        wb_panel_tabs.slideDown();
-                } else {
-                wb_panel_tabs.slideUp();
-                }
-        },
-
-        $( window ).on( 'resize', function ( e ) {
-                e.preventDefault();
-        if ( $( window ).width() > 768 ) {
-                wb_panel_tabs.fadeIn( 1000 );
-        } else {
-                $.initResponsivePanel();
-        }
-        });
-        
+    /* Mobile Toggle Menu */
+    jQuery('.wb-responsive-menu').on('click', function(e){
+      e.preventDefault();
+      if( jQuery('.wbcom-admin-settings-page .nav-tab-wrapper ul').hasClass('wbcom-show-mobile-menu') ) {
+        jQuery('.wbcom-admin-settings-page .nav-tab-wrapper ul').removeClass('wbcom-show-mobile-menu');
+      } else {
+        jQuery('.wbcom-admin-settings-page .nav-tab-wrapper ul').addClass('wbcom-show-mobile-menu');
+      }
     });
-		
+    });
 })( jQuery );

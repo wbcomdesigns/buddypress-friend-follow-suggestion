@@ -172,8 +172,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		global $allowedposttags;
 		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-welcome';
 		?>
-		<div class="wrap">
-			
+		<div class="wrap">			
 			<div class="wbcom-bb-plugins-offer-wrapper">
 				<div id="wb_admin_logo">
 					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
@@ -181,7 +180,6 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 					</a>
 				</div>
 			</div>
-
 			<div class="wbcom-wrap wbcom-plugin-wrapper">
 			<div class="bffs-header">
 				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
