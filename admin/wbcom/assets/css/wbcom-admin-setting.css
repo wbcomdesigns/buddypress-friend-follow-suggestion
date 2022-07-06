@@ -1,14 +1,105 @@
-/* Admin Header Style: Start */
-#wb_admin_header {
-    background: #fff;
-    border-bottom: 1px solid #e8e8e8;
+/*Top Offer Notice*/
+.wbcom-bb-plugins-offer-wrapper{
+    margin:40px 25px -10px;
+}
+#wb_admin_logo a {
+   display: block;
+}
+#wb_admin_logo a img {
+    width: 100%;
+}
+.wbcom-admin-title-section h3 {
+    margin-top: 0;
+    color: #2A32EF;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.wbcom-admin-option-wrap {
     position: relative;
-    box-shadow: 0 -2px 10px rgba(0,0,0,.1);
+    margin: 20px 0 0;
+    padding: 30px;
+    box-shadow: none;
+    background: #F6F7FE;
+    font-size: 15px;
+    line-height: 2.1em;
+    overflow: hidden;
+    border-radius: 12px;
+    width: auto;
+}
+.wbcom-bp-row-settings,
+.wbcom-bp-row-2settings {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(200, 197, 218, 0);
+    box-shadow: 5px 5px 20px rgba(32, 53, 85, 0.10);
+    margin-top: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+.wbcom-bp-row-2settings{
+    width: auto;
+}
+.form-table.wbcom-admin-option-wrap th{
+    width: 280px;
+    padding:20px;
+    vertical-align: middle;
+}
+.form-table.wbcom-admin-option-wrap .form-table td{
+    padding:20px;
+}
+.form-table.wbcom-admin-option-wrap input[type=text],
+.form-table.wbcom-admin-option-wrap select {
+    height: 38px;
+    border-radius: 6px !important;
+    background-color: #F4F5F7;
+    border-color: #e2e2e2;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Admin Header Style: Start */
+div#wb_admin_plugin_name {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    color: #000;
+    align-items: center;
+}
+
+div#wb_admin_plugin_name span {
+    font-size: 12px;
+    margin-left: 30px;
+    background: #2A32EF;
+    color: #fff;
+    padding: 1px 15px;
+    line-height: 25px;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+#wb_admin_header {
+    background: rgba(238, 236, 242, 1);
+
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    padding: 25px 30px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #wb_admin_header:after {
     visibility: hidden;
-    display: block;
+    display: none;
     font-size: 0;
     content: " ";
     clear: both;
@@ -49,13 +140,11 @@
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a {
-    border-left: 1px solid #e8e8e8;
     font-size: 15px;
-    display: block;
-    min-width: 120px;
-    padding: 26px 20px;
-    background-color: #fff;
-    color: #a8a8a8;
+    display: flex;
+    padding-left:30px;
+    align-items: center;
+    color: #222222;
     -webkit-transition: all .2s ease-out;
     -moz-transition: all .2s ease-out;
     transition: all .2s ease-out;
@@ -68,28 +157,31 @@
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a:hover {
-    color: #1d76da;
+    color: #2A32EF;
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item.is_active a {
-    box-shadow: 0;
-    color: #1d76da;
+    box-shadow: none;
+    color: #2A32EF;
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
-    font-size: 2em;
+    font-size: 1em;
+    margin-right: 8px;
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a h4 {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 500;
-    margin: 10px 0 0;
+    margin: 0 0;
 }
 
 .wbcom-wrap {
-    margin: 25px 0;
+    margin: 40px 25px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #d9d9d9;
 }
-
 .wrap .wbcom-plugin-heading {
     display: block !important;
     margin: 0;
@@ -103,6 +195,7 @@
     border-top: 1px solid #e8e8e8;
 }
 /* Admin Header Style: End */
+
 
 /* Admin Header Animation: Start */
 .wbcom_btn_material {
@@ -150,11 +243,18 @@
 
 /* Admin Settings Page Style: Start */
 .wbcom-admin-settings-page {
-    background: #1b1b1b;
-    border-radius: 0 0 3px 3px;
+    background: #fff;
+    padding: 30px 30px 35px;
     display: flex;
-    box-shadow: 0 2px 10px rgba(0,0,0,.1);
     overflow: hidden;
+}
+
+.wbcom-tabs-section {
+    background: #272B41;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 20%;
+    padding: 1%;
 }
 
 .wbcom-admin-settings-page .nav-tab-wrapper,
@@ -178,7 +278,7 @@
 }
 
 .wbcom-admin-settings-page .nav-tab-wrapper ul li {
-    margin: 0;
+    margin: 0 0 2px;    
 }
 
 .wbcom-admin-settings-page .nav-tab-wrapper .nav-tab {
@@ -188,9 +288,9 @@
     border: none;
     margin: 0;
     padding: 12px 20px 12px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
     white-space: normal;
     background: transparent;
     color: #fff;
@@ -198,26 +298,35 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
+    border-radius: 10px;
     -webkit-transition: all .2s ease-out;
     -moz-transition: all .2s ease-out;
     transition: all .2s ease-out;
+    box-shadow: none;
+    outline: none;
+    border: none;
 }
 
 .wbcom-admin-settings-page .nav-tab-wrapper .nav-tab-active,
+.wbcom-admin-settings-page .nav-tab-wrapper .nav-tab:hover,
 .wbcom-admin-settings-page .nav-tab-active:focus,
 .wbcom-admin-settings-page .nav-tab-active:focus:active,
 .wbcom-admin-settings-page .nav-tab-active:hover {
-    background: #1d76da;
+    background: #474b5d;
     -webkit-transition: all .3s ease-in;
     -moz-transition: all .3s ease-in;
     transition: all .3s ease-in;
     box-shadow: none;
+    border-radius: 10px;
+    box-shadow: none;
+    outline: none;
+    border: none;
 }
 
 .wbcom-admin-settings-page .wbcom-tab-content {
     width: 100%;
     background: #fff;
-    padding: 20px 40px;
+    padding-left: 30px;
 }
 
 .wbcom-tab-content select,
@@ -231,27 +340,38 @@
 }
 
 .wbcom-tab-content p.description {
-    color: #aaa;
-    font-size: 12px;
+    color: #666;
+    font-size: 13px;
     line-height: 18px;
     display: block;
-    padding-top: 10px;
-    font-style: italic;
+    padding-top:3px;
 }
 
 .wbcom-admin-settings-page .wbcom-tab-content .button.button-primary:not(.button-welcome-support) {
-    height: 38px;
-    padding: 0 20px;
-    font-size: 14px;
+    line-height: 55px;
+    padding: 0 45px;
+    font-size: 15px;
+    background: #2a32ef;
     text-shadow: none;
     font-weight: 600;
     border: 0;
-    box-shadow: none;
-    float: right;
+    transition: all 0.3s;
+    box-shadow: 0px 10px 25px rgba(32, 53, 85, 0.45);
+    border-radius: 12px;
 }
 
-.wbcom-admin-settings-page .wbcom-tab-content .button:hover {
-    box-shadow: 0 1.5px 20px 0 rgba(0, 0, 0, 0.2);
+.wbcom-wrapper-admin .buddypress-friend-follow p.submit {
+    padding-bottom: 0;
+    padding-left:0;
+}
+
+.wbcom-admin-settings-page .wbcom-tab-content .button.button-primary:not(.button-welcome-support):hover{
+    background:#272B41;
+}
+
+.wbcom-support-info-wrap .wbcom-support-info-widgets a.button-primary.button-welcome-support:hover {
+    background: #272B41;
+    border-color: #272B41;
 }
 
 .wbcom-admin-settings-page table.form-table tr {
@@ -775,18 +895,19 @@
 /* License style : End */
 
 /* Welcome Page : Start */
-.wbcom-welcome-title { 
-    font-size: 23px;
+.wbcom-welcome-title {
+    font-size: 20px;
     font-weight: 600;
     margin: 0;
-    padding: 9px 0 4px 0;
+    padding:0px 0 4px 0;
     line-height: 1.3;
 }
 
 .wbcom-welcome-description {
-    font-size: 15px;
+    font-size: 16px;
+    color: #000;
+    margin: 0 0 30px;
 }
-
 .wbcom-welcome-main-wrapper {
     position: relative;
     font-size: 15px;
@@ -794,61 +915,90 @@
 
 .wbcom-welcome-support-info {
     position: relative;
-    margin: 16px 0;
-    margin-bottom: 35px;
-    padding: 25px;
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.4);
-    background: #fff;
-    font-size: 13px;
+    margin:20px 0 0;
+    padding: 30px;
+    box-shadow: none;
+    background: #F6F7FE;
+    font-size: 15px;
     line-height: 2.1em;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .wbcom-welcome-support-info h3 {
     margin: 1.25em 0 .6em;
     margin-top: 0;
-    font-size: 1.4em;
+    font-size: 1.5em;
     line-height: 1.5;
-
+    color: #2A32EF;
 }
 
 .wbcom-welcome-support-info hr {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    display: none;
 }
 
 .wbcom-welcome-support-info .dashicons {
     vertical-align: middle;
-    margin-bottom: 6px;
-    margin-right: 12px;
-    margin-left: -4px;
-    color: #0084b9;
-    font-size: 24px;
+    margin: 0 0 15px;
+    height: 40px;
+    color: #2A32EF;
+    font-size: 40px;
+    display: block;
+    width: 40px;
 }
 
 .wbcom-welcome-support-info p {
+    font-size: 16px;
+    color: #333333;
+    margin-top: 0;
+}
+
+.wbcom-welcome-support-info .wbcom-support-inner p {
     font-size: 15px;
+    color: #646F89;
+    min-height: 100px;
 }
 
-.wbcom-welcome-support-info .col p {
-    font-size: 14px;
+.wbcom-support-info-wrap .wbcom-support-info-widgets h3 {
+    font-size: 20px;
+    color: #1D2A4F;
 }
 
-.wbcom-welcome-main-wrapper [class$="-col"] {
+.wbcom-support-info-wrap {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    margin: 40px -15px 10px;
 }
 
-.three-col .col {
+.wbcom-support-info-wrap .wbcom-support-info-widgets {
     align-self: flex-start;
-    min-width: 31%;
-    max-width: 31%;
+    width: 100%;
+    max-width: 325px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 0 15px;
+    border: 1px solid rgba(200, 197, 218, 0.50);
+    box-shadow: 0 15px 36px rgba(32, 53, 85, 0.15);
 }
+
+.wbcom-support-info-wrap .wbcom-support-info-widgets a.button-primary.button-welcome-support {
+    line-height: 30px;
+    background: #2A32EF;
+    border-color: #2A32EF;
+    font-size: 15px;
+    border-radius: 12px;
+    padding: 8px 15px;
+    max-width: 190px;
+    text-align: center;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+
 
 @media screen and (max-width: 1200px) {
-    .three-col .col {
+    .wbcom-support-info-wrap .wbcom-support-info-widgets {
         min-width: 48% !important;
         max-width: 48% !important;
         margin-bottom: 30px;
@@ -856,7 +1006,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .three-col .col {
+    .wbcom-support-info-wrap .wbcom-support-info-widgets {
         min-width: 100% !important;
         max-width: 100% !important;
     }
@@ -887,7 +1037,6 @@
 .nav-tab-wrapper ul li:first-child a.nav-tab:before {
     content: "\f102";
 }
-
 /* Welcome Page : End */
 
 /* Admin Menu Toggle : Start */
@@ -1052,6 +1201,41 @@ input:checked + .wb-slider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
+.wbcom-admin-option-wrap .form-table input[type=checkbox] {
+    border: 1px solid #c9c9c9;
+    border-radius: 100px;
+    background: #fff;
+    position: relative;
+    line-height: 0;
+    height: 28px;
+    width: 65px;
+    min-width: 65px;
+    box-shadow: none;
+}
+.wbcom-admin-option-wrap .form-table input[type=checkbox]:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    background: #d3d3d3;
+    left: 4px;
+    bottom: 4px;
+    border-radius: 100px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+.wbcom-admin-option-wrap .form-table input[type=checkbox]:checked {
+    background-color: #2A32EF;
+    border-color: #2A32EF;
+}
+.wbcom-admin-option-wrap .form-table input[type=checkbox]:checked::before {
+    -webkit-transform: translateX(40px);
+    -ms-transform: translateX(40px);
+    transform: translateX(40px);
+    background-color: #ffffff;
+}
+
 
 /* Rounded sliders */
 .wb-slider.wb-round {

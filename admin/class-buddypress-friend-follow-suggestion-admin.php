@@ -173,13 +173,18 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bffs-welcome';
 		?>
 		<div class="wrap">
-					<hr class="wp-header-end">
-					<div class="wbcom-wrap">
+			
+			<div class="wbcom-bb-plugins-offer-wrapper">
+				<div id="wb_admin_logo">
+					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
+						<img src="<?php echo esc_url( BFFS_PLUGIN_URL ) . 'admin/wbcom/assets/imgs/wbcom-offer-notice.png'; ?>">
+					</a>
+				</div>
+			</div>
+
+			<div class="wbcom-wrap wbcom-plugin-wrapper">
 			<div class="bffs-header">
 				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
-				<h1 class="wbcom-plugin-heading">
-					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-				</h1>
 			</div>
 			<div class="wbcom-admin-settings-page">
 				<?php
@@ -189,7 +194,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 				do_settings_sections( $tab );
 				?>
 			</div>
-					</div>
+			</div>
 		</div>
 		<?php
 

@@ -157,9 +157,9 @@
     visibility: visible !important;
     transform: translate(0px, 0) !important;
 }
-.widget_bp_friend_follow_suggestion_widget .generic-button button.pending_friend.requested:after {
-    content: attr(data-title-displayed) !important;
-    right: -108px !important;
+.widget_bp_friend_follow_suggestion_widget .generic-button .friendship-button.pending_friend.requested:after {
+    content:"Cancel Request" !important;
+    right: -126px !important;
 }
 
 /*--------------------------------------------------------------
@@ -287,6 +287,11 @@
 .bb-grid .widget_bp_friend_follow_suggestion_widget .generic-button a i,
 .bb-grid .widget_bp_friend_follow_suggestion_widget .generic-button button i {
     padding: .3em .5em !important;
+}
+
+.theme-buddyx .widget_bp_friend_follow_suggestion_widget #members-list li .item,
+.theme-buddyx-pro .widget_bp_friend_follow_suggestion_widget #members-list li .item {
+    padding-right:8px !important;
 }
 
 /*--------------------------------------------------------------

@@ -26,10 +26,10 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 				settings_fields( 'bffs_admin_general_options' );
 					do_settings_sections( 'bffs_admin_general_options' );
 				?>
-				<table class="form-table">
+				<table class="form-table wbcom-bp-row-settings">
 					<tr>
 						<th scope="row">
-							<label for="bprm_enable_profile_match"><?php esc_html_e( 'Enable profile matching settings', 'buddypress-friend-follow-suggestion' ); ?></label>
+							<label for="bprm_enable_profile_match"><?php esc_html_e( 'Profile matching settings', 'buddypress-friend-follow-suggestion' ); ?></label>
 						</th>
 						<td>
 							<input type='checkbox' id="bprm_enable_profile_match" name='bffs_general_setting[enable_profile_match]'  class="regular-text" value='1' 
@@ -56,7 +56,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 
 				</table>
 
-				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields" 
+				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields wbcom-bp-row-2settings" 
 				<?php
 				if ( ! isset( $bffs_general_setting['enable_profile_match'] ) || '' === $bffs_general_setting['enable_profile_match'] ) :
 					?>

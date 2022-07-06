@@ -415,51 +415,9 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			if ( ! wp_style_is( 'font-awesome', 'enqueued' ) ) {
 				wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 			}
-			if ( ! wp_script_is( 'wbcom-admin-setting-js', 'enqueued' ) ) {
-
-				wp_register_script(
-					$handle    = 'wbcom_admin_setting_js',
-					$src       = BFFS_PLUGIN_URL . 'admin/wbcom/assets/js/wbcom-admin-setting.js',
-					$deps      = array( 'jquery' ),
-					$ver       = time(),
-					$in_footer = true
-				);
-				wp_localize_script(
-					'wbcom_admin_setting_js',
-					'wbcom_plugin_installer_params',
-					array(
-						'ajax_url'        => admin_url( 'admin-ajax.php' ),
-						'activate_text'   => esc_html__( 'Activate', 'buddypress-friend-follow-suggestion' ),
-						'deactivate_text' => esc_html__( 'Deactivate', 'buddypress-friend-follow-suggestion' ),
-					)
-				);
-				wp_enqueue_script( 'wbcom_admin_setting_js' );
-
-			}
-
+	
 			if ( ! wp_style_is( 'wbcom-admin-setting-css', 'enqueued' ) ) {
 				wp_enqueue_style( 'wbcom-admin-setting-css', BFFS_PLUGIN_URL . 'admin/wbcom/assets/css/wbcom-admin-setting.css' );
-			}
-
-			if ( function_exists( 'get_current_screen' ) ) {
-				$screen = get_current_screen();
-				if ( 'toplevel_page_wbcomplugins' === $screen->base ) {
-					if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
-						wp_enqueue_script( 'jquery' );
-					}
-					if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
-						wp_enqueue_script( 'jquery-ui-sortable' );
-					}
-					if ( ! wp_script_is( 'wp-color-picker', 'enqueued' ) ) {
-						wp_enqueue_style( 'wp-color-picker' );
-					}
-					if ( ! wp_script_is( 'buddypress-friend-follow-suggestion', 'enqueued' ) ) {
-						wp_enqueue_script( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_URL . 'admin/js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ) );
-					}
-					if ( ! wp_style_is( 'buddypress-friend-follow-suggestion', 'enqueued' ) ) {
-						wp_enqueue_style( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_URL . 'admin/css/buddypress-friend-follow-suggestion-admin.css', array(), time(), 'all' );
-					}
-				}
 			}
 		}
 
@@ -552,13 +510,11 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 					$settings_active = 'is_active';
 			}
 			?>
-			<div id="wb_admin_header" class="wp-clearfix">
-
-				<div id="wb_admin_logo">
-					<img src="<?php echo esc_url( BFFS_PLUGIN_URL ) . 'admin/wbcom/assets/imgs/logowbcom.png'; ?>">
-					<div class="wb_admin_right"></div>
+			<div id="wb_admin_header" class="wp-clearfix">				
+				<div id="wb_admin_plugin_name">
+					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
+					<span><?php esc_html_e( 'Version 1.4.0', 'buddypress-friend-follow-suggestion' ); ?></span>
 				</div>
-
 				<nav id="wb_admin_nav">
 					<ul>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $settings_active ); ?>">
@@ -570,13 +526,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 						<li class="wb_admin_nav_item <?php echo esc_attr( $plugin_active ); ?>">
 							<a href="<?php echo esc_url( get_admin_url() ) . 'admin.php?page=wbcom-plugins-page'; ?>" id="wb_admin_nav_trigger_extensions">
 								<i class="fa fa-th" aria-hidden="true"></i>
-								<h4><?php esc_html_e( 'Our Plugins', 'buddypress-friend-follow-suggestion' ); ?></h4>
-							</a>
-						</li>
-						<li class="wb_admin_nav_item <?php echo esc_attr( $theme_active ); ?>">
-							<a href="<?php echo esc_url( get_admin_url() ) . 'admin.php?page=wbcom-themes-page'; ?>" id="wb_admin_nav_trigger_themes">
-								<i class="fa fa-magic" aria-hidden="true"></i>
-								<h4><?php esc_html_e( 'Our Themes', 'buddypress-friend-follow-suggestion' ); ?></h4>
+								<h4><?php esc_html_e( 'Plugins & Themes', 'buddypress-friend-follow-suggestion' ); ?></h4>
 							</a>
 						</li>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $support_active ); ?>">
