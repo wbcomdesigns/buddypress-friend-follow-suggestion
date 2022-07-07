@@ -1,6 +1,6 @@
 /*Top Offer Notice*/
 .wbcom-bb-plugins-offer-wrapper{
-    margin:40px 25px -10px;
+    margin:40px 10px -10px;
 }
 #wb_admin_logo a {
    display: block;
@@ -27,7 +27,6 @@ h4.wbcom-support-section {
     border-radius: 12px;
     width: auto;
 }
-.wbcom-bp-row-settings,
 .wbcom-bp-row-2settings {
     background: #fff;
     border-radius: 12px;
@@ -41,8 +40,8 @@ h4.wbcom-support-section {
 .wbcom-bp-row-2settings{
     width: auto;
 }
-.form-table.wbcom-admin-option-wrap th{
-    width: 280px;
+.wbcom-admin-option-wrap th{
+    width: 250px;
     padding:20px;
     vertical-align: middle;
 }
@@ -56,6 +55,75 @@ h4.wbcom-support-section {
     background-color: #F4F5F7;
     border-color: #e2e2e2;
 }
+
+.wbcom-settings-section-wrap {
+    background: #fff;
+    border-radius: 12px;
+    padding:15px 25px 25px;
+    border: 1px solid rgba(200, 197, 218, 0.30);
+    box-shadow: 5px 5px 20px rgba(32, 53, 85, 0.10);
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: auto;
+}
+.wbcom-settings-section-options-heading {
+    border-bottom: 1px solid rgba(200, 197, 218, 0.50);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    line-height: 1.6;
+}
+.wbcom-settings-section-options-heading label{
+    color: #1d2327;
+    font-size: 15px;
+    font-weight: 500;
+}
+.wbcom-settings-section-options-heading p.description {
+    margin: 0;
+    padding: 0 !important;
+    font-size: 15px;
+    color: #000;
+}
+.wbcom-settings-section-options-flex {
+    display: flex;
+    align-items: center;
+}
+.wbcom-settings-section-options select,
+.wbcom-settings-section-options .selectize-input {
+    border-radius: 7px;
+    box-shadow: none;
+    height: 40px;
+    border-color:#e0e0e0;
+    background: #fafafa;
+}
+.wbcom-settings-section-options.wbcom-settings-section-options-flex a.button-secondary {
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    border-color: #2a32ef;
+    font-size: 15px;
+    display: flex;
+    background: #2a32ef;
+    color: #fff;
+    align-items: center;
+    margin-left: 8px;
+    justify-content: center;
+    border-radius: 8px;
+}
+ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex{
+    margin: 0;
+}
+.wbcom-settings-section-options ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
+    width: 33.33%;
+}
+.wbcom-settings-section-options ul.wbcom-settings-member-retraction li label {
+    margin-left: 8px;
+    font-weight: 500;
+}
+.wbcom-settings-section-options ul.wbcom-settings-member-retraction li label.wb-switch {
+    margin: 0;
+}
+
 
 /* Admin Header Style: Start */
 div#wb_admin_plugin_name {
@@ -77,9 +145,8 @@ div#wb_admin_plugin_name span {
     display: inline-block;
 }
 
-#wb_admin_header {
-    background: rgba(238, 236, 242, 1);
-
+.wbcom_admin_header-wrapper {
+    background: #E1E6F4;
     position: relative;
     border-radius: 12px 12px 0 0;
     display: flex;
@@ -168,7 +235,7 @@ div#wb_admin_plugin_name span {
 }
 
 .wbcom-wrap {
-    margin: 40px 25px;
+    margin: 30px 10px;
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid #d9d9d9;
@@ -187,51 +254,6 @@ div#wb_admin_plugin_name span {
 }
 /* Admin Header Style: End */
 
-
-/* Admin Header Animation: Start */
-.wbcom_btn_material {
-    overflow: hidden;
-    position: relative;
-}
-
-.wbcom_material {
-    position: absolute;
-    display:block;
-    background: #57a8b1;
-    border-radius:100%!important;
-    -webkit-transform:scale(0);
-    -moz-transform:scale(0);
-    -o-transform:scale(0);
-    transform:scale(0);
-    border: 0;
-}
-
-.is-animated {
-    -webkit-animation:ripple .65s linear;
-    -moz-animation:ripple .65s linear;
-    -ms-animation:ripple .65s linear;
-    -o-animation:ripple .65s linear;
-    animation:ripple .65s linear
-}
-
-@-webkit-keyframes ripple {
-    100%{opacity:0;-webkit-transform:scale(2.5)}
-}
-
-@-moz-keyframes ripple {
-    100%{opacity:0;-moz-transform:scale(2.5)}
-}
-
-@-o-keyframes ripple {
-    100%{opacity:0;-o-transform:scale(2.5)}
-}
-
-@keyframes ripple {
-    100%{opacity:0;transform:scale(2.5)}
-}
-
-/* Admin Header Animation: End */
-
 /* Admin Settings Page Style: Start */
 .wbcom-admin-settings-page {
     background: #fff;
@@ -241,10 +263,10 @@ div#wb_admin_plugin_name span {
 }
 
 .wbcom-tabs-section {
-    background: #272B41;
+    background: #E1E6F4;
     border-radius: 12px;
     overflow: hidden;
-    width: 15%;
+    width: 18%;
     padding: 1%;
 }
 
@@ -279,11 +301,11 @@ div#wb_admin_plugin_name span {
     margin: 0;
     padding: 12px 20px 12px 20px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 25px;
     white-space: normal;
     background: transparent;
-    color: #fff;
+    color: #041137;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -302,19 +324,20 @@ div#wb_admin_plugin_name span {
 .wbcom-admin-settings-page .nav-tab-active:focus,
 .wbcom-admin-settings-page .nav-tab-active:focus:active,
 .wbcom-admin-settings-page .nav-tab-active:hover {
-    background: #474b5d;
+    color: #2a32ef;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 12px 30px rgba(53, 66, 134, 0.12);
+    box-shadow: 0px 12px 30px rgba(53, 66, 134, 0.12);
     -webkit-transition: all .3s ease-in;
     -moz-transition: all .3s ease-in;
     transition: all .3s ease-in;
-    box-shadow: none;
     border-radius: 10px;
-    box-shadow: none;
     outline: none;
     border: none;
 }
 
 .wbcom-admin-settings-page .wbcom-tab-content {
-    width: 83%;
+    width: 81%;
     background: #fff;
     padding-left: 30px;
 }
@@ -330,11 +353,11 @@ div#wb_admin_plugin_name span {
 }
 
 .wbcom-tab-content p.description {
-    color: #666;
-    font-size: 13px;
+    color: #49505a;
+    font-size: 14px;
     line-height: 18px;
     display: block;
-    padding-top:3px;
+    padding-top: 3px;
 }
 
 .wbcom-admin-settings-page .wbcom-tab-content .button.button-primary:not(.button-welcome-support) {
@@ -350,11 +373,6 @@ div#wb_admin_plugin_name span {
     border-radius: 12px;
 }
 
-.wbcom-wrapper-admin .buddypress-friend-follow p.submit {
-    padding-bottom: 0;
-    padding-left:0;
-}
-
 .wbcom-admin-settings-page .wbcom-tab-content .button.button-primary:not(.button-welcome-support):hover{
     background:#272B41;
 }
@@ -364,9 +382,20 @@ div#wb_admin_plugin_name span {
     border-color: #272B41;
 }
 
-.wbcom-admin-settings-page table.form-table tr {
-    border-bottom: 1px solid #ddd;
+.wbcom-admin-option-wrap p.submit {
+    padding: 0;
 }
+
+.wbcom-admin-option-wrap.wbcom-admin-option-wrap-view table.form-table tr {
+    background: #fff;
+    border-radius: 12px;
+    padding: 5px;
+    border: 1px solid rgba(200, 197, 218, 0);
+    overflow: hidden;
+    border-bottom: 20px solid #f6f7fe;
+    width: 100%;
+}
+
 /* Admin Settings Page Style: End */
 
 
@@ -843,7 +872,7 @@ License style
     border-color: #2A32EF;
     font-size: 15px;
     border-radius: 12px;
-    padding: 8px 15px;
+    padding:10px 20px;
     max-width: 190px;
     text-align: center;
     width: 100%;
@@ -882,25 +911,26 @@ License style
     margin: 0;
     height: 50px;
     display: none;
-    color: #fff;
+    color: #1d2327;
     cursor: pointer;
     padding: 0 20px;
     font-size: 15px;
     overflow: hidden;
     line-height: 50px;
+    font-weight: 500;
 }
 .wb-toggle-icon .wb-icon-bars {
     width: 25px;
     height: 3px;
     display: none;
     position: relative;
-    background: #fff;
+    background: #1d2327;
     transition: background .2s ease-out;
 }
 
 .wb-toggle-icon .wb-icon-bars:before,
 .wb-toggle-icon .wb-icon-bars:after {
-    background: #fff;
+    background: #1d2327;
     content: '';
     display: block;
     height: 100%;
@@ -967,7 +997,7 @@ License style
     height: 3px;
     display: none;
     position: relative;
-    background: #fff;
+    background: #1d2327;
     transition: background .2s ease-out;
 }
 @media screen and (max-width: 1189px) {
@@ -989,8 +1019,8 @@ License style
 .wb-switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width:60px;
+    height:28px;
 }
 
 .wb-switch input {
@@ -1007,26 +1037,24 @@ License style
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 100px;
 }
 
 .wb-slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 17px;
+    width: 17px;
+    border-radius: 100px;
+    left: 10px;
+    bottom: 6px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked + .wb-slider {
-    background-color: #1d76da;
-}
-
-input:focus + .wb-slider {
-    box-shadow: 0 0 1px #1d76da;
+    background-color: #2A32EF;
 }
 
 input:checked + .wb-slider:before {
@@ -1189,6 +1217,12 @@ Media Queries
         float: none;
         width: 100%;
     }
+    .wbcom-settings-section-options-flex {
+        display: block;
+    }
+    .wbcom-settings-section-options ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1189px) {
@@ -1209,8 +1243,11 @@ Media Queries
         padding: 5px;
         line-height: 1;
     }
-    .wbcom-admin-settings-page {
+    .wbcom-admin-settings-page{
         padding:20px;
+    }
+    .wbcom-admin-option-wrap {
+        padding:5px 20px 20px;
     }
     .wbcom-tabs-section {
         border-radius:10px;
@@ -1226,7 +1263,7 @@ Media Queries
         padding:20px 5px;
     }
     .wbcom-welcome-support-info {
-        padding:15px;
+        padding:18px;
     }
     .wbcom-welcome-support-info h3 {
         font-size: 1.2em;
@@ -1250,6 +1287,9 @@ Media Queries
 
     .wbcom-welcome-support-info .wbcom-support-inner p {
         height: auto;
+    }
+    .wbcom-settings-section-options.wbcom-settings-section-options-flex a.button-secondary{
+        margin: 10px 0 0 0;
     }
 
     /*Theme Page*/
@@ -1360,7 +1400,7 @@ Media Queries
     .wbcom-wrap {
         margin: 10px 5px;
     }
-    #wb_admin_header {
+    .wbcom_admin_header-wrapper {
         display: block;
         padding: 15px;
     }

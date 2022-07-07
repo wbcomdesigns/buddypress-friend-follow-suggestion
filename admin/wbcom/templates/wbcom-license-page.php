@@ -7,7 +7,13 @@
         </div>
     </div>
     <div class="wbcom-wrap wbcom-plugin-wrapper">
-        <?php echo do_shortcode('[wbcom_admin_setting_header]'); ?>
+        <div class="wbcom_admin_header-wrapper">
+            <div id="wb_admin_plugin_name">
+                <?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
+                <span><?php printf( __( 'Version %s', 'buddypress-friend-follow-suggestion' ), BFFS_PLUGIN_VERSION ); ?></span>
+            </div>
+            <?php echo do_shortcode('[wbcom_admin_setting_header]'); ?>
+        </div>
         <div class="wbcom-all-addons-plugins-wrap">
         <h4 class="wbcom-support-section"><?php esc_html_e('Plugin License', 'buddypress-friend-follow-suggestion'); ?></h4>
         <div class="wb-plugins-license-tables-wrap">

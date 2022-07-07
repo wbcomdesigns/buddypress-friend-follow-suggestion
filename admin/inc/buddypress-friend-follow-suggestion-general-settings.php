@@ -18,43 +18,42 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 		<div class="bffs-gen-settings-container">
 			<div class="wbcom-wrapper-admin">
 			<div class="wbcom-admin-title-section">
-				<h3><?php esc_html_e( 'BuddyPress Profile matching', 'buddypress-friend-follow-suggestion' ); ?></h3></div>			
-			<div class="form-table buddypress-friend-follow wbcom-admin-option-wrap">
-			<p class="description description-title"><?php esc_html_e( 'Here you can customize Buddypress profiles matching functionality.', 'buddypress-friend-follow-suggestion' ); ?></p>			
+				<h3 style="margin-bottom:10px;"><?php esc_html_e( 'BuddyPress Profile matching', 'buddypress-friend-follow-suggestion' ); ?></h3>
+				<p class="description description-title"><?php esc_html_e( 'Here you can customize Buddypress profiles matching functionality.', 'buddypress-friend-follow-suggestion' ); ?></p>
+			</div>			
+			<div class="form-table buddypress-friend-follow wbcom-admin-option-wrap">						
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'bffs_admin_general_options' );
 					do_settings_sections( 'bffs_admin_general_options' );
 				?>
-				<table class="form-table wbcom-bp-row-settings">
-					<tr>
-						<th scope="row">
+				<div class="form-table">
+					<div class="wbcom-settings-section-wrap">
+						<div class="wbcom-settings-section-options-heading">
 							<label for="bprm_enable_profile_match"><?php esc_html_e( 'Profile matching settings', 'buddypress-friend-follow-suggestion' ); ?></label>
-						</th>
-						<td>
+							<p class="description"><?php esc_html_e( 'Enable this option if you want display member matching on member profile page. ', 'buddypress-friend-follow-suggestion' ); ?></p>
+						</div>
+						<div class="wbcom-settings-section-options">
 							<input type='checkbox' id="bprm_enable_profile_match" name='bffs_general_setting[enable_profile_match]'  class="regular-text" value='1' 
 							<?php
 							if ( isset( $bffs_general_setting['enable_profile_match'] ) && 1 == $bffs_general_setting['enable_profile_match'] ) :
 								?>
 								checked <?php endif; ?> />
-							<p class="description"><?php esc_html_e( 'Enable this option if you want display member matching on member profile page. ', 'buddypress-friend-follow-suggestion' ); ?></p>
-						</td>
-					</tr>
-
-					<tr id="profile_st_percentage" 
+						</div>	
+					</div>
+					<div class="wbcom-settings-section-wrap" id="profile_st_percentage" 
 					<?php
 					if ( ! isset( $bffs_general_setting['enable_profile_match'] ) || '' === $bffs_general_setting['enable_profile_match'] ) :
 						?>
 						style="display:none;"<?php endif; ?>>
-						<th scope="row">
-							<label><?php esc_html_e( 'Starting percentage', 'buddypress-friend-follow-suggestion' ); ?></label></th>
-						<td>
-							<input type='text' id="bprm_profile_start_percentage" name='bffs_general_setting[profile_st_percentage]'  class="regular-text" value='<?php echo ( isset( $bffs_general_setting['profile_st_percentage'] ) ) ? esc_attr( $bffs_general_setting['profile_st_percentage'] ) : ''; ?>' />
+						<div class="wbcom-settings-section-options-heading">
+							<label><?php esc_html_e( 'Starting percentage', 'buddypress-friend-follow-suggestion' ); ?></label>
 							<p class="description"><?php esc_html_e( 'Percentage will start from this value.', 'buddypress-friend-follow-suggestion' ); ?></p>
-						</td>
-					</tr>
-
-				</table>
+						</div>
+						<div class="wbcom-settings-section-options">
+							<input type='text' id="bprm_profile_start_percentage" name='bffs_general_setting[profile_st_percentage]'  class="regular-text" value='<?php echo ( isset( $bffs_general_setting['profile_st_percentage'] ) ) ? esc_attr( $bffs_general_setting['profile_st_percentage'] ) : ''; ?>' />							
+						</div>
+					</div>
 
 				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields wbcom-bp-row-2settings" 
 				<?php

@@ -302,10 +302,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			switch ( $page ) {
 				case 'wbcom-plugins-page':
 					$plugin_active = 'is_active';
-					break;
-				case 'wbcom-themes-page':
-					$theme_active = 'is_active';
-					break;
+					break;				
 				case 'wbcom-support-page':
 					$support_active = 'is_active';
 					break;
@@ -316,11 +313,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 					$settings_active = 'is_active';
 			}
 			?>
-			<div id="wb_admin_header" class="wp-clearfix">				
-				<div id="wb_admin_plugin_name">
-					<?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-					<span><?php printf( __( 'Version %s', 'buddypress-friend-follow-suggestion' ), BFFS_PLUGIN_VERSION ); ?></span>
-				</div>
+			<div id="wb_admin_header" class="wp-clearfix">
 				<nav id="wb_admin_nav">
 					<ul>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $settings_active ); ?>">
