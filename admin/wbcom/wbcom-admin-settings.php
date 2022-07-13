@@ -32,7 +32,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			add_action( 'wp_ajax_wbcom_addons_cards', array( $this, 'wbcom_addons_cards_links' ) );
 			add_action( 'in_admin_header', array( $this, 'wbcom_hide_all_admin_notices_from_setting_page' ) );
 		}
-
+		
 		/**
 		 * Extensions cards callback function.
 		 *
