@@ -6,25 +6,30 @@
             </a>
         </div>
     </div>
-    <div class="wbcom-wrap wbcom-plugin-wrapper">
-    	<div class="wbcom_admin_header-wrapper">
-            <div id="wb_admin_plugin_name">
-                <?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-                <span><?php printf( __( 'Version %s', 'buddypress-friend-follow-suggestion' ), BFFS_PLUGIN_VERSION ); ?></span>
-            </div>
-            <?php echo do_shortcode('[wbcom_admin_setting_header]'); ?>
-        </div>
+    <div class="wbcom-wrap wbcom-plugin-wrapper">    	
+		<div class="wbcom_admin_header-wrapper">
+			<div id="wb_admin_plugin_name">
+				<?php esc_html_e( 'BuddyPress Friend & Follow Suggestios', 'buddypress-friend-follow-suggestion' ); ?>
+				<span><?php printf( __( 'Version %s', 'buddypress-friend-follow-suggestion' ), BFFS_PLUGIN_VERSION ); ?></span>
+			</div>
+			<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+		</div>
 		<div class="wbcom-all-addons-plugins-wrap">	
 			<div class="wbcom-bp-addons-plugins-list">
 				<div class="wbcom-bp-addons-plugins-title-section">
 					<ul class="wbcom-addons-plugins-links">
-						<li><a href="#wbcom-paid-extension" class="wbcom-addons-link-active"><?php esc_html_e( 'Paid Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
-						<li><a href="#wbcom-free-extension"><?php esc_html_e( 'Free Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
-						<li><a href="#wbcom-learndash-extension"><?php esc_html_e( 'LearnDash Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
-						<li><a href="#wbcom-themes-list"><?php esc_html_e( 'Our Themes', 'buddypress-friend-follow-suggestion' ); ?></a></li>
+						<li><a href="javascript:void(0)" data-link="paid_extension" class="wbcom-addons-link-active"><?php esc_html_e( 'Paid Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
+						<li><a href="javascript:void(0)" data-link="free_extension"><?php esc_html_e( 'Free Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
+						<li><a href="javascript:void(0)" data-link="learndash_extension"><?php esc_html_e( 'LearnDash Extension', 'buddypress-friend-follow-suggestion' ); ?></a></li>
+						<li><a href="javascript:void(0)" data-link="our_themes"><?php esc_html_e( 'Our Themes', 'buddypress-friend-follow-suggestion' ); ?></a></li>
 					</ul>
-					<a href="https://wbcomdesigns.com/plugins/premium-buddypress-add-ons/" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'buddypress-friend-follow-suggestion' ); ?></a>
+					<a href="<?php echo esc_url( 'https://wbcomdesigns.com/plugins/' ); ?>" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'buddypress-friend-follow-suggestion' ); ?></a>
 				</div>
+				<div id="wbcom_paid_extention" class="wbcom-bp-addons-plugins-list wbcom-bp-free-addon-plugins">
+					<div class="wbcom-bp-addons-plugins-title-section">
+						<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Paid Extension', 'buddypress-friend-follow-suggestion' ); ?></h4>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/plugins/premium-buddypress-add-ons/' ); ?>" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'buddypress-friend-follow-suggestion' ); ?></a>
+					</div>
 				<div class="wbcom-addon-plugins-inner-wrapper">
 					<div class="wbcom-addons-plugins-card">
 						<div class="wbcom-addons-image-card">
@@ -112,8 +117,8 @@
 							<h2><?php esc_html_e( 'BuddyPress Member Blog', 'buddypress-friend-follow-suggestion' ); ?></h2>
 							<p><?php esc_html_e( 'BuddyPress Member Blog Pro plugin provides each of your site members their own writing environment with a fantastic user experience.', 'buddypress-friend-follow-suggestion' ); ?></p>
 							<div class="wbcom-addons-card-button">								
-								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-member-blog-pro/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
-								<a href="https://wbcomdesigns.com/downloads/buddypress-member-blog-pro/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/bp-member-reviews-pro/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/bp-member-reviews-pro/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
 							</div>
 						</div>		
 					</div>
@@ -188,7 +193,7 @@
 						</div>
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'Shortcodes for BuddyPress Pro', 'buddypress-friend-follow-suggestion' ); ?></h2>
-							<p><?php esc_html_e( 'Add and Customize the BuddyPress components on any of the wordpress pages/posts using elementor widgets', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<p><?php esc_html_e( 'Add and Customize the BuddyPress components on any of the WordPress pages/posts using elementor widgets', 'buddypress-friend-follow-suggestion' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/shortcodes-for-buddypress-pro/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/shortcodes-for-buddypress-pro/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
@@ -287,6 +292,7 @@
 						</div>		
 					</div>
 				</div>
+			</div>
 			</div>
 
 			<!-- LearnDash Addon -->
@@ -478,6 +484,66 @@
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-birthdays/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddypress-birthdays/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'reCaptcha for BuddyPress', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'Buddypress reCaptcha is the best solution that provides an all-in-one captcha for  Buddypress, WordPress, and woo-commerce.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-recaptcha/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/buddypress-recaptcha/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'BuddyPress WooCommerce Integration', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'BuddyWoo Integration Plugin will help to integrate WooCommerce with Buddypress.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-woocommerce-integration/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/buddypress-woocommerce-integration/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'BuddyPress Member Export Import', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'Easily import/export your BuddyPress members. Small but an important features.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-member-export-import/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/buddypress-member-export-import/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'BuddyPress Activity Bump', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'ump the most recent activity on the top of newsfeed in your BuddyPress website.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-activity-bump/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/buddypress-activity-bump/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'Shortcodes for BuddyPress', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'Use shortcodes to display activity streams, members, group listings, and user notifications on any post.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/shortcodes-for-buddypress/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/shortcodes-for-buddypress/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
+							</div>
+						</div>		
+					</div>
+					<div class="wbcom-addons-plugins-card">
+						<div class="wbcom-addons-card-details">
+							<h2><?php esc_html_e( 'BuddyPress Create Group Type', 'buddypress-friend-follow-suggestion' ); ?></h2>
+							<p><?php esc_html_e( 'Create group types on BuddyPress based on the interest areas of your community members.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<div class="wbcom-addons-card-button">								
+								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-create-group-type/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'buddypress-friend-follow-suggestion' ); ?></a>
+								<a href="https://wbcomdesigns.com/downloads/buddypress-create-group-type/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'buddypress-friend-follow-suggestion' ); ?></a>
 							</div>
 						</div>		
 					</div>
