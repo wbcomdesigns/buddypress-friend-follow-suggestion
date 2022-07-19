@@ -173,8 +173,8 @@ class Buddypress_Friend_Follow_Suggestion {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'bffs_add_submenu_page_admin_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bffs_plugin_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bffs_admin_register_settings' );
-
 		$this->loader->add_action( 'wp_ajax_bffs_get_profile_field', $plugin_admin, 'bffs_get_profile_field' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'wbcom_hide_all_admin_notices_from_setting_page' );
 	}
 
 	/**
