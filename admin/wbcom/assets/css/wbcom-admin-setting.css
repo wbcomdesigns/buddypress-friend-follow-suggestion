@@ -1329,11 +1329,6 @@ div.wbcom-faq-panel p {
     border: 1px solid #d0d0d0;
 }
 
-.wbcom-settings-section-options .selectize-input {
-    height: auto;
-    box-shadow: none;
-    padding: 0px 10px !important;
-}
 .selectize-control.plugin-remove_button [data-value] .remove {
     color: red !important;
 }
