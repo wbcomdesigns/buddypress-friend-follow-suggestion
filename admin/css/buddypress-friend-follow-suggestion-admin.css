@@ -139,3 +139,7 @@ p.description.description-title {
     }
 
 }
+.wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible,
+.wbcom-wrap .notice.notice-error {
+    display: none !important;
+}
