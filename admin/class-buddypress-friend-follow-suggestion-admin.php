@@ -82,7 +82,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 
 		$bffs_style = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
-		if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) || 'wbcom-plugins-page' === wp_unslash( $bffs_style ) ) ) {
+		if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) || 'wbcom-plugins-page' === wp_unslash( $bffs_style ) || 'wbcom-support-page' === wp_unslash( $bffs_style ) || 'wbcom-license-page' === wp_unslash( $bffs_style ) ) ) {
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
 		}
 
