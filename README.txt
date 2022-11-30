@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 6.0.1
-Stable tag: 1.4.1
+Tested up to: 6.1.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.2 =
+* Fix: Button hover bg color and button alignment
+* Fix: remove admin notice
+
 = 1.4.1 =
 * Fix: Fixed phpcs fixes
 * Fix: Update admin wrapper UI
