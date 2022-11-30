@@ -208,7 +208,7 @@
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button a:hover,
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button button:hover{
-    background: #0856b7 !important;
+    background:#074490 !important;
 }
 .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .friendship-button .friendship-button:after{
   display: none !important;
@@ -231,7 +231,7 @@
     margin-right: 0 !important;
 }
 
-.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta div.generic-button{
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .item-meta .generic-button{
     position: relative;
     display: flex;
     justify-content: center;
