@@ -139,36 +139,12 @@ p.description.description-title {
     }
 
 }
-.wb-plugins_page_wbcom-license-page .update-nag,
-.wb-plugins_page_wbcom-license-page .updated,
-.wb-plugins_page_wbcom-license-page .error,
-.wb-plugins_page_wbcom-license-page .notice-error,
-.wb-plugins_page_wbcom-license-page .is-dismissible {
-    display: none !important;
-}
-.wb-plugins_page_bffs-settings .update-nag,
-.wb-plugins_page_bffs-settings .updated,
-.wb-plugins_page_bffs-settings .error,
-.wb-plugins_page_bffs-settings .notice-error,
-.wb-plugins_page_bffs-settings .is-dismissible {
-    display: none !important;
-}
-.toplevel_page_wbcomplugins .update-nag,
-.toplevel_page_wbcomplugins .updated,
-.toplevel_page_wbcomplugins .error,
-.toplevel_page_wbcomplugins .notice-error,
-.toplevel_page_wbcomplugins .is-dismissible {
-    display: none !important;
-}
-.wb-plugins_page_wbcom-support-page .update-nag,
-.wb-plugins_page_wbcom-support-page .updated,
-.wb-plugins_page_wbcom-support-page .error,
-.wb-plugins_page_wbcom-support-page .notice-error,
-.wb-plugins_page_wbcom-support-page .is-dismissible,
-.wb-plugins_page_wbcom-plugins-page .update-nag,
-.wb-plugins_page_wbcom-plugins-page .updated,
-.wb-plugins_page_wbcom-plugins-page .error,
-.wb-plugins_page_wbcom-plugins-page .notice-error,
-.wb-plugins_page_wbcom-plugins-page .is-dismissible {
+
+.wbcom-wrap .update-nag,
+.wbcom-wrap .updated,
+.wbcom-wrap .error,
+.wbcom-wrap .notice-error,
+.wbcom-wrap .is-dismissible,
+.wbcom-wrap .notice {
     display: none !important;
 }
