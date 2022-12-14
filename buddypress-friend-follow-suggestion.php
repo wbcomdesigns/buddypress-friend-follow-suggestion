@@ -99,7 +99,7 @@ run_buddypress_friend_follow_suggestion();
  * @param field_value $field_value field_value.
  * @param variable    $j Define parameter.
  */
-function bffs_profile_fields_dropdown( $field_value = '', $j ) {
+function bffs_profile_fields_dropdown( $field_value = '', $j = 0 ) {
 
 	$groups = array();
 
