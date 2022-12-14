@@ -47,6 +47,7 @@
   });
 
 // Suggestions Slider
+  if ($('.bffs_horizontal_layout').length) {
   var bffs = new Bffs(".bffs_horizontal_layout", {
     centeredSlides: true,
     loop: true,
@@ -58,5 +59,5 @@
       nextEl: ".bffs-button-next",
       prevEl: ".bffs-button-prev",
     },
-  });
+  });}
 })(jQuery);
