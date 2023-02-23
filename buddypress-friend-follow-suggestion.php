@@ -211,8 +211,10 @@ function bffs_activation_redirect_settings( $plugin ) {
 		return;
 	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
-		wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
-		exit;
+		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) {
+			wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
+			exit;
+		}
 	}
 }
 
