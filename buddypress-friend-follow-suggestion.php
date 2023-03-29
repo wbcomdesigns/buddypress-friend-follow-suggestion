@@ -210,7 +210,7 @@ function bffs_activation_redirect_settings( $plugin ) {
 	if ( ! isset( $_GET['plugin'] ) ) {
 		return;
 	}
-	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
+	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'BuddyPress' ) && bp_is_active( 'xprofile' ) ) {
 		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin ) {
 			wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
 			exit;
@@ -229,7 +229,7 @@ function bffs_requires_buddypress() {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_plugin_admin_notice' );
 		unset( $_GET['activate'] );
-	} elseif ( ! bp_is_active( 'xprofile' ) ) {
+	} elseif ( class_exists( 'BuddyPress' ) && ! bp_is_active( 'xprofile' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_component_admin_notice' );
 		unset( $_GET['activate'] );
