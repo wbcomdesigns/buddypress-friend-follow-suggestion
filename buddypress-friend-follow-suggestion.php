@@ -211,7 +211,7 @@ function bffs_activation_redirect_settings( $plugin ) {
 		return;
 	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
-		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) {
+		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin ) {
 			wp_redirect( admin_url( 'admin.php?page=bffs-settings' ) );
 			exit;
 		}
@@ -225,9 +225,13 @@ function bffs_activation_redirect_settings( $plugin ) {
  */
 function bffs_requires_buddypress() {
 
-	if ( ! class_exists( 'Buddypress' ) ) {
+	if ( ! class_exists( 'BuddyPress' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_plugin_admin_notice' );
+		unset( $_GET['activate'] );
+	} elseif ( ! bp_is_active( 'xprofile' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		add_action( 'admin_notices', 'bffs_required_component_admin_notice' );
 		unset( $_GET['activate'] );
 	}
 }
@@ -247,6 +251,18 @@ function bffs_required_plugin_admin_notice() {
 	$bp_plugin   = esc_html__( 'BuddyPress', 'buddypress-friend-follow-suggestion' );
 	echo '<div class="error"><p>';
 	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-friend-follow-suggestion' ), '<strong>' . esc_html( $bpmb_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo '</p></div>';
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
+}
+
+
+function bffs_required_component_admin_notice() {
+	$bpmb_plugin = esc_html__( ' BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' );
+	$component   = esc_html__( 'Extended Profiles', 'buddypress-friend-follow-suggestion' );
+	echo '<div class="error"><p>';
+	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be active.', 'buddypress-friend-follow-suggestion' ), '<strong>' . esc_html( $bpmb_plugin ) . '</strong>', '<strong>' . esc_html( $component ) . '</strong>' );
 	echo '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
