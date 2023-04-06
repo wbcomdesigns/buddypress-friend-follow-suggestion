@@ -54,6 +54,7 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 = 1.4.4 =
 * Fix: (#54) Added buddypress component check and admin notice
+* Fix: Fixed Plugin redirect issue when multi plugin activate the same time
 
 = 1.4.3 =
 * Fix: #50 - Deprecated warning
