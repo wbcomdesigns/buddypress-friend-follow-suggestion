@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 6.1.1
-Stable tag: 1.4.3
+Tested up to: 6.2.0
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.4 =
+* Fix: (#54) Added buddypress component check and admin notice
+
 = 1.4.3 =
 * Fix: #50 - Deprecated warning
 * Fix: (#52) Fixed widgets console error
