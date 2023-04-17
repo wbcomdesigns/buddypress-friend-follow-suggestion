@@ -1,4 +1,4 @@
-=== BuddyPress Friend & Follow Suggestion ===
+=== Wbcom Designs - BuddyPress Friend & Follow Suggestion ===
 Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
