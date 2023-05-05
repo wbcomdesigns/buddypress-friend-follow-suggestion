@@ -277,7 +277,7 @@ function edd_wbcom_BFFS_check_license() {
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 			if(!empty($license_data)) {
-				set_transient("edd_wbcom_bprm_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
+				set_transient("edd_wbcom_BFFS_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
 			}
 		}
 	}
@@ -477,6 +477,8 @@ function edd_wbcom_BFFS_activate_license_button() {
 						$message = __( 'An error occurred, please try again.', 'buddypress-friend-follow-suggestion' );
 						break;
 				}
+			}else {
+				set_transient("edd_wbcom_BFFS_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
 			}
 		}
 
