@@ -34,11 +34,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION', '1.4.4' );
-
 
 if ( ! defined( 'BFFS_PLUGIN_VERSION' ) ) {
-	define( 'BFFS_PLUGIN_VERSION', '1.4.3' );
+	define( 'BFFS_PLUGIN_VERSION', '1.4.4' );
 }
 if ( ! defined( 'BFFS_PLUGIN_FILE' ) ) {
 	define( 'BFFS_PLUGIN_FILE', __FILE__ );

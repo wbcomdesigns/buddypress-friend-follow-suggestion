@@ -25,7 +25,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 			}
 
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
-			$matche_obj           = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION );
+			$matche_obj           = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_VERSION );
 			$max_members          = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
 
 			$users = get_users( array( 'exclude' => $exclude_user ) );

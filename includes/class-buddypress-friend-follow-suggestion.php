@@ -66,8 +66,8 @@ class Buddypress_Friend_Follow_Suggestion {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION' ) ) {
-			$this->version = BUDDYPRESS_FRIEND_FOLLOW_SUGGESTION_VERSION;
+		if ( defined( 'BFFS_PLUGIN_VERSION' ) ) {
+			$this->version = BFFS_PLUGIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
