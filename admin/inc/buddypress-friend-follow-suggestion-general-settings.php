@@ -6,11 +6,12 @@
  * @package Buddypress_Friend_Follow_Suggestion
  */
 
-if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
+if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGIN_FILE ) ) ) {
 	$bffs_general_setting = get_site_option( 'bffs_general_setting' );
 } else {
 	$bffs_general_setting = get_option( 'bffs_general_setting' );
 }
+
 
 ?>
 <div class="wbcom-tab-content">
