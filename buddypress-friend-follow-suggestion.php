@@ -12,7 +12,7 @@
  * @package           Buddypress_Friend_Follow_Suggestion
  *
  * @wordpress-plugin
- * Plugin Name:       BuddyPress Friend & Follow Suggestion
+ * Plugin Name:        Wbcom Designs - BuddyPress Friend & Follow Suggestion
  * Plugin URI:        https://wbcomdesigns.com/downloads/buddypress-friend-follow-suggestion
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.4.4
@@ -231,6 +231,8 @@ function bffs_requires_buddypress() {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_component_admin_notice' );
 		unset( $_GET['activate'] );
+	}else{
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bffs_plugin_links' );
 	}
 }
 
@@ -265,4 +267,18 @@ function bffs_required_component_admin_notice() {
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
 	}
+}
+
+/**
+ * Function to set plugin actions links.
+ *
+ * @param array $links Plugin settings link array.
+ * @since 1.0.0
+ */
+function bffs_plugin_links( $links ) {
+	$bffs_links = array(
+		'<a href="' . admin_url( 'admin.php?page=bffs-settings' ) . '">' . __( 'Settings', 'buddypress-friend-follow-suggestion' ) . '</a>',
+		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', 'buddypress-friend-follow-suggestion' ) . '</a>',
+	);
+	return array_merge( $links, $bffs_links );
 }
