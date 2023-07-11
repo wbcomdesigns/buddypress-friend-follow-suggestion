@@ -4,7 +4,7 @@ Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
 Tested up to: 6.2.0
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.5 =
+*Fix: (#58)Fixed unable to save profile fields with multisite setup
+
 = 1.4.4 =
 * Fix: (#54) Added buddypress component check and admin notice
 * Fix: Fixed Plugin redirect issue when multi plugin activate the same time
