@@ -1,14 +1,14 @@
-# Copyright (C) 2022
+# Copyright (C) 2023
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 15:32:09+00:00\n"
+"POT-Creation-Date: 2023-07-11 10:05:43+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Varun Dubey\n"
 "Language-Team: Wbcom Designs\n"
 "Language: en\n"
@@ -55,7 +55,7 @@ msgid "Version %s"
 msgstr ""
 
 #: admin/class-buddypress-friend-follow-suggestion-admin.php:260
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:89
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:92
 msgid "Delete"
 msgstr ""
 
@@ -121,45 +121,45 @@ msgstr ""
 msgid "Send Feedback"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:21
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:24
 msgid "BuddyPress Profile matching"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:22
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:25
 msgid "Here you can customize Buddypress profiles matching functionality."
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:33
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:36
 msgid "Profile matching settings"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:34
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:37
 msgid ""
 "Enable this option if you want display member matching on member profile "
 "page. "
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:50
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:53
 msgid "Starting percentage"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:51
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:54
 msgid "Percentage will start from this value."
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:65
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:68
 msgid "Profile Field"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:66
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:69
 msgid "Percentage"
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:67
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:70
 msgid "Stop if no match "
 msgstr ""
 
-#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:99
+#: admin/inc/buddypress-friend-follow-suggestion-general-settings.php:102
 msgid "Add Field"
 msgstr ""
 
@@ -175,31 +175,31 @@ msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:23
 #: admin/wbcom/templates/wbcom-license-page.php:35
-#: edd-license/edd-plugin-license.php:322
+#: edd-license/edd-plugin-license.php:372
 msgid "Product"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:24
 #: admin/wbcom/templates/wbcom-license-page.php:36
-#: edd-license/edd-plugin-license.php:323
+#: edd-license/edd-plugin-license.php:373
 msgid "Version"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:25
 #: admin/wbcom/templates/wbcom-license-page.php:37
-#: edd-license/edd-plugin-license.php:324
+#: edd-license/edd-plugin-license.php:374
 msgid "Key"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:26
 #: admin/wbcom/templates/wbcom-license-page.php:38
-#: edd-license/edd-plugin-license.php:325
+#: edd-license/edd-plugin-license.php:375
 msgid "Status"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:27
 #: admin/wbcom/templates/wbcom-license-page.php:39
-#: edd-license/edd-plugin-license.php:326
+#: edd-license/edd-plugin-license.php:376
 msgid "Action"
 msgstr ""
 
@@ -793,10 +793,12 @@ msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:273
 #: admin/wbcom/wbcom-admin-settings.php:274
+#: buddypress-friend-follow-suggestion.php:281
 msgid "Support"
 msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:340
+#: buddypress-friend-follow-suggestion.php:280
 msgid "Settings"
 msgstr ""
 
@@ -844,20 +846,29 @@ msgstr ""
 msgid "Suggestions"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:151
+#: buddypress-friend-follow-suggestion.php:149
 msgid "Select a field"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:244
+#: buddypress-friend-follow-suggestion.php:250
+#: buddypress-friend-follow-suggestion.php:262
 msgid " BuddyPress Friend & Follow Suggestion"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:245
+#: buddypress-friend-follow-suggestion.php:251
 msgid "BuddyPress"
 msgstr ""
 
-#: buddypress-friend-follow-suggestion.php:247
+#: buddypress-friend-follow-suggestion.php:253
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
+msgstr ""
+
+#: buddypress-friend-follow-suggestion.php:263
+msgid "Extended Profiles"
+msgstr ""
+
+#: buddypress-friend-follow-suggestion.php:265
+msgid "%1$s is ineffective now as it requires %2$s to be active."
 msgstr ""
 
 #: edd-license/EDD_BFFS_Plugin_Updater.php:243
@@ -879,51 +890,62 @@ msgid "Error"
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:91 edd-license/edd-plugin-license.php:127
-#: edd-license/edd-plugin-license.php:200
-#: edd-license/edd-plugin-license.php:391
-#: edd-license/edd-plugin-license.php:427
+#: edd-license/edd-plugin-license.php:202
+#: edd-license/edd-plugin-license.php:441
+#: edd-license/edd-plugin-license.php:477
 msgid "An error occurred, please try again."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:100
-#: edd-license/edd-plugin-license.php:400
+#: edd-license/edd-plugin-license.php:450
 msgid "Your license key expired on %s."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:106
-#: edd-license/edd-plugin-license.php:406
+#: edd-license/edd-plugin-license.php:456
 msgid "Your license key has been disabled."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:110
-#: edd-license/edd-plugin-license.php:410
+#: edd-license/edd-plugin-license.php:460
 msgid "Invalid license."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:115
-#: edd-license/edd-plugin-license.php:415
+#: edd-license/edd-plugin-license.php:465
 msgid "Your license is not active for this URL."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:119
-#: edd-license/edd-plugin-license.php:419
+#: edd-license/edd-plugin-license.php:469
 msgid "This appears to be an invalid license key for %s."
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:123
-#: edd-license/edd-plugin-license.php:423
+#: edd-license/edd-plugin-license.php:473
 msgid "Your license key has reached its activation limit."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:343
+#: edd-license/edd-plugin-license.php:307
+#. translators: %1$s: Expire Time
+msgid "Your BuddyPress Friend & Follow Suggestion plugin license key expired on %s."
+msgstr ""
+
+#: edd-license/edd-plugin-license.php:338
+msgid ""
+"Please activate your BuddyPress Friend & Follow Suggestion plugin license "
+"key."
+msgstr ""
+
+#: edd-license/edd-plugin-license.php:393
 msgid "Deactivate License"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:348
+#: edd-license/edd-plugin-license.php:398
 msgid "Activate License"
 msgstr ""
 
-#: public/class-buddypress-friend-follow-suggestion-public.php:142
+#: public/class-buddypress-friend-follow-suggestion-public.php:144
 msgid "Profile Match: "
 msgstr ""
 
