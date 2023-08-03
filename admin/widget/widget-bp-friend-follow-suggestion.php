@@ -236,4 +236,7 @@ function bp_suggestion_register_widgets() {
 		}
 	);
 }
-add_action( 'bp_register_widgets', 'bp_suggestion_register_widgets' );
+$bffs_general_setting = get_site_option( 'bffs_general_setting' );
+if ( isset( $bffs_general_setting['enable_profile_match'] ) && 1 == $bffs_general_setting['enable_profile_match'] ){
+	add_action( 'bp_register_widgets', 'bp_suggestion_register_widgets' );
+}
