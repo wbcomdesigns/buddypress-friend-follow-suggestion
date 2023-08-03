@@ -73,8 +73,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 					}
 				}
 			}
-
-			return $matched_members;
+			return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
 		}
 	}
 }
