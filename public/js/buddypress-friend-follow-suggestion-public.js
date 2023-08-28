@@ -1,4 +1,7 @@
-(function($) {
+window.wp = window.wp || {};
+window.bp = window.bp || {};
+
+(function(bp, $) {
   'use strict';
 
   bp.Nouveau = bp.Nouveau || {};
@@ -60,4 +63,4 @@
       prevEl: ".bffs-button-prev",
     },
   });}
-})(jQuery);
+} )( window.bp, jQuery );
