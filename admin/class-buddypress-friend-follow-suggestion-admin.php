@@ -199,7 +199,8 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 				<div class="wbcom_admin_header-wrapper">
 		            <div id="wb_admin_plugin_name">
 		                <?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-		                <span><?php printf( __( 'Version %s', 'buddypress-friend-follow-suggestion' ), BFFS_PLUGIN_VERSION ); ?></span>
+						<?php /* translators: %s: */ ?>
+		                <span><?php printf( esc_html__( 'Version %s', 'buddypress-friend-follow-suggestion' ), esc_attr( BFFS_PLUGIN_VERSION ) ); ?></span>
 		            </div>
 		            <?php echo do_shortcode('[wbcom_admin_setting_header]'); ?>
 		        </div>
