@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 6.2.0
-Stable tag: 1.4.6
+Tested up to: 6.3.0
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.7 =
+* Fix: PHPCS fixes
+* Fix: PHPCS nonce fixes
+
 = 1.4.6 =
 * Fix: (#63) Issue with suggestion widget.
 * Added: (#61) Hookable position to remove admin user from suggestion widget.
