@@ -205,7 +205,7 @@ add_action( 'activated_plugin', 'bffs_activation_redirect_settings' );
  * @param plugin $plugin plugin.
  */
 function bffs_activation_redirect_settings( $plugin ) {
-	if ( ! isset( $_GET['plugin'] ) ) { //phpcs:ignore
+	if ( ! filter_input( INPUT_GET, 'plugin' ) ) {
 		return;
 	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'BuddyPress' ) && bp_is_active( 'xprofile' ) ) {
@@ -226,11 +226,13 @@ function bffs_requires_buddypress() {
 	if ( ! class_exists( 'BuddyPress' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_plugin_admin_notice' );
-		unset( $_GET['activate'] ); //phpcs:ignore
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
 	} elseif ( class_exists( 'BuddyPress' ) && ! bp_is_active( 'xprofile' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bffs_required_component_admin_notice' );
-		unset( $_GET['activate'] );  //phpcs:ignore
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
 	}else{
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bffs_plugin_links' );
 	}
@@ -253,8 +255,9 @@ function bffs_required_plugin_admin_notice() {
 	/* translators: %s: */
 	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-friend-follow-suggestion' ), '<strong>' . esc_html( $bpmb_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
 	echo '</p></div>';
-	if ( isset( $_GET['activate'] ) ) { //phpcs:ignore
-		unset( $_GET['activate'] ); //phpcs:ignore
+	$activate = filter_input( INPUT_GET, 'activate' );
+	if ( isset( $activate ) ) {
+		unset( $activate ); 
 	}
 }
 
@@ -266,8 +269,9 @@ function bffs_required_component_admin_notice() {
 	/* translators: %s: */
 	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be active.', 'buddypress-friend-follow-suggestion' ), '<strong>' . esc_html( $bpmb_plugin ) . '</strong>', '<strong>' . esc_html( $component ) . '</strong>' );
 	echo '</p></div>';
-	if ( isset( $_GET['activate'] ) ) { //phpcs:ignore
-		unset( $_GET['activate'] ); //phpcs:ignore
+	$activate = filter_input( INPUT_GET, 'activate' );
+	if ( isset( $activate ) ) { 
+		unset( $activate ); 
 	}
 }
 
