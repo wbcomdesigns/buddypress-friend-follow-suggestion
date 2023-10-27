@@ -353,15 +353,20 @@ function wbcom_BFFS_render_license_section() {
 
 	$plugin_data = get_plugin_data( BFFS_PLUGIN_PATH . '/buddypress-friend-follow-suggestion.php', $markup = true, $translate = true );
 
-	$license_data 		= get_transient("edd_wbcom_BFFS_license_key_data");
+	$license_output = edd_BFFS_active_license_message();
 	
-	if ( false !== $status && 'valid' === $status  && !empty($license_data) && $license_data->license == 'valid') {
+	if ( false !== $status && 'valid' === $status && ! empty( $license_output ) && $license_output['license_data']->license == 'valid' ) {
 		$status_class = 'active';
 		$status_text  = 'Active';
-	} else if ( !empty($license_data) && $license_data->license != '' && $license_data->license != 'site_inactive' ) {
+	} else if ( ! empty( $license_output ) && $license_output['license_data']->license != '' && $license_output['license_data']->license == 'expired' ) {
 		$status_class = 'expired';
-		$status_text  = ucfirst(str_replace('_',' ',$license_data->license));
-	}else {
+		$status_text  = ucfirst( str_replace( '_', ' ', $license_output['license_data']->license ) );
+
+	} else if ( ! empty( $license_output ) && $license_output['license_data']->license != '' && $license_output['license_data']->license == 'invalid' ) {
+		$status_class = 'invalid';
+		$status_text  = ucfirst( str_replace( '_', ' ', $license_output['license_data']->license ) );
+
+	} else {
 		$status_class = 'inactive';
 		$status_text  = 'Inactive';
 	}
@@ -383,7 +388,10 @@ function wbcom_BFFS_render_license_section() {
 			<tr>
 				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'buddypress-friend-follow-suggestion' ); ?></td>
 				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'buddypress-friend-follow-suggestion' ); ?></td>
-				<td class="wb-plugin-license-key"><input id="edd_wbcom_BFFS_license_key" name="edd_wbcom_BFFS_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-friend-follow-suggestion' ); ?>" /></td>
+				<td class="wb-plugin-license-key">
+					<input id="edd_wbcom_BFFS_license_key" name="edd_wbcom_BFFS_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-friend-follow-suggestion' ); ?>" />
+					<p><?php echo esc_html( $license_output['message'] ); ?></p>
+				</td>
 				<td class="wb-license-status <?php echo esc_attr( $status_class ); ?>"><?php echo esc_html( $status_text ); ?></td>
 				<td class="wb-license-action">
 					<?php
@@ -404,107 +412,71 @@ function wbcom_BFFS_render_license_section() {
 	<?php
 }
 
-function edd_wbcom_BFFS_activate_license_button() {
-	// listen for our activate button to be clicked
-	if ( isset( $_POST['edd_BFFS_license_activate'] ) ) {
-		// run a quick security check
-		if ( ! check_admin_referer( 'edd_wbcom_BFFS_nonce', 'edd_wbcom_BFFS_nonce' ) ) {
-			return; // get out if we didn't click the Activate button
-		}
+function edd_BFFS_active_license_message() {
+	global $wp_version, $pagenow;
 
-		// retrieve the license from the database
-		$license = ! empty( $_POST['edd_wbcom_BFFS_license_key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['edd_wbcom_BFFS_license_key'] ) ) ) : '';
+	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) {
 
-		// data to send in our API request
-		$api_params = array(
-			'edd_action' => 'activate_license',
-			'license'    => $license,
-			'item_name'  => urlencode( EDD_BFFS_ITEM_NAME ), // the name of our product in EDD
-			'url'        => home_url(),
-		);
+		$license_data = get_transient( 'edd_wbcom_BFFS_license_key_data' );
+		$license      = trim( get_option( 'edd_wbcom_BFFS_license_key' ) );
 
-		// Call the custom API.
-		$response = wp_remote_post(
-			EDD_BFFS_STORE_URL,
-			array(
-				'timeout'   => 15,
-				'sslverify' => false,
-				'body'      => $api_params,
-			)
-		);
 
-		// make sure the response came back okay
-		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-			if ( is_wp_error( $response ) ) {
-				$message = $response->get_error_message();
-			} else {
-				$message = __( 'An error occurred, please try again.', 'buddypress-friend-follow-suggestion' );
-			}
-		} else {
-			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-
-			if ( false === $license_data->success ) {
-				switch ( $license_data->error ) {
-					case 'expired':
-						$message = sprintf(
-							__( 'Your license key expired on %s.', 'buddypress-friend-follow-suggestion' ),
-							date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
-						);
-						break;
-
-					case 'revoked':
-						$message = __( 'Your license key has been disabled.', 'buddypress-friend-follow-suggestion' );
-						break;
-
-					case 'missing':
-						$message = __( 'Invalid license.', 'buddypress-friend-follow-suggestion' );
-						break;
-
-					case 'invalid':
-					case 'site_inactive':
-						$message = __( 'Your license is not active for this URL.', 'buddypress-friend-follow-suggestion' );
-						break;
-
-					case 'item_name_mismatch':
-						$message = sprintf( __( 'This appears to be an invalid license key for %s.', 'buddypress-friend-follow-suggestion' ), EDD_BFFS_ITEM_NAME );
-						break;
-
-					case 'no_activations_left':
-						$message = __( 'Your license key has reached its activation limit.', 'buddypress-friend-follow-suggestion' );
-						break;
-
-					default:
-						$message = __( 'An error occurred, please try again.', 'buddypress-friend-follow-suggestion' );
-						break;
-				}
-			}else {
-				set_transient("edd_wbcom_BFFS_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
-			}
-		}
-
-		// Check if anything passed on a message constituting a failure
-		if ( ! empty( $message ) ) {
-			$base_url = admin_url( 'admin.php?page=' . EDD_BFFS_PLUGIN_LICENSE_PAGE );
-			$redirect = add_query_arg(
-				array(
-					'bpgp_activation' => 'false',
-					'message'         => urlencode( $message ),
-				),
-				$base_url
+			$api_params = array(
+				'edd_action' => 'check_license',
+				'license'    => $license,
+				'item_name'  => urlencode( EDD_BFFS_ITEM_NAME ),
+				'url'        => home_url(),
 			);
-			$license  = trim( $license );
-			update_option( 'edd_wbcom_BFFS_license_key', $license );
-			update_option( 'edd_wbcom_BFFS_license_status', $license_data->license );
-			wp_redirect( $redirect );
-			exit();
-		}
 
-		// $license_data->license will be either "valid" or "invalid"
-		$license = trim( $license );
-		update_option( 'edd_wbcom_BFFS_license_key', $license );
-		update_option( 'edd_wbcom_BFFS_license_status', $license_data->license );
-		wp_redirect( admin_url( 'admin.php?page=' . EDD_BFFS_PLUGIN_LICENSE_PAGE ) );
-		exit();
+			// Call the custom API.
+			$response = wp_remote_post(
+				EDD_BFFS_STORE_URL,
+				array(
+					'timeout'   => 15,
+					'sslverify' => false,
+					'body'      => $api_params,
+				)
+			);
+
+			if ( is_wp_error( $response ) ) {
+				return false;
+			}
+
+			$output = array();
+			$output['license_data'] = json_decode( wp_remote_retrieve_body( $response ) );
+			$message = '';
+			// make sure the response came back okay
+			if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+
+				if ( is_wp_error( $response ) ) {
+					$message = $response->get_error_message();
+				} else {
+					$message = __( 'An error occurred, please try again.', 'buddypress-status' );
+				}
+			} else {
+				$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+				// Get expire date
+				$expires = false;
+				if ( isset( $license_data->expires ) && 'lifetime' != $license_data->expires ) {
+					$expires    = date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) );
+				} elseif ( isset( $license_data->expires ) && 'lifetime' == $license_data->expires ) {
+					$expires = 'lifetime';
+				}
+				
+				if ( $license_data->license == 'valid' ) {
+					// Get site counts
+					$site_count    = $license_data->site_count;
+					$license_limit = $license_data->license_limit;
+					$message = 'License key is active.';
+					if ( isset( $expires ) && 'lifetime' != $expires ) {
+						$message .= sprintf( __( ' Expires %s.', 'buddypress-status' ), $expires ) . ' ';
+					}
+					if ( $license_limit ) {
+						$message .= sprintf( __( 'You have %1$s/%2$s-sites activated.', 'buddypress-status' ), $site_count, $license_limit );
+					}
+				}
+			}
+			$output['message'] = $message;
+			return $output;
 	}
 }
-add_action( 'admin_init', 'edd_wbcom_BFFS_activate_license_button' );
