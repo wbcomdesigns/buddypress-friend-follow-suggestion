@@ -3,10 +3,9 @@
     content: "\f111";
 }
 .bffs-field-header {
-    margin: 0 -30px;
     color: #000;
-    border-bottom: 1px solid #ddd;
-    margin-top: -25px;
+    border-bottom: 1px solid rgba(200, 197, 218, 0.50);
+    margin-top: -15px;
 }
 #bffs-field-content .search_field {
     padding: 15px 0 0;
@@ -23,6 +22,11 @@
     margin-right: 10px;
 }
 
+p.wbcom-welcome-description .download-link-wb {
+    color: #1f35cc;
+    text-decoration: none;
+    font-weight: 500;
+}
 
 p.description.description-title {
     color: #333;
@@ -119,6 +123,51 @@ p.description.description-title {
     color: #ef3e46;
 }
 
+.wbcom-support-info-wrap{
+    gap: 10px;
+}
+
+.support-info-wrap-inner {
+    width: 50%;
+}
+
+.support-video {
+    width: 50%;
+}
+
+.wbcom-support-info-wrap .wbcom-support-info-widgets {
+    max-width: 100%;
+    width: auto;
+}
+
+.wb-section-top {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.wbcom-support-info-wrap .wbcom-support-info-widgets {
+    margin: 0 10px;
+    width: 50%;
+}
+
+.wbcom-support-info-widgets.feedback-wrapp {
+    width: auto;
+}
+
+.wbcom-welcome-support-info .wbcom-support-inner p {
+    height: auto;
+}
+
+.wbcom-support-info-widgets.feedback-wrapp h3 {
+    display: flex;
+    margin: 0 !important;
+}
+
+.feedback-wrapp .dashicons{
+    margin: 0 !important;
+}
+
+
 
 @media only screen and (max-width: 679px) {
 
@@ -147,4 +196,39 @@ p.description.description-title {
 .wbcom-wrap .is-dismissible,
 .wbcom-wrap .notice {
     display: none !important;
+}
+
+
+@media only screen and (min-width: 280px) and (max-width: 1172px) {
+
+    .wb-section-top {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .wbcom-support-info-wrap .wbcom-support-info-widgets,
+    .support-info-wrap-inner,
+    .support-video {
+        width: auto;
+    }
+
+    .support-video {
+        padding: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 1175px) and (max-width: 1552px) {
+
+    .wbcom-support-info-wrap {
+        flex-wrap: wrap;
+    }
+    .support-info-wrap-inner {
+        width: 100%;
+    }
+    .support-video {
+        width: 100%;
+        padding: 15px;
+    }
+
 }

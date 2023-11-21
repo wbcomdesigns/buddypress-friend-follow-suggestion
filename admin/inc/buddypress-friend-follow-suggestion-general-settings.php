@@ -21,8 +21,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGI
 		<div class="bffs-gen-settings-container">
 			<div class="wbcom-wrapper-admin">
 			<div class="wbcom-admin-title-section">
-				<h3 style="margin-bottom:10px;"><?php esc_html_e( 'BuddyPress Profile matching', 'buddypress-friend-follow-suggestion' ); ?></h3>
-				<p class="description description-title"><?php esc_html_e( 'Here you can customize Buddypress profiles matching functionality.', 'buddypress-friend-follow-suggestion' ); ?></p>
+				<h3 style="margin-bottom:10px;"><?php esc_html_e( 'Profile Match Settings', 'buddypress-friend-follow-suggestion' ); ?></h3>
 			</div>			
 			<div class="form-table buddypress-friend-follow wbcom-admin-option-wrap">						
 			<form method="post" action="options.php">
@@ -33,8 +32,8 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGI
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label for="bprm_enable_profile_match"><?php esc_html_e( 'Profile matching settings', 'buddypress-friend-follow-suggestion' ); ?></label>
-							<p class="description"><?php esc_html_e( 'Enable this option if you want display member matching on member profile page. ', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<label for="bprm_enable_profile_match"><?php esc_html_e( 'Display Match Score', 'buddypress-friend-follow-suggestion' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Enable this option to display member matching percentages on the profile page.', 'buddypress-friend-follow-suggestion' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<input type='checkbox' id="bprm_enable_profile_match" name='bffs_general_setting[enable_profile_match]'  class="regular-text" value='1' 
@@ -50,15 +49,20 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGI
 						?>
 						style="display:none;"<?php endif; ?>>
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e( 'Starting percentage', 'buddypress-friend-follow-suggestion' ); ?></label>
-							<p class="description"><?php esc_html_e( 'Percentage will start from this value.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<label><?php esc_html_e( 'Universal Match', 'buddypress-friend-follow-suggestion' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Universal Match ensures a minimum score for all users, even with no shared values. Its a foundation for potential interactions, promoting inclusivity by enabling all to build relationships, irrespective of shared attributes.', 'buddypress-friend-follow-suggestion' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<input type='text' id="bprm_profile_start_percentage" name='bffs_general_setting[profile_st_percentage]'  class="regular-text" value='<?php echo ( isset( $bffs_general_setting['profile_st_percentage'] ) ) ? esc_attr( $bffs_general_setting['profile_st_percentage'] ) : ''; ?>' />							
 						</div>
 					</div>
 
-				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields wbcom-bp-row-2settings" 
+				<div class="wbcom-settings-section-wrap">
+				<div class="wbcom-settings-section-options-heading">
+					<label><?php esc_html_e( 'Weighted Field Matching', 'buddypress-friend-follow-suggestion' ); ?></label>
+					<p class="description"><?php esc_html_e( 'Weighted Field Matching helps the admin can adjust weightages to enhance the accuracy and relevance of networking or dating experience.', 'buddypress-friend-follow-suggestion' ); ?></p>
+				</div>
+				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields wbcom-bp-row-settings" 
 				<?php
 				if ( ! isset( $bffs_general_setting['enable_profile_match'] ) || '' === $bffs_general_setting['enable_profile_match'] ) :
 					?>
@@ -102,6 +106,7 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGI
 						<a href="javascript:void(0)" id="add-bffs-match-field" class="add-bffs-match-field" ><?php esc_html_e( 'Add Field', 'buddypress-friend-follow-suggestion' ); ?></a>
 					</div>
 
+				</div>
 				</div>
 				<?php submit_button(); ?>
 			</form>

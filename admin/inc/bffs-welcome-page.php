@@ -14,7 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wbcom-tab-content">
 	<div class="wbcom-welcome-main-wrapper">
 		<div class="wbcom-welcome-head">
-			<p class="wbcom-welcome-description"><?php esc_html_e( 'BuddyPress Friends and Follow suggestions plugin assists you with improving your BuddyPress or BuddyBoss Platform-based community website by providing profile matching features to your users. It shows profile matching percentages in the member header area.', 'buddypress-friend-follow-suggestion' ); ?></p>
+			<p class="wbcom-welcome-description"><?php esc_html_e( 'BuddyPress Friends and Follow Suggestions plugin improves your BuddyPress community by displaying profile matching percentages in the member header area.', 'buddypress-friend-follow-suggestion' ); ?><br>
+			<?php $active_plugins = get_option( 'active_plugins' );
+				if (! in_array( 'buddypress-followers/loader.php', $active_plugins ) ) { ?>
+			<a href="https://github.com/r-a-y/buddypress-followers/archive/refs/heads/master.zip" class="download-link-wb"><?php esc_html_e( 'Install BuddyPress Follow plugin', 'buddypress-friend-follow-suggestion' ); ?></a>
+			<?php } ?>
+			</p>
 		</div><!-- .wbcom-welcome-head -->
 
 		<div class="wbcom-welcome-content">
@@ -24,27 +29,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<p><?php esc_html_e( 'Here are all the resources you may need to get help from us. Documentation is usually the best place to start. Should you require help anytime, our customer care team is available to assist you at the support center.', 'buddypress-friend-follow-suggestion' ); ?></p>
 
 				<div class="wbcom-support-info-wrap">
-					<div class="wbcom-support-info-widgets">
-						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'buddypress-friend-follow-suggestion' ); ?></h3>
-						<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Friend & Follow Suggestion to learn all aspects of the plugin. You will find most of your answers here.', 'buddypress-friend-follow-suggestion' ); ?></p>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-paid-addons/buddypress-friend-follow-suggestion/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'buddypress-friend-follow-suggestion' ); ?></a>
+					<div class="support-info-wrap-inner">
+						<div class="wb-section-top">
+							<div class="wbcom-support-info-widgets">
+								<div class="wbcom-support-inner">
+								<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'buddypress-friend-follow-suggestion' ); ?></h3>
+								<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Friend & Follow Suggestion to learn all aspects of the plugin. You will find most of your answers here.', 'buddypress-friend-follow-suggestion' ); ?></p>
+								<a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-paid-addons/buddypress-friend-follow-suggestion/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'buddypress-friend-follow-suggestion' ); ?></a>
+								</div>
+							</div>
+							<div class="wbcom-support-info-widgets">
+								<div class="wbcom-support-inner">
+									<h3><span class="dashicons dashicons-sos"></span><?php esc_html_e( 'Support Center', 'buddypress-friend-follow-suggestion' ); ?></h3>
+									<p><?php esc_html_e( 'We strive to offer the best customer care via our support center. Once your theme is activated, you can ask us for help anytime.', 'buddypress-friend-follow-suggestion' ); ?></p>
+									<a href="<?php echo esc_url( 'https://wbcomdesigns.com/support/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Get Support', 'buddypress-friend-follow-suggestion' ); ?></a>
+								</div>
+							</div>
+						</div>
+						<div class="wbcom-support-info-widgets feedback-wrapp">
+							<div class="wbcom-support-inner">
+							<h3><span class="dashicons dashicons-admin-comments"></span><?php esc_html_e( 'Got Feedback?', 'buddypress-friend-follow-suggestion' ); ?></h3>
+							<p><?php esc_html_e( 'We want to hear about your experience with the plugin. We would also love to hear any suggestions you may for future updates.', 'buddypress-friend-follow-suggestion' ); ?></p>
+							<a href="<?php echo esc_url( 'https://wbcomdesigns.com/submit-review/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Send Feedback', 'buddypress-friend-follow-suggestion' ); ?></a>
+						</div>
 						</div>
 					</div>
 
-					<div class="wbcom-support-info-widgets">
-						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-sos"></span><?php esc_html_e( 'Support Center', 'buddypress-friend-follow-suggestion' ); ?></h3>
-						<p><?php esc_html_e( 'We strive to offer the best customer care via our support center. Once your theme is activated, you can ask us for help anytime.', 'buddypress-friend-follow-suggestion' ); ?></p>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/support/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Get Support', 'buddypress-friend-follow-suggestion' ); ?></a>
-					</div>
-					</div>
-					<div class="wbcom-support-info-widgets">
-						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-admin-comments"></span><?php esc_html_e( 'Got Feedback?', 'buddypress-friend-follow-suggestion' ); ?></h3>
-						<p><?php esc_html_e( 'We want to hear about your experience with the plugin. We would also love to hear any suggestions you may for future updates.', 'buddypress-friend-follow-suggestion' ); ?></p>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/contact/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Send Feedback', 'buddypress-friend-follow-suggestion' ); ?></a>
-					</div>
+					<div class="support-video">
+						<iframe width="100%" height="450" src="https://www.youtube.com/embed/FkhIc-6KxLI" title="Friends and Follow Suggestion - BuddyPress Addon to Provide profile matching features to your users" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 					</div>
 
 				</div>
