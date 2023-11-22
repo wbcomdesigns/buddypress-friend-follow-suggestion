@@ -1265,15 +1265,15 @@ License style
     position: relative;
 }
 .wbcom-faq-section-row:hover {
-    background-color: #2A32EF;
-    border-color: #2A32EF;
+    background-color: #fff;
+    border-color: #fff;
 }
 .wbcom-faq-section-row:hover p,
 .wbcom-faq-section-row:hover
 button.wbcom-faq-accordion:after,
 .wbcom-faq-section-row:hover .wbcom-faq-panel li,
 .wbcom-faq-section-row:hover button.wbcom-faq-accordion {
-    color: #fff;
+    color: #000;
 }
 button.wbcom-faq-accordion {
     border: medium none;
@@ -1289,7 +1289,7 @@ button.wbcom-faq-accordion {
     width: 100%;
 }
 button.wb-ads-accordion.active, button.wb-ads-accordion:hover {
-    color: #2A32EF;
+    color: #000;
 }
 div.wbcom-faq-panel {
     padding: 0;
@@ -1310,11 +1310,11 @@ button.wbcom-faq-accordion::after {
     top: 10px;
 }
 button.wbcom-faq-accordion:hover::after {
-    color: white;
+    color: #000;
 }
 button.wbcom-faq-accordion.active::after {
     content: "−";
-    color:white;
+    color:#000;
 }
 .wbcom-faq-admin-row {
     clear: both;
