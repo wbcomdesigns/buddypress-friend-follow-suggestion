@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 
 					<div class="support-video">
-						<iframe width="100%" height="450" src="https://www.youtube.com/embed/FkhIc-6KxLI" title="Friends and Follow Suggestion - BuddyPress Addon to Provide profile matching features to your users" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+						<iframe width="100%" height="450" src="https://www.youtube.com/embed/cZ8GCiwqI90" title="Friends and Follow Suggestion - BuddyPress Addon to Provide profile matching features to your users" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 					</div>
 
 				</div>
