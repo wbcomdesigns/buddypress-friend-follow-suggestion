@@ -38,6 +38,13 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+		/**
+	 * The version of this plugin.
+	 *
+	 * @access   public
+	 * @var      string    $version    The dynamic creation of tab .
+	 */
+	public $plugin_settings_tabs = array();
 
 	/**
 	 * Initialize the class and set its properties.
@@ -145,7 +152,7 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	/** Bffs_plugin_settings */
 	public function bffs_plugin_settings() {
 
-				$this->plugin_settings_tabs['bffs-welcome'] = esc_html__( 'Welcome', 'buddypress-friend-follow-suggestion' );
+		$this->plugin_settings_tabs['bffs-welcome'] = esc_html__( 'Welcome', 'buddypress-friend-follow-suggestion' );
 		register_setting( 'bffs_admin_welcome_options', 'bffs_welcome_setting' );
 		add_settings_section( 'bffs-welcome', ' ', array( $this, 'bffs_admin_welcome_content' ), 'bffs-welcome' );
 

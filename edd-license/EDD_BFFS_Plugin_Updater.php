@@ -68,6 +68,13 @@ class EDD_BFFS_Plugin_Updater {
 	private $cache_key = '';
 
 	/**
+	 *  Initialize beta
+	 *
+	 * @var beta $beta  Initialize beta.
+	 */
+	private $beta = false;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @uses plugin_basename()
