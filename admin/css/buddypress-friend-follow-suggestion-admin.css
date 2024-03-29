@@ -2,22 +2,27 @@
 .nav-tab-wrapper ul li #bffs-general-tab:before {
     content: "\f111";
 }
+
 .bffs-field-header {
     color: #000;
     border-bottom: 1px solid rgba(200, 197, 218, 0.50);
     margin-top: -15px;
 }
+
 #bffs-field-content .search_field {
     padding: 15px 0 0;
 }
+
 #bffs-field-content span.bffs-col1 {
     color: #2a32ef;
     font-size: 20px;
 }
+
 .bffs-field-header span {
     margin: 0 !important;
-    padding-bottom:15px;
+    padding-bottom: 15px;
 }
+
 #bffs-field-content span {
     margin-right: 10px;
 }
@@ -50,7 +55,7 @@ p.description.description-title {
     display: inline-block;
     text-decoration: none;
     background: #38b570;
-    padding:12px 30px;
+    padding: 12px 30px;
     margin-bottom: 0;
     border-radius: 10px;
     color: #fff;
@@ -103,6 +108,7 @@ p.description.description-title {
     border-radius: 5px;
     border-color: #ccc;
 }
+
 .bffs-field-content input.bffs-check[type=checkbox]:checked::before {
     margin: 0;
     left: 0;
@@ -123,7 +129,7 @@ p.description.description-title {
     color: #ef3e46;
 }
 
-.wbcom-support-info-wrap{
+.wbcom-support-info-wrap {
     gap: 10px;
 }
 
@@ -134,6 +140,11 @@ p.description.description-title {
 .support-video {
     width: 50%;
 }
+
+.support-video .fluid-width-video-wrapper {
+    padding-top: 75% !important;
+}
+
 
 .wbcom-support-info-wrap .wbcom-support-info-widgets {
     max-width: 100%;
@@ -163,7 +174,7 @@ p.description.description-title {
     margin: 0 !important;
 }
 
-.feedback-wrapp .dashicons{
+.feedback-wrapp .dashicons {
     margin: 0 !important;
 }
 
@@ -171,9 +182,10 @@ p.description.description-title {
 
 @media only screen and (max-width: 679px) {
 
-    .bffs-field-header{
+    .bffs-field-header {
         display: none;
     }
+
     .bffs-col2,
     .bffs-col3,
     .bffs-col4,
@@ -181,6 +193,7 @@ p.description.description-title {
         width: 100%;
         margin: 5px 0 !important;
     }
+
     #bffs-field-content .search_field {
         padding: 0 0 18px;
         border-bottom: 1px solid #eee;
@@ -223,9 +236,11 @@ p.description.description-title {
     .wbcom-support-info-wrap {
         flex-wrap: wrap;
     }
+
     .support-info-wrap-inner {
         width: 100%;
     }
+
     .support-video {
         width: 100%;
         padding: 15px;

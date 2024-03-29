@@ -15,8 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="wbcom-welcome-main-wrapper">
 		<div class="wbcom-welcome-head">
 			<p class="wbcom-welcome-description"><?php esc_html_e( 'BuddyPress Friends and Follow Suggestions plugin improves your BuddyPress community by displaying profile matching percentages in the member header area.', 'buddypress-friend-follow-suggestion' ); ?><br>
-			<?php $active_plugins = get_option( 'active_plugins' );
-				if (! in_array( 'buddypress-followers/loader.php', $active_plugins ) ) { ?>
+			<?php
+			$active_plugins = get_option( 'active_plugins' );
+			if ( ! in_array( 'buddypress-followers/loader.php', $active_plugins ) ) {
+				?>
 			<a href="https://github.com/r-a-y/buddypress-followers/archive/refs/heads/master.zip" class="download-link-wb"><?php esc_html_e( 'Install BuddyPress Follow plugin', 'buddypress-friend-follow-suggestion' ); ?></a>
 			<?php } ?>
 			</p>
