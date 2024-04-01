@@ -3,7 +3,7 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 6.4.1
+Tested up to: 6.5.0
 Stable tag: 1.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.4.9 =
+* Fix: (#74)Fixed Video UI issue with BB
+* Fix: (#70) Fixed issue with php 8.2
+
 = 1.4.8 =
 * Updated: Video on admin section
 * Updated: Admin faq hover color
