@@ -47,21 +47,6 @@ window.bp = window.bp || {};
     BPFrienFollow.init();
   });
 
-// Suggestions Slider
-  if ($('.bffs_horizontal_layout').length) {
-  var bffs = new Bffs(".bffs_horizontal_layout", {
-    centeredSlides: true,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".bffs-button-next",
-      prevEl: ".bffs-button-prev",
-    },
-  });}
-
 // Add swiper layout for the bp-friend-follow-swiper-widget
   var swiper = new Swiper(".swiper", {
     effect: "coverflow",
@@ -69,6 +54,9 @@ window.bp = window.bp || {};
     centeredSlides: true,
     slidesPerView: "auto",
     loop: true,
+    autoplay: {
+      delay: 1000,
+    },
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -98,5 +86,22 @@ window.bp = window.bp || {};
       },
     }); 
   })
+
+  var swiper = new Swiper(".horizontal_swiper", {
+    effect: "flip",
+    grabCursor: true,
+    loop: true,
+    speed: 1000,
+    autoplay: {
+      delay: 1000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
 
 })(jQuery);

@@ -1,14 +1,25 @@
-<div class="bffs_horizontal_layout">
-<div id="members-list" class="bffs-wrapper item-list members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
+<div class="bffs_horizontal_layout horizontal_swiper">
+<div id="members-list" class="bffs-wrapper item-list members-list swiper-wrapper" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
 			while ( bp_members() ) :
 				bp_the_member();
 				?>
-				<div class="bffs-slide">
+				<div class="bffs-slide swiper-slide">
 				<div <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
 					<div class="list-wrap">
 						<div class="item-avatar">
-							<a href="<?php bp_member_permalink(); ?>" class="bp-tooltip" data-bp-tooltip="<?php bp_member_name(); ?>"><?php bp_member_avatar(); ?></a>
+							<?php
+								bp_member_avatar(
+									apply_filters(
+										'bp_nouveau_avatar_args',
+										array(
+											'type'   => 'full',
+											'width'  => bp_core_avatar_full_width(),
+											'height' => bp_core_avatar_full_height(),
+										)
+									)
+								);
+							?>
 						</div>
 						<div class="item">
 							<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
@@ -36,6 +47,4 @@
 			<?php endwhile; ?>
 		</div>
 		<!-- If we need navigation buttons -->
-  <div class="bffs-button-prev"></div>
-  <div class="bffs-button-next"></div>
 	</div>

@@ -8,10 +8,20 @@
 
 					<div <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
 						<div class="list-wrap">
-
 							<div class="bffs_user_layout_one">
 								<div class="item-avatar">
-									<?php bp_member_avatar( bp_nouveau_avatar_args() ); ?>
+									<?php
+									bp_member_avatar(
+										apply_filters(
+											'bp_nouveau_avatar_args',
+											array(
+												'type'   => 'full',
+												'width'  => bp_core_avatar_full_width(),
+												'height' => bp_core_avatar_full_height(),
+											)
+										)
+									);
+									?>
 								</div>
 								<div class="bffs_swipe_layout_bottom">
 									<div class="bffs_user_buttons">
