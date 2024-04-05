@@ -129,6 +129,9 @@ class Buddypress_Friend_Follow_Suggestion {
 		/* Enqueue suggestion widget  */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-suggestion.php';
 
+		/* Enqueue swiper widget  */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-swiper.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -195,6 +198,7 @@ class Buddypress_Friend_Follow_Suggestion {
 		} else {
 			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 		}
+		$this->loader->add_action( 'wp_ajax_bffs_remove_user', $plugin_public, 'bffs_remove_user_form_widget' );
 
 	}
 

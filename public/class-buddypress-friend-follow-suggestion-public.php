@@ -91,6 +91,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			}
 		}
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $rtl_css . '/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'swiper-bundle', plugin_dir_url( __FILE__ ) . 'css/swiper-bundle.min.css', array(), $this->version, 'all' );
 
 	}
 
@@ -113,6 +114,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		 * class.
 		 */
 
+		wp_enqueue_script( $this->plugin_name . '-swiper', plugin_dir_url( __FILE__ ) . 'js/swiper-bundle.min.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, true );
 		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
 		foreach ( $widget_layout as $layout_widget ) {
@@ -120,6 +122,14 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				wp_enqueue_script( $this->plugin_name . '-slider', plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
 			}
 		}
+		wp_localize_script(
+			$this->plugin_name,
+			'bffs_ajax_object',
+			array(
+				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+				'ajax_nonce' => wp_create_nonce( 'bffs-widget-nonce' ),
+			)
+		);
 	}
 
 	/**
@@ -261,6 +271,25 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		$this->profile_fields = $fields;
 
 		return $fields;
+	}
+
+	/**
+	 * Bffs_remove_user_form_widget
+	 */
+	public function bffs_remove_user_form_widget() {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'bffs-widget-nonce' ) ) {
+			return false;
+		}
+		$mem_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : '';
+		if ( $mem_id ) {
+			$existing_removed_users = get_user_meta( bp_loggedin_user_id(), 'bffs_remove_user', true );
+			if ( ! is_array( $existing_removed_users ) ) {
+				$existing_removed_users = array();
+			}
+			// Add the new member ID to the existing array.
+			$existing_removed_users[] = $mem_id;
+			update_user_meta( bp_loggedin_user_id(), 'bffs_remove_user', $existing_removed_users );
+		}
 	}
 
 }

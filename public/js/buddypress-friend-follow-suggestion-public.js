@@ -1,3 +1,4 @@
+window.bp = window.bp || {};
 (function($) {
   'use strict';
 
@@ -60,4 +61,42 @@
       prevEl: ".bffs-button-prev",
     },
   });}
+
+// Add swiper layout for the bp-friend-follow-swiper-widget
+  var swiper = new Swiper(".swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+
+  //exclude user on click remove button in bp-friend-follow-swiper-widget
+  $('.swipe-cross-button a').on('click', function(e){
+    e.preventDefault();
+    var mem_id = $(this).data('mem_id');
+    $.ajax({
+      url: bffs_ajax_object.ajaxurl,
+      type: "post",
+      data: {
+        'action': 'bffs_remove_user',
+        'mem_id': mem_id,
+        'nonce': bffs_ajax_object.ajax_nonce
+      },
+      success: function (data) {
+        swiper.slideNext();
+      },
+    }); 
+  })
+
 })(jQuery);
