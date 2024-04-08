@@ -463,6 +463,32 @@
     background: url('../images/user_cricle_icon.svg') no-repeat center center;
 }
 
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .follow-button a {
+    height: 40px;
+    width: 40px;
+    font-size: 0px;
+    padding: 0px;
+    background: #FF0000;
+    box-shadow: 0 0 15px rgb(30 27 27 / 16%);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -ms-transition: 0.7s;
+    -o-transition: 0.7s;
+}
+
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .follow-button a:before {
+    content: '';
+    height: 24px;
+    width: 24px;
+    background: url('../images/favorite.svg') no-repeat center center;
+}
+
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .swipe-cross-button {
     height: 40px;
     width: 40px;
@@ -495,7 +521,8 @@
 
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button:hover,
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button a:hover,
-.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .swipe-cross-button:hover {
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .swipe-cross-button:hover,
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .follow-button a:hover {
     -webkit-transform: translateY(-5px);
     -moz-transform: translateY(-5px);
     -o-transform: translateY(-5px);
