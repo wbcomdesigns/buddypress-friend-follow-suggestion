@@ -54,6 +54,10 @@ window.bp = window.bp || {};
         centeredSlides: true,
         slidesPerView: "auto",
         loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
         coverflowEffect: {
             rotate: 50,
             stretch: 0,
@@ -67,7 +71,6 @@ window.bp = window.bp || {};
     });
 
     var swiper = new Swiper(".horizontal_swiper", {
-        effect: "flip",
         grabCursor: true,
         loop: true,
         speed: 500,
