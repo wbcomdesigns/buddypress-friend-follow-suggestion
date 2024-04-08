@@ -199,6 +199,7 @@ class Buddypress_Friend_Follow_Suggestion {
 			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 		}
 		$this->loader->add_action( 'wp_ajax_bffs_remove_user', $plugin_public, 'bffs_remove_user_form_widget' );
+		$this->loader->add_action( 'wp_ajax_bffs_add_friend', $plugin_public, 'bffs_add_friend_widget' );
 
 	}
 

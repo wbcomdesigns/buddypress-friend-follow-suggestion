@@ -49,10 +49,10 @@
 												}
 												?>
 											<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-												<?php
-												echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) );
-												?>
-										<?php endif; ?>
+													<button class="bffs-friendship-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+														<?php echo esc_html( 'Add Friend' ); ?>
+													</button>
+											<?php endif; ?>
 									</div>
 									<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
 									<div class="bffs_user_online"><span class="user_status"></span><?php esc_html_e( 'Online', 'buddypress-friend-follow-suggestion' ); ?></div>
@@ -66,7 +66,11 @@
 											</a>
 										</li>
 										<?php
-										$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() );
+										if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
+											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_get_member_user_id() );
+										} else {
+											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() );
+										}
 										?>
 										<li class="bffs_msg_icon">
 											<a href="<?php echo esc_url( $messgae_url ); ?>">
@@ -76,7 +80,13 @@
 											</a>
 										</li>										
 										<li class="bffs_user_icon">
-											<?php $link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' ); ?>
+											<?php
+											if ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) {
+												$link = home_url( '/members/' . bp_core_get_username( bp_get_member_user_id() ) . '/profile/' );
+											} else {
+												$link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' );
+											}
+											?>
 											<a href="<?php echo $link; ?>">
 												<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<path d="M4.0231 15.2923C4.8731 14.6616 5.79906 14.1635 6.80097 13.7981C7.80289 13.4327 8.86923 13.25 10 13.25C11.1308 13.25 12.1971 13.4327 13.199 13.7981C14.2009 14.1635 15.1269 14.6616 15.9769 15.2923C16.5987 14.609 17.0913 13.818 17.4548 12.9193C17.8183 12.0205 18 11.0474 18 10C18 7.78334 17.2208 5.89584 15.6625 4.33751C14.1042 2.77917 12.2167 2.00001 10 2.00001C7.78333 2.00001 5.89583 2.77917 4.3375 4.33751C2.77916 5.89584 2 7.78334 2 10C2 11.0474 2.18173 12.0205 2.5452 12.9193C2.90866 13.818 3.4013 14.609 4.0231 15.2923ZM10.0003 10.75C9.08728 10.75 8.31731 10.4366 7.6904 9.80991C7.06348 9.18317 6.75002 8.41331 6.75002 7.50031C6.75002 6.58729 7.06338 5.81732 7.6901 5.19041C8.31683 4.56349 9.0867 4.25003 9.9997 4.25003C10.9127 4.25003 11.6827 4.56339 12.3096 5.19011C12.9365 5.81684 13.25 6.58671 13.25 7.49971C13.25 8.41272 12.9366 9.18269 12.3099 9.80961C11.6832 10.4365 10.9133 10.75 10.0003 10.75ZM10 19.5C8.68076 19.5 7.44327 19.2519 6.28752 18.7557C5.13176 18.2596 4.12631 17.5839 3.27117 16.7288C2.41606 15.8737 1.74042 14.8682 1.24427 13.7125C0.748106 12.5567 0.500023 11.3192 0.500023 10C0.500023 8.68077 0.748106 7.44328 1.24427 6.28753C1.74042 5.13176 2.41606 4.12631 3.27117 3.27118C4.12631 2.41606 5.13176 1.74043 6.28752 1.24428C7.44327 0.748114 8.68076 0.500031 10 0.500031C11.3192 0.500031 12.5567 0.748114 13.7125 1.24428C14.8682 1.74043 15.8737 2.41606 16.7288 3.27118C17.5839 4.12631 18.2596 5.13176 18.7557 6.28753C19.2519 7.44328 19.5 8.68077 19.5 10C19.5 11.3192 19.2519 12.5567 18.7557 13.7125C18.2596 14.8682 17.5839 15.8737 16.7288 16.7288C15.8737 17.5839 14.8682 18.2596 13.7125 18.7557C12.5567 19.2519 11.3192 19.5 10 19.5ZM10 18C10.9026 18 11.7728 17.8548 12.6106 17.5644C13.4484 17.2741 14.1923 16.868 14.8423 16.3462C14.1923 15.8436 13.458 15.4519 12.6394 15.1712C11.8208 14.8904 10.941 14.75 10 14.75C9.05896 14.75 8.17755 14.8888 7.35575 15.1663C6.53395 15.4439 5.80126 15.8372 5.15767 16.3462C5.80767 16.868 6.55159 17.2741 7.38942 17.5644C8.22724 17.8548 9.09743 18 10 18ZM10 9.25003C10.4974 9.25003 10.9135 9.08272 11.2481 8.74811C11.5827 8.41347 11.75 7.99744 11.75 7.50001C11.75 7.00257 11.5827 6.58654 11.2481 6.25191C10.9135 5.91729 10.4974 5.74998 10 5.74998C9.50256 5.74998 9.08653 5.91729 8.7519 6.25191C8.41728 6.58654 8.24997 7.00257 8.24997 7.50001C8.24997 7.99744 8.41728 8.41347 8.7519 8.74811C9.08653 9.08272 9.50256 9.25003 10 9.25003Z" fill="#A4B3D0"/>

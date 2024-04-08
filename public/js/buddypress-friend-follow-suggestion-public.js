@@ -66,6 +66,27 @@ window.bp = window.bp || {};
         },
     });
 
+    $('.bffs-friendship-button').on('click', function () {
+        var mem_id = $(this).data('mem_id');
+        var swiper_friend = new Swiper(".swiper", {
+            effect: "coverflow",
+        });
+        $.ajax({
+            url: bffs_ajax_object.ajaxurl,
+            type: "post",
+            data: {
+                'action': 'bffs_add_friend',
+                'mem_id': mem_id,
+                'nonce': bffs_ajax_object.ajax_nonce
+            },
+            success: function (data) {
+                if (true == data.success) {
+                    swiper_friend.slideNext();
+                }
+            },
+        });
+    });
+
     //exclude user on click remove button in bp-friend-follow-swiper-widget
     $('.swipe-cross-button a').on('click', function(e) {
         e.preventDefault();

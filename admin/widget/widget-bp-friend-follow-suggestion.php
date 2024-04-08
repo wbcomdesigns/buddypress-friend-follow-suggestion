@@ -50,6 +50,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 	 * @param array $instance Widget settings, as saved by the user.
 	 */
 	public function widget( $args, $instance ) {
+		do_action( 'bp_enqueue_community_scripts' );
 		global $members_template;
 		global $follower_id;
 		global $leader_id;

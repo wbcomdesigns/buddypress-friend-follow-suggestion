@@ -292,4 +292,25 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		}
 	}
 
+	/**
+	 * Bffs_add_friend_widget
+	 */
+	public function bffs_add_friend_widget() {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'bffs-widget-nonce' ) ) {
+			return false;
+		}
+		$friend_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : '';
+		if ( 'not_friends' === BP_Friends_Friendship::check_is_friend( bp_loggedin_user_id(), $friend_id ) ) {
+			if ( ! friends_add_friend( bp_loggedin_user_id(), $friend_id ) ) {
+				$response['feedback'] = sprintf(
+					'<div class="bp-feedback error">%s</div>',
+					esc_html__( 'Friendship could not be requested.', 'buddypress' )
+				);
+				wp_send_json_error( $response );
+			} else {
+				wp_send_json_success( array( 'contents' => bp_get_add_friend_button( $friend_id ) ) );
+			}
+		}
+	}
+
 }
