@@ -39,7 +39,9 @@
 											</a>
 										</div>
 										<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-											<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>
+											<button class="bffs-follow-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+												<?php esc_html_e( 'Follow', 'buddypress-friend-follow-suggestion' ); ?>
+											</button>
 											<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
 												<?php
 
