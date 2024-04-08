@@ -382,6 +382,12 @@
     border-radius: 100px;
 }
 
+.widget_bp_friend_follow_swiper_widget .bffs_user_layout_button_list .bffs_actvity_icon a {
+    background: #0258FF;
+    color: #fff;
+    font-size: 15px;
+}
+
 .widget_bp_friend_follow_swiper_widget .bffs_user_layout_button_list li svg {
     height: 24px;
     width: 24px;
@@ -431,6 +437,32 @@
     font-size: 0;
 }
 
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button {
+    height: 40px;
+    width: 40px;
+    font-size: 0px;
+    padding: 0px;
+    background: #FF0000;
+    box-shadow: 0 0 15px rgb(30 27 27 / 16%);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -ms-transition: 0.7s;
+    -o-transition: 0.7s;
+}
+
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button:before {
+    content: '';
+    height: 24px;
+    width: 24px;
+    background: url('../images/user_cricle_icon.svg') no-repeat center center;
+}
+
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .swipe-cross-button {
     height: 40px;
     width: 40px;
@@ -461,6 +493,7 @@
     background: url('../images/user_cricle_icon.svg') no-repeat center center;
 }
 
+.widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button:hover,
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .friendship-button a:hover,
 .widget_bp_friend_follow_swiper_widget .bffs_swiper .bffs_user_buttons .swipe-cross-button:hover {
     -webkit-transform: translateY(-5px);
@@ -510,11 +543,6 @@
     padding: 5px;
     background: rgb(2 88 255 / 20%);
     border-radius: 100px;
-}
-
-.widget_bp_friend_follow_swiper_widget .bffs_user_layout_button_list .bffs_actvity_icon a {
-    background: #0258FF;
-    color: #fff;
 }
 
 .widget_bp_friend_follow_swiper_widget .bffs_user_layout_two .bffs_user_layout_button_list svg path {
