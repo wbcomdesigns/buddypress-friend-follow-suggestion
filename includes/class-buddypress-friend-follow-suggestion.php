@@ -200,6 +200,7 @@ class Buddypress_Friend_Follow_Suggestion {
 		}
 		$this->loader->add_action( 'wp_ajax_bffs_remove_user', $plugin_public, 'bffs_remove_user_form_widget' );
 		$this->loader->add_action( 'wp_ajax_bffs_add_friend', $plugin_public, 'bffs_add_friend_widget' );
+		$this->loader->add_action( 'wp_ajax_bffs_follow_button', $plugin_public, 'bffs_follow_button_widget' );
 
 	}
 

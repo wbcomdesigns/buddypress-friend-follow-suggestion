@@ -38,7 +38,9 @@
 											</a>
 										</div>
 										<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-											<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>
+											<button class="bffs-follow-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+												<?php esc_html_e( 'Follow', 'buddypress-friend-follow-suggestion' ); ?>
+											</button>
 											<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
 												<?php
 
@@ -49,8 +51,8 @@
 												}
 												?>
 											<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-													<button class="bffs-friendship-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
-														<?php echo esc_html( 'Add Friend' ); ?>
+													<button class="bffs-friendship-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id );?>" id="friend-<?php echo esc_attr( $members_template->member->id );?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+														<?php echo esc_html( 'Add Friend' );?>
 													</button>
 											<?php endif; ?>
 									</div>
@@ -66,7 +68,7 @@
 											</a>
 										</li>
 										<?php
-										if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
+										if( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss  ) ) ){
 											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_get_member_user_id() );
 										} else {
 											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() );
@@ -80,11 +82,11 @@
 											</a>
 										</li>										
 										<li class="bffs_user_icon">
-											<?php
-											if ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) {
-												$link = home_url( '/members/' . bp_core_get_username( bp_get_member_user_id() ) . '/profile/' );
+											<?php 
+											if( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss  ) ) {
+												$link = home_url( '/members/' . bp_core_get_username( bp_get_member_user_id() ) . '/profile/' ); 
 											} else {
-												$link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' );
+												$link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' ); 
 											}
 											?>
 											<a href="<?php echo $link; ?>">

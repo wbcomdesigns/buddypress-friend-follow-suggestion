@@ -66,7 +66,45 @@ window.bp = window.bp || {};
         },
     });
 
+    var swiper = new Swiper(".horizontal_swiper", {
+        effect: "flip",
+        grabCursor: true,
+        loop: true,
+        speed: 500,
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    //exclude user on click remove button in bp-friend-follow-swiper-widget
+    $('.swipe-cross-button a').on('click', function (e) {
+        e.preventDefault();
+        $(this).closest('.bffs-swipe-slides').remove();
+        var mem_id = $(this).data('mem_id');
+        var friend_remove = new Swiper(".swiper", {
+            effect: "coverflow",
+        });        
+        $.ajax({
+            url: bffs_ajax_object.ajaxurl,
+            type: "post",
+            data: {
+                'action': 'bffs_remove_user',
+                'mem_id': mem_id,
+                'nonce': bffs_ajax_object.ajax_nonce
+            },
+            success: function (data) {
+                friend_remove.slideNext();
+            },
+        });
+    })
+
+    // Add ajax on add friend button
     $('.bffs-friendship-button').on('click', function () {
+        $(this).closest('.bffs-swipe-slides').remove();
         var mem_id = $(this).data('mem_id');
         var swiper_friend = new Swiper(".swiper", {
             effect: "coverflow",
@@ -87,36 +125,27 @@ window.bp = window.bp || {};
         });
     });
 
-    //exclude user on click remove button in bp-friend-follow-swiper-widget
-    $('.swipe-cross-button a').on('click', function(e) {
-        e.preventDefault();
+    // Add ajax on follow button
+    $('.bffs-follow-button').on('click', function(){
+        $(this).closest('.bffs-swipe-slides').remove();
         var mem_id = $(this).data('mem_id');
+        var swiper_follow = new Swiper(".swiper", {
+            effect: "coverflow",
+        });
         $.ajax({
             url: bffs_ajax_object.ajaxurl,
             type: "post",
             data: {
-                'action': 'bffs_remove_user',
+                'action': 'bffs_follow_button',
                 'mem_id': mem_id,
                 'nonce': bffs_ajax_object.ajax_nonce
             },
-            success: function(data) {
-                swiper.slideNext();
+            success: function (data) {
+                if (true == data.success) {
+                    swiper_follow.slideNext();
+                }
             },
         });
-    })
-
-    var swiper = new Swiper(".horizontal_swiper", {
-        // effect: "flip",
-        grabCursor: true,
-        loop: true,
-        speed: 500,
-        pagination: {
-            el: ".swiper-pagination",
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
     });
 
 })(jQuery);
