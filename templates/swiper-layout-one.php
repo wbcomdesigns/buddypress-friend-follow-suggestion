@@ -26,7 +26,7 @@
 								<div class="bffs_swipe_layout_bottom">
 									<div class="bffs_user_buttons">
 										<div class="swipe-cross-button">
-											<a class="bffs_remove_user" href="" data-mem_id="<?php bp_member_user_id(); ?>">
+											<a class="bffs_remove_user" href="" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id="<?php bp_member_user_id(); ?>">
 												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<mask id="mask0_19_529" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
 													<rect width="22" height="22" fill="#D9D9D9"/>
@@ -38,7 +38,7 @@
 											</a>
 										</div>
 										<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-											<button class="bffs-follow-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+											<button class="bffs-follow-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Follow" data-bp-btn-action="not_friends">
 												<?php esc_html_e( 'Follow', 'buddypress-friend-follow-suggestion' ); ?>
 											</button>
 											<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
@@ -51,7 +51,7 @@
 												}
 												?>
 											<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-													<button class="bffs-friendship-button friendship-button" data-mem_id = "<?php echo esc_attr( $members_template->member->id );?>" id="friend-<?php echo esc_attr( $members_template->member->id );?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+													<button class="bffs-friendship-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id );?>" id="friend-<?php echo esc_attr( $members_template->member->id );?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
 														<?php echo esc_html( 'Add Friend' );?>
 													</button>
 											<?php endif; ?>

@@ -84,13 +84,21 @@ window.bp = window.bp || {};
     });
 
     //exclude user on click remove button in bp-friend-follow-swiper-widget
+    var clickCount = 1;
     $('.swipe-cross-button a').on('click', function(e) {
         e.preventDefault();
         $(this).closest('.bffs-swipe-slides').remove();
         var mem_id = $(this).data('mem_id');
+        var max_mem = $(this).data('max_mem');
+        var total_mem = $(this).data('total_mem');        
         var friend_remove = new Swiper(".swiper", {
             effect: "coverflow",
         });
+        if (clickCount == max_mem) {
+            location.reload();
+        } else if (total_mem < max_mem) {
+            location.reload();
+        }
         $.ajax({
             url: bffs_ajax_object.ajaxurl,
             type: "post",
@@ -103,15 +111,24 @@ window.bp = window.bp || {};
                 friend_remove.slideNext();
             },
         });
+        clickCount++;
     })
 
     // Add ajax on add friend button
+    var clickCount = 1;
     $('.bffs-friendship-button').on('click', function() {
         $(this).closest('.bffs-swipe-slides').remove();
         var mem_id = $(this).data('mem_id');
+        var max_mem = $(this).data('max_mem');
+        var total_mem = $(this).data('total_mem');
         var swiper_friend = new Swiper(".swiper", {
             effect: "coverflow",
         });
+        if ( clickCount == max_mem ){
+            location.reload();
+        } else if( total_mem < max_mem ){
+            location.reload();
+        }
         $.ajax({
             url: bffs_ajax_object.ajaxurl,
             type: "post",
@@ -120,21 +137,31 @@ window.bp = window.bp || {};
                 'mem_id': mem_id,
                 'nonce': bffs_ajax_object.ajax_nonce
             },
-            success: function(data) {
+            success: function(data) {                
                 if (true == data.success) {
                     swiper_friend.slideNext();
+                    
                 }
             },
         });
+        clickCount++;
     });
 
+    var clickCount = 1;
     // Add ajax on follow button
     $('.bffs-follow-button').on('click', function() {
         $(this).closest('.bffs-swipe-slides').remove();
         var mem_id = $(this).data('mem_id');
+        var max_mem = $(this).data('max_mem');
+        var total_mem = $(this).data('total_mem');
         var swiper_follow = new Swiper(".swiper", {
             effect: "coverflow",
         });
+        if (clickCount == max_mem) {
+            location.reload();
+        } else if (total_mem < max_mem) {
+            location.reload();
+        }
         $.ajax({
             url: bffs_ajax_object.ajaxurl,
             type: "post",
@@ -149,6 +176,7 @@ window.bp = window.bp || {};
                 }
             },
         });
+        clickCount++;
     });
 
 })(jQuery);

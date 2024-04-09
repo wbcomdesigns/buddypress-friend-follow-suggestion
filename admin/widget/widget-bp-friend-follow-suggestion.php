@@ -98,8 +98,8 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 				require BFFS_PLUGIN_PATH . 'templates/horizontal-layout.php';
 			}
 			?>
+
 			
-		
 		<?php else : ?>
 
 			<div class="widget-error">
