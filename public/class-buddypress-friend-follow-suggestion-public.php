@@ -91,7 +91,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			}
 		}
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $rtl_css . '/buddypress-friend-follow-suggestion-public.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'swiper-bundle', plugin_dir_url( __FILE__ ) . 'css/swiper-bundle.min.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'swiper-style', plugin_dir_url( __FILE__ ) . 'css/swiper-bundle.min.css', array(), $this->version, 'all' );
 
 	}
 
@@ -114,20 +114,27 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name . '-swiper', plugin_dir_url( __FILE__ ) . 'js/swiper-bundle.min.js', array( 'jquery' ), $this->version, true );
+		// wp_enqueue_script( $this->plugin_name . '-swiper', plugin_dir_url( __FILE__ ) . 'js/swiper-bundle.min.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-public.js', array( 'jquery' ), $this->version, true );
-		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
-		foreach ( $widget_layout as $layout_widget ) {
-			if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
-				wp_enqueue_script( $this->plugin_name . '-slider', plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
-			}
-		}
+		wp_enqueue_script( 'wp-element' );
+		wp_enqueue_script( $this->plugin_name . 'suggestion-slider', plugin_dir_url( __FILE__ ) . 'js/build/swiper.js', array( 'wp-element' ), $this->version, true );
+		// $widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
+		// foreach ( $widget_layout as $layout_widget ) {
+		// 	if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
+		// 		wp_enqueue_script( $this->plugin_name . '-slider', plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
+		// 	}
+		// }
 		wp_localize_script(
 			$this->plugin_name,
 			'bffs_ajax_object',
 			array(
 				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'bffs-widget-nonce' ),
+				'root'       => esc_url_raw( rest_url() ),
+				'nonce'      => wp_create_nonce( 'wp_rest' ),
+				'userId'     => get_current_user_id(),
+				'security'   => wp_create_nonce( 'bffs-swipe-' . get_current_user_id() ),
+				'compose'    => bp_suggestions_get_compose_message_url(),
 			)
 		);
 	}
@@ -280,7 +287,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'bffs-widget-nonce' ) ) {
 			return false;
 		}
-		$mem_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : ''; 
+		$mem_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : '';
 		if ( $mem_id ) {
 			$existing_removed_users = get_user_meta( bp_loggedin_user_id(), 'bffs_remove_user', true );
 			if ( ! is_array( $existing_removed_users ) ) {
@@ -323,7 +330,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		$leader_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : '';
 		if ( bp_follow_start_following(
 			array(
-				'leader_id' => $leader_id,
+				'leader_id'   => $leader_id,
 				'follower_id' => bp_loggedin_user_id(),
 			)
 		) ) {
@@ -338,14 +345,14 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		} else {
 			// output fallback invalid button.
 			$args = array(
-				'id'         => 'invalid',
-				'link_href'  => 'javascript:;',
-				'component'  => 'follow',
+				'id'        => 'invalid',
+				'link_href' => 'javascript:;',
+				'component' => 'follow',
 			);
 
 			if ( bp_follow_is_following(
 				array(
-					'leader_id' => $leader_id,
+					'leader_id'   => $leader_id,
 					'follower_id' => bp_loggedin_user_id(),
 				)
 			) ) {
@@ -380,4 +387,23 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		wp_send_json_success( $output );
 	}
 
+
+	public function bp_friend_follow_suggestion_register_user_meta() {
+		$object_type = 'user';
+		$meta_args   = array(
+			'type'         => 'array',
+			'single'       => true,
+			'show_in_rest' => array(
+				'schema' => array(
+					'type'  => 'array',
+					'items' => array(
+						'type' => 'integer',
+					),
+				),
+			),
+		);
+		register_meta( $object_type, 'swiped', $meta_args );
+	}
 }
+
+

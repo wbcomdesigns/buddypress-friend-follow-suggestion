@@ -48,40 +48,40 @@ window.bp = window.bp || {};
     });
 
     // Add swiper layout for the bp-friend-follow-swiper-widget
-    var swiper = new Swiper(".swiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        loop: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-        },
-    });
+    // var swiper = new Swiper(".swiper", {
+    //     effect: "coverflow",
+    //     grabCursor: true,
+    //     centeredSlides: true,
+    //     slidesPerView: "auto",
+    //     loop: true,
+    //     navigation: {
+    //         nextEl: ".swiper-button-next",
+    //         prevEl: ".swiper-button-prev",
+    //     },
+    //     coverflowEffect: {
+    //         rotate: 50,
+    //         stretch: 0,
+    //         depth: 100,
+    //         modifier: 1,
+    //         slideShadows: true,
+    //     },
+    //     pagination: {
+    //         el: ".swiper-pagination",
+    //     },
+    // });
 
-    var swiper = new Swiper(".horizontal_swiper", {
-        grabCursor: true,
-        loop: true,
-        speed: 500,
-        pagination: {
-            el: ".swiper-pagination",
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
+    // var swiper = new Swiper(".horizontal_swiper", {
+    //     grabCursor: true,
+    //     loop: true,
+    //     speed: 500,
+    //     pagination: {
+    //         el: ".swiper-pagination",
+    //     },
+    //     navigation: {
+    //         nextEl: ".swiper-button-next",
+    //         prevEl: ".swiper-button-prev",
+    //     },
+    // });
 
     //exclude user on click remove button in bp-friend-follow-swiper-widget
     var clickCount = 1;

@@ -16,19 +16,28 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 			global $wpdb;
 
 			$exclude_user = array();
+			$is_confirmed = 0;
 			if ( 'friends' === $suggest ) {
-				$sql          = "select friend_user_id from {$wpdb->prefix}bp_friends where initiator_user_id = {$user_id}";
+				$sql          = $wpdb->prepare( "Select `friend_user_id` from {$wpdb->prefix}bp_friends where initiator_user_id = %d AND `is_confirmed` = %d", $user_id, $is_confirmed );
 				$exclude_user = $wpdb->get_col( $sql );
 			} elseif ( 'follow' === $suggest ) {
 				$sql          = "select leader_id from {$wpdb->prefix}bp_follow where follower_id = {$user_id}";
 				$exclude_user = $wpdb->get_col( $sql );
 			}
 
+			if ( ! empty( get_user_meta( $user_id, 'swiped', true ) ) ) {
+				$exclude_user = array_merge( $exclude_user, get_user_meta( $user_id, 'swiped', true ) );
+			}
+
 			$bffs_general_setting = get_option( 'bffs_general_setting' );
 			$matche_obj           = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_VERSION );
 			$max_members          = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
-
-			$users = get_users( array( 'exclude' => $exclude_user ) );
+			$users                = get_users(
+				array(
+					'exclude' => $exclude_user,
+					'number'  => $max_members,
+				)
+			);
 
 			$match_data          = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
 			$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
@@ -75,5 +84,18 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 			}
 			return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
 		}
+	}
+}
+
+
+if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
+	function bp_suggestions_get_compose_message_url() {
+		if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
+			$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
+		} else {
+			$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
+		}
+
+		return apply_filters( 'bp_suggestions_compose_message_url', $messgae_url );
 	}
 }

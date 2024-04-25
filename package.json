@@ -5,9 +5,10 @@
   "license": "GPL-2.0+",
   "description": "Suggest users on the basis of there profile matching.",
   "devDependencies": {
+    "@wordpress/scripts": "^27.6.0",
     "grunt": "^1.1.0",
-    "grunt-wp-i18n": "^1.0.3",
-    "grunt-checktextdomain": "^1.0.1"
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-wp-i18n": "^1.0.3"
   },
   "engines": {
     "node": ">=6.9.1"
@@ -17,8 +18,14 @@
     "url": "https://github.com/wbcomdesigns/buddypress-friend-follow-suggestion"
   },
   "dependencies": {
+    "@wordpress/i18n": "^4.56.0",
     "grunt-checktextdomain": "^1.0.1",
     "grunt-rtlcss": "^2.0.2",
-    "load-grunt-tasks": "^3.5.2"
+    "load-grunt-tasks": "^3.5.2",
+    "swiper": "^11.1.1"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
   }
 }

@@ -97,42 +97,43 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 			'include'         => $matched_members,
 			'exclude'         => $exclude_user,
 			'per_page'        => $max_members,
-			'max'             => $max_members,
 			'populate_extras' => true,
 			'search_terms'    => false,
 		);
+
 		// Back up the global.
-		if ( bp_has_members( $members_args ) && ! empty( $matched_members ) ) :    ?>
+		//if ( bp_has_members( $members_args ) && ! empty( $matched_members ) ) :    ?>
 			<?php
 			if ( 'swiper_layout_one' == $settings['layout'] ) {
-				require BFFS_PLUGIN_PATH . 'templates/swiper-layout-one.php';
+				echo '<div id="swiper-container" data-args="' . htmlspecialchars( json_encode( $members_args ), ENT_QUOTES, 'UTF-8' ) . '"></div>';
+				// require BFFS_PLUGIN_PATH . 'templates/swiper-layout-one.php';
 			} else {
 				require BFFS_PLUGIN_PATH . 'templates/swiper-layout-two.php';
 			}
 			?>
 			
 		
-		<?php else : ?>
+		<?php //else : ?>
 
 			<div class="widget-error">
-				<?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?>
+				<?php //esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?>
 			</div>
 				<?php
-		endif;
+				//endif;
 
-		echo wp_kses_post( $args['after_widget'] );
+				echo wp_kses_post( $args['after_widget'] );
 
 	}
 
-	/**
-	 * Update the Suggestions widget options.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param array $new_instance The new instance options.
-	 * @param array $old_instance The old instance options.
-	 * @return array $instance The parsed options to be saved.
-	 */
+				/**
+				 * Update the Suggestions widget options.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param array $new_instance The new instance options.
+				 * @param array $old_instance The old instance options.
+				 * @return array $instance The parsed options to be saved.
+				 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -145,15 +146,14 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 		return $instance;
 	}
 
-
-	/**
-	 * Output the Suggestion widget options form.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param array $instance Widget instance settings.
-	 * @return void
-	 */
+				/**
+				 * Output the Suggestion widget options form.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param array $instance Widget instance settings.
+				 * @return void
+				 */
 	public function form( $instance ) {
 		// Get widget settings.
 		$settings            = $this->parse_settings( $instance );
@@ -169,13 +169,13 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-				<?php esc_html_e( 'Title:', 'buddypress-friend-follow-suggestion' ); ?>
+					<?php esc_html_e( 'Title:', 'buddypress-friend-follow-suggestion' ); ?>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 100%" />
 			</label>
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'max_members' ) ); ?>">
-				<?php esc_html_e( 'Max members to show:', 'buddypress-friend-follow-suggestion' ); ?>
+					<?php esc_html_e( 'Max members to show:', 'buddypress-friend-follow-suggestion' ); ?>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'max_members' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'max_members' ) ); ?>" type="number" min="1" max="100" value="<?php echo esc_attr( $max_members ); ?>" style="width: 30%" />
 			</label>
 		</p>
@@ -199,27 +199,25 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 					<?php esc_attr_e( 'Friends Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
 				</label>
 			</p>
-			<?php if ( bp_is_active( 'follow' ) || true === $bb_follow_button ) : ?>
+					<?php if ( bp_is_active( 'follow' ) || true === $bb_follow_button ) : ?>
 			<p>
 				<label>
 					<input type="radio" value="follow" name="<?php echo esc_attr( $this->get_field_name( 'suggest' ) ); ?>" <?php checked( $suggest, 'follow' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'suggest' ) ); ?>" />
-					<?php esc_attr_e( 'Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
+						<?php esc_attr_e( 'Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
 				</label>
 			</p>
 			<?php endif; ?>
-		<?php
+					<?php
 	}
 
-
-
-	/**
-	 * Merge the widget settings into defaults array.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param array $instance Widget instance settings.
-	 * @return array
-	 */
+				/**
+				 * Merge the widget settings into defaults array.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param array $instance Widget instance settings.
+				 * @return array
+				 */
 	public function parse_settings( $instance = array() ) {
 		return bp_parse_args(
 			$instance,
@@ -228,7 +226,7 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 				'max_members'         => 5,
 				'percentage_criteria' => 10,
 				'suggest'             => 'friends',
-				'layout'                => 'list_layout',
+				'layout'              => 'list_layout',
 			),
 			'suggestion_widget_settings'
 		);
@@ -236,11 +234,11 @@ class BP_Friend_Follow_Swiper_Widget extends WP_Widget {
 
 }
 
-/**
- * Bp_suggestion_register_widgets
- *
- * @since 1.0.0
- */
+				/**
+				 * Bp_suggestion_register_widgets
+				 *
+				 * @since 1.0.0
+				 */
 function bp_swiper_register_widgets() {
 	add_action(
 		'widgets_init',
@@ -249,7 +247,7 @@ function bp_swiper_register_widgets() {
 		}
 	);
 }
-$bffs_general_setting = get_site_option( 'bffs_general_setting' );
-if ( isset( $bffs_general_setting['enable_profile_match'] ) && 1 == $bffs_general_setting['enable_profile_match'] ){
+				$bffs_general_setting = get_site_option( 'bffs_general_setting' );
+if ( isset( $bffs_general_setting['enable_profile_match'] ) && 1 == $bffs_general_setting['enable_profile_match'] ) {
 	add_action( 'bp_register_widgets', 'bp_swiper_register_widgets' );
 }

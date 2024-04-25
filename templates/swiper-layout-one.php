@@ -1,3 +1,4 @@
+<?php /*
 <div class="bffs_swiper_layout_one bffs_swiper swiper">
 	<div id="members-list" class="bffs-wrapper item-list members-list swiper-wrapper" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
@@ -26,7 +27,7 @@
 								<div class="bffs_swipe_layout_bottom">
 									<div class="bffs_user_buttons">
 										<div class="swipe-cross-button">
-											<a class="bffs_remove_user" href="" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id="<?php bp_member_user_id(); ?>">
+											<a class="bffs_remove_user" href="" data-total_mem ="<?php echo esc_attr( count( $matched_members ) ); ?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id="<?php bp_member_user_id(); ?>">
 												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<mask id="mask0_19_529" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
 													<rect width="22" height="22" fill="#D9D9D9"/>
@@ -38,7 +39,7 @@
 											</a>
 										</div>
 										<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-											<button class="bffs-follow-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Follow" data-bp-btn-action="not_friends">
+											<button class="bffs-follow-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) ); ?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Follow" data-bp-btn-action="not_friends">
 												<?php esc_html_e( 'Follow', 'buddypress-friend-follow-suggestion' ); ?>
 											</button>
 											<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
@@ -51,8 +52,8 @@
 												}
 												?>
 											<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-													<button class="bffs-friendship-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) );?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id );?>" id="friend-<?php echo esc_attr( $members_template->member->id );?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
-														<?php echo esc_html( 'Add Friend' );?>
+													<button class="bffs-friendship-button friendship-button" data-total_mem ="<?php echo esc_attr( count( $matched_members ) ); ?>" data-max_mem ="<?php echo esc_attr( $max_members ); ?>" data-mem_id = "<?php echo esc_attr( $members_template->member->id ); ?>" id="friend-<?php echo esc_attr( $members_template->member->id ); ?>" rel="add" title="Add Friend" data-bp-btn-action="not_friends">
+														<?php echo esc_html( 'Add Friend' ); ?>
 													</button>
 											<?php endif; ?>
 									</div>
@@ -68,7 +69,7 @@
 											</a>
 										</li>
 										<?php
-										if( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss  ) ) ){
+										if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
 											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_get_member_user_id() );
 										} else {
 											$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() );
@@ -80,13 +81,13 @@
 													<path d="M4.25002 13.75H11.75V12.25H4.25002V13.75ZM4.25002 10.75H15.75V9.25004H4.25002V10.75ZM4.25002 7.74999H15.2211V7.68846C14.7903 7.56153 14.4025 7.37724 14.0577 7.13559C13.7128 6.89392 13.4115 6.59874 13.1538 6.25004H4.25002V7.74999ZM0.500023 21.0384V4.30774C0.500023 3.8026 0.675023 3.37504 1.02502 3.02504C1.37502 2.67504 1.80259 2.50004 2.30772 2.50004H12.35C12.2962 2.75004 12.2676 2.99843 12.2644 3.24521C12.2612 3.49201 12.2769 3.74361 12.3115 4.00001H2.30772C2.23079 4.00001 2.16026 4.03206 2.09615 4.09616C2.03205 4.16028 2 4.2308 2 4.30774V17.3846L3.40002 16H17.6923C17.7692 16 17.8397 15.968 17.9039 15.9039C17.968 15.8397 18 15.7692 18 15.6923V8.12119C18.2872 8.05709 18.5542 7.97504 18.801 7.87504C19.0477 7.77504 19.2807 7.64363 19.5 7.48081V15.6923C19.5 16.1974 19.325 16.625 18.975 16.975C18.625 17.325 18.1974 17.5 17.6923 17.5H4.03847L0.500023 21.0384ZM2 4.30774V16.6924V4.00001V4.30774ZM17 6.23079C16.2372 6.23079 15.5882 5.96316 15.0529 5.42791C14.5177 4.89266 14.25 4.24363 14.25 3.48081C14.25 2.71799 14.5177 2.06896 15.0529 1.53371C15.5882 0.998461 16.2372 0.730835 17 0.730835C17.7628 0.730835 18.4118 0.998461 18.9471 1.53371C19.4823 2.06896 19.75 2.71799 19.75 3.48081C19.75 4.24363 19.4823 4.89266 18.9471 5.42791C18.4118 5.96316 17.7628 6.23079 17 6.23079Z" fill="#A4B3D0"/>
 												</svg>
 											</a>
-										</li>										
+										</li>
 										<li class="bffs_user_icon">
-											<?php 
-											if( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss  ) ) {
-												$link = home_url( '/members/' . bp_core_get_username( bp_get_member_user_id() ) . '/profile/' ); 
+											<?php
+											if ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) {
+												$link = home_url( '/members/' . bp_core_get_username( bp_get_member_user_id() ) . '/profile/' );
 											} else {
-												$link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' ); 
+												$link = home_url( '/members/' . bp_members_get_user_slug( bp_get_member_user_id() ) . '/profile/' );
 											}
 											?>
 											<a href="<?php echo $link; ?>">
@@ -108,3 +109,7 @@
 <div class="swiper-button-prev"></div>
 <div class="swiper-pagination"></div>
 </div>
+
+
+*/
+
