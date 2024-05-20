@@ -132,6 +132,7 @@ class Buddypress_Friend_Follow_Suggestion {
 
 		/* Enqueue swiper widget  */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-swiper.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-suggestion-swiper.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing

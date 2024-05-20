@@ -45,6 +45,47 @@ window.bp = window.bp || {};
 
     $(document).on('ready', function() {
         BPFrienFollow.init();
+		/**
+		 * jTinder initialization
+		 */		
+		$(".bp-friend-swiper-slider").jTinder({			
+			onDislike: function (item) {				
+				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' ); 
+				item.remove();
+				let panes2 = $(">ul>li", '#' + parent_id );
+				let pane_count2 = panes2.length - 1;
+				if(pane_count2 === 0 ){
+					$('.like').hide();
+					$('.dislike').hide();
+				}
+			},
+			onLike: function (item) {
+				console.log($(item).find('a.friendship-button[data-bp-btn-action]'));
+				$(item).find('a.friendship-button[data-bp-btn-action]').trigger( 'click');
+				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' );
+				item.remove();
+				let panes2 = $(">ul>li", '#' + parent_id);				
+				let pane_count2 = panes2.length - 1;
+
+				if(pane_count2 === 0 ){
+					$('.like').hide();
+					$('.dislike').hide();
+				}
+			},
+			animationRevertSpeed: 200,
+			animationSpeed: 400,
+			threshold: 1,
+			likeSelector: '.like',
+			dislikeSelector: '.dislike'
+		});
+
+		/**
+		 * Set button action to trigger jTinder like & dislike.
+		 */
+		$('.bp-friend-actions .bp-friend-like, .bp-friend-actions .bp-friend-dislike').click(function(e){
+			e.preventDefault();
+			$( this ).parents('.bp-friend-swiper-slider').jTinder($(this).attr('class'));
+		});
     });
 
     // Add swiper layout for the bp-friend-follow-swiper-widget
