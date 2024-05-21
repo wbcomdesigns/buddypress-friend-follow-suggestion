@@ -1,4 +1,3 @@
-<?php /*
 <div class="bffs_swiper_layout_one bffs_swiper swiper">
 	<div id="members-list" class="bffs-wrapper item-list members-list swiper-wrapper" aria-live="polite" aria-relevant="all" aria-atomic="true">
 			<?php
@@ -109,7 +108,4 @@
 <div class="swiper-button-prev"></div>
 <div class="swiper-pagination"></div>
 </div>
-
-
-*/
 
