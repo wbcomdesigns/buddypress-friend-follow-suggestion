@@ -57,6 +57,7 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 		global $button_args;
 		// Get widget settings.
 		$settings = $this->parse_settings( $instance );
+		$settings['layout'] = (isset($settings['layout']) && $settings['layout'] != '') ? $settings['layout']: 'layout_one';
 
 		/**
 		 * Filters the title of the Suggestions widget.
@@ -166,6 +167,13 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 			%
 		</label>
 		</p>			
+		<p>
+			<label><?php esc_attr_e( 'Layout:', 'buddypress-friend-follow-suggestion' ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'layout' ) ); ?>">
+				<option value="layout_one"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'list_layout' ) : ''; ?>><?php esc_html_e( 'Layout One', 'buddypress-friend-follow-suggestion' ); ?></option>
+				<option value="layout_two"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'horizontal_layout' ) : ''; ?>><?php esc_html_e( 'Layout two', 'buddypress-friend-follow-suggestion' ); ?></option>
+			</select>				
+		</p>
 		<p>
 			<label>
 				<input type="radio" value="friends" name="<?php echo esc_attr( $this->get_field_name( 'suggest' ) ); ?>" <?php checked( $suggest, 'friends' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'suggest' ) ); ?>" />

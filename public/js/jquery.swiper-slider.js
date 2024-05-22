@@ -117,10 +117,23 @@
 						if (posX >= 0) {
 							panes.eq(current_pane).find($that.settings.likeSelector).css('opacity', opa);
 							panes.eq(current_pane).find($that.settings.dislikeSelector).css('opacity', 0);
+							panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
+							if ( opa > 0 ) {
+									panes.eq(current_pane).find($that.settings.likeSelector).addClass('like-active');
+							} else {
+								panes.eq(current_pane).find($that.settings.likeSelector).removeClass('like-active');
+							}
 						} else if (posX < 0) {
 							panes.eq(current_pane).find($that.settings.dislikeSelector).css('opacity', opa);
 							panes.eq(current_pane).find($that.settings.likeSelector).css('opacity', 0);
+							panes.eq(current_pane).find($that.settings.likeSelector).removeClass('like-active');
+							if ( opa > 0 ) {
+									panes.eq(current_pane).find($that.settings.dislikeSelector).addClass('dislike-active');
+							} else {
+								panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
+							}
 						}
+						console.log(opa);
 					}
 					break;
 				case 'mouseup':
@@ -158,6 +171,9 @@
 						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.likeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
+						
+						panes.eq(current_pane).find($that.settings.likeSelector).removeClass('like-active');
+						panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
 					}
 					break;
 			}
