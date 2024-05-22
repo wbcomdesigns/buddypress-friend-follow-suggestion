@@ -82,9 +82,15 @@ window.bp = window.bp || {};
 		/**
 		 * Set button action to trigger jTinder like & dislike.
 		 */
-		$('.bp-friend-actions .bp-friend-like, .bp-friend-actions .bp-friend-dislike').click(function(e){
+		/*
+		$( '.bffs_user_buttons .bp-friend-like, .bffs_user_buttons .bp-friend-dislike').click(function(e){
 			e.preventDefault();
 			$( this ).parents('.bp-friend-swiper-slider').jTinder($(this).attr('class'));
+		});
+		*/
+		$( document ).on( 'click', '.bffs_user_buttons .like, .bffs_user_buttons .dislike', function(e) {
+			e.preventDefault();			
+			$( this ).parents('.bp-friend-swiper-slider').jTinder( $(this).attr('class') );
 		});
     });
 

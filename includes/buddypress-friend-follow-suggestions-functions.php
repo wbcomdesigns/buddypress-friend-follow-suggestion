@@ -99,3 +99,48 @@ if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
 		return apply_filters( 'bp_suggestions_compose_message_url', $messgae_url );
 	}
 }
+
+
+
+
+/*
+ * Is the current user online
+ *
+ * @param $user_id
+ *
+ * @return bool
+ */
+if ( ! function_exists( 'bp_suggestions_is_user_online' ) ) {
+
+	function bp_suggestions_is_user_online( $user_id ) {
+		if ( ! function_exists( 'bp_get_user_last_activity' ) ) {
+			return;
+		}
+
+		$last_activity = strtotime( bp_get_user_last_activity( $user_id ) );
+
+		if ( empty( $last_activity ) ) {
+			return false;
+		}
+
+		// the activity timeframe is 5 minutes
+		$activity_timeframe = 5 * MINUTE_IN_SECONDS;
+
+		return time() - $last_activity <= $activity_timeframe;
+	}
+}
+
+/*
+ * BuddyPress user status
+ *
+ * @param $user_id
+ *
+ */
+if ( ! function_exists( 'buddyx_user_status' ) ) {
+
+	function bp_suggestions_user_status( $user_id ) {
+		if ( bp_suggestions_is_user_online( $user_id ) ) {
+			echo '<span class="member-status online"></span>';
+		}
+	}
+}
