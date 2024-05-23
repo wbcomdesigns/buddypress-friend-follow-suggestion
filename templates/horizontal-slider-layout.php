@@ -1,7 +1,10 @@
 <div id="bp-friend-swiper-slider-<?php echo rand();?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr($settings['layout'])?> bp-friend-swiper-slider">
 	<ul id="members-list" class="item-list item-list members-list " aria-live="polite" aria-relevant="all" aria-atomic="true">
 		<li class="pane1">
-			<div class="default demo-empty-slide"><?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?></div>
+			<div class="default demo-empty-slide">				
+				<img src="<?php echo BFFS_PLUGIN_URL . 'public/images/not-faund.png';?>">
+				<span><?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?></span>
+			</div>
 		</li>
 		<?php
 		while ( bp_members() ) :

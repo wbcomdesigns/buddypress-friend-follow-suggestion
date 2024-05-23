@@ -329,10 +329,28 @@
     -o-border-radius: 20px;
 }
 
+.bffs_swiper_layout_wrapper .default.demo-empty-slide {
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    background: #f6f6f6;
+    align-content: center;
+    flex-direction: column;
+}
+
+.bffs_swiper_layout_wrapper .default.demo-empty-slide img {
+    width: 213px;
+    margin: 0 auto;
+}
+
 
 /* BFFS Swiper Two */
 
 .bffs_swiper_layout_two.bp-friend-swiper-slider ul#members-list {
+    height: 475px;
+}
+
+.bffs_swiper_layout_two .default.demo-empty-slide {
     height: 475px;
 }
 
