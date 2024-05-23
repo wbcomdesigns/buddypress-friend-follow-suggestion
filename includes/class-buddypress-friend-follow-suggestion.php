@@ -77,7 +77,6 @@ class Buddypress_Friend_Follow_Suggestion {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->define_api_hooks();
 
 	}
 
@@ -131,7 +130,6 @@ class Buddypress_Friend_Follow_Suggestion {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-suggestion.php';
 
 		/* Enqueue swiper widget  */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-swiper.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widget/widget-bp-friend-follow-suggestion-swiper.php';
 
 		/**
@@ -139,12 +137,6 @@ class Buddypress_Friend_Follow_Suggestion {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-buddypress-friend-follow-suggestion-public.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'api/class-buddypress-follow-friend-sugestions-api.php';
 
 		$this->loader = new Buddypress_Friend_Follow_Suggestion_Loader();
 
@@ -207,26 +199,11 @@ class Buddypress_Friend_Follow_Suggestion {
 			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 		}
 		$this->loader->add_action( 'socialv_member_header_fields', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
-		
+
 		$this->loader->add_action( 'wp_ajax_bffs_remove_user', $plugin_public, 'bffs_remove_user_form_widget' );
 		$this->loader->add_action( 'wp_ajax_bffs_add_friend', $plugin_public, 'bffs_add_friend_widget' );
 		$this->loader->add_action( 'wp_ajax_bffs_follow_button', $plugin_public, 'bffs_follow_button_widget' );
 		$this->loader->add_action( 'rest_api_init', $plugin_public, 'bp_friend_follow_suggestion_register_user_meta' );
-
-	}
-
-
-	/**
-	 * Register all of the hooks related to the api
-	 * of the plugin.
-	 *
-	 * @since    1.5.0
-	 * @access   private
-	 */
-	private function define_api_hooks() {
-
-		$bpffs_api = new BP_Follow_Friend_Suggetion_API( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'rest_api_init', $bpffs_api, 'register_routes' );
 
 	}
 
