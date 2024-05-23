@@ -24,8 +24,8 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 	public function __construct() {
 
 		// Setup widget name & description.
-		$name        = _x( '(Swiper) BuddyPress Friend & Follow Suggestion', 'widget name', 'buddypress-friend-follow-suggestion' );
-		$description = __( 'A dynamic suggestion list of matched members to your profile.', 'buddypress-friend-follow-suggestion' );
+		$name        = _x( '(Swiper) BuddyPress Friend Suggestion', 'widget name', 'buddypress-friend-suggestion' );
+		$description = __( 'A dynamic suggestion list of matched members to your profile.', 'buddypress-friend-suggestion' );
 
 		// Call WP_Widget constructor.
 		parent::__construct(
@@ -33,7 +33,7 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 			$name,
 			array(
 				'description' => $description,
-				'classname'   => 'widget_bp_friend_follow_suggestion_widget buddypress widget',
+				'classname'   => 'widget_bp_friend_suggestion_slider_widget buddypress widget',
 			)
 		);
 	}
@@ -73,9 +73,8 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 		echo wp_kses_post( $args['before_widget'] ) . wp_kses_post( $args['before_title'] ) . esc_html( $title ) . wp_kses_post( $args['after_title'] );
 
 		$max_members         = (int) $settings['max_members'];
-		$percentage_criteria = (int) $settings['percentage_criteria'];
-		$suggest             = $settings['suggest'];
-		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria, $settings['suggest'] );
+		$percentage_criteria = (int) $settings['percentage_criteria'];		
+		$matched_members     = bp_suggestions_get_matched_users( bp_loggedin_user_id(), $max_members, $percentage_criteria, 'friends' );
 		$bb_follow_buttons   = false;
 		if ( function_exists( 'bp_admin_setting_callback_enable_activity_follow' ) ) {
 			$bb_follow_buttons = bp_is_activity_follow_active();
@@ -118,8 +117,7 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance['title']               = strip_tags( $new_instance['title'] );
-		$instance['suggest']             = strip_tags( $new_instance['suggest'] );
+		$instance['title']               = strip_tags( $new_instance['title'] );		
 		$instance['max_members']         = intval( $new_instance['max_members'] );
 		$instance['percentage_criteria'] = intval( $new_instance['percentage_criteria'] );
 		$instance['layout']              = ( ! empty( $new_instance['layout'] ) ) ? $new_instance['layout'] : '';
@@ -141,12 +139,6 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 		$title               = strip_tags( $settings['title'] );
 		$max_members         = intval( $settings['max_members'] );
 		$percentage_criteria = intval( $settings['percentage_criteria'] );
-		$suggest             = isset( $settings['suggest'] ) ? strip_tags( $settings['suggest'] ) : 'friends';
-		$bb_follow_button    = false;
-		if ( function_exists( 'bp_admin_setting_callback_enable_activity_follow' ) ) {
-			$bb_follow_button = bp_is_activity_follow_active();
-		}
-
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -173,21 +165,8 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 				<option value="layout_one"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'layout_one' ) : ''; ?>><?php esc_html_e( 'Swiper Layout One', 'buddypress-friend-follow-suggestion' ); ?></option>
 				<option value="layout_two"<?php echo isset( $instance['layout'] ) ? selected( $instance['layout'], 'layout_two' ) : ''; ?>><?php esc_html_e( 'Swiper Layout Two', 'buddypress-friend-follow-suggestion' ); ?></option>
 			</select>				
-		</p>
-		<p>
-			<label>
-				<input type="radio" value="friends" name="<?php echo esc_attr( $this->get_field_name( 'suggest' ) ); ?>" <?php checked( $suggest, 'friends' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'suggest' ) ); ?>" />
-				<?php esc_attr_e( 'Friends Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-			</label>
-		</p>
-				<?php if ( bp_is_active( 'follow' ) || true === $bb_follow_button ) : ?>
-		<p>
-			<label>
-				<input type="radio" value="follow" name="<?php echo esc_attr( $this->get_field_name( 'suggest' ) ); ?>" <?php checked( $suggest, 'follow' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'suggest' ) ); ?>" />
-					<?php esc_attr_e( 'Follow Suggestion', 'buddypress-friend-follow-suggestion' ); ?>
-			</label>
-		</p>
-		<?php endif; 
+		</p>		
+		<?php
 	}
 
 	/**
@@ -204,8 +183,7 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 			array(
 				'title'               => __( 'Suggestions', 'buddypress-friend-follow-suggestion' ),
 				'max_members'         => 5,
-				'percentage_criteria' => 10,
-				'suggest'             => 'friends',
+				'percentage_criteria' => 10,				
 				'layout'              => 'list_layout',
 			),
 			'suggestion_widget_settings'

@@ -201,7 +201,7 @@
     line-height: 18px;
 }
 
-.widget_bp_friend_follow_suggestion_widget .bffs_user_layout_one .like a {
+.widget_bp_friend_suggestion_slider_widget .bffs_user_layout_one .like a {
     border: none !important;
     background: transparent !important;
     width: 30px !important;
@@ -212,7 +212,7 @@
     margin: -5px;
 }
 
-.widget_bp_friend_follow_suggestion_widget .bffs_user_layout_one .like a:hover {
+.widget_bp_friend_suggestion_slider_widget .bffs_user_layout_one .like a:hover {
     background-color: transparent !important;
     border: none !important;
 }
@@ -317,7 +317,7 @@
     padding: 0;
 }
 
-.buddypress.widget.widget_bp_friend_follow_suggestion_widget .bp-friend-swiper-slider .item-avatar img.avatar {
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider .item-avatar img.avatar {
     max-width: 100%;
     height: 380px;
     width: 100%;
@@ -354,7 +354,7 @@
     height: 475px;
 }
 
-.buddypress.widget.widget_bp_friend_follow_suggestion_widget .bffs_swiper_layout_two.bp-friend-swiper-slider .item-avatar img.avatar {
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider .item-avatar img.avatar {
     height: 350px !important;
     border-radius: 20px 20px 0 0;
     -webkit-border-radius: 20px 20px 0 0;

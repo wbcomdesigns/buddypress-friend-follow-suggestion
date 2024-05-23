@@ -59,8 +59,7 @@ window.bp = window.bp || {};
 					$('.dislike').hide();
 				}
 			},
-			onLike: function (item) {
-				console.log($(item).find('a.friendship-button[data-bp-btn-action]'));
+			onLike: function (item) {				
 				$(item).find('a.friendship-button[data-bp-btn-action]').trigger( 'click');
 				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' );
 				item.remove();
@@ -225,5 +224,21 @@ window.bp = window.bp || {};
         });
         clickCount++;
     });
+	
+	// Suggestions Slider
+	if ($('.bffs_horizontal_layout').length) {
+		var bffs = new Bffs(".bffs_horizontal_layout", {
+			centeredSlides: true,
+			loop: true,
+			autoplay: {
+				delay: 2500,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: ".bffs-button-next",
+				prevEl: ".bffs-button-prev",
+			},
+		});
+	}
 
 })(jQuery);

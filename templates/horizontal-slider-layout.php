@@ -41,22 +41,7 @@
 						<div class="bffs_user_buttons">
 							<div class="dislike"></div>
 							<div class="like">
-								<?php if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) : ?>
-									<?php bp_follow_add_follow_button( 'leader_id=' . $members_template->member->id ); ?>
-								<?php elseif ( 'follow' === $settings['suggest'] ) : ?>
-									<?php
-
-									$button_args = wp_parse_args( $button_args, get_class_vars( 'BP_Button' ) );
-
-									if ( function_exists( 'bp_add_follow_button' ) ) {
-										bp_add_follow_button( bp_get_member_user_id(), bp_loggedin_user_id(), $button_args );
-									}
-									?>
-								<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-									<?php
-									echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) );
-									?>
-								<?php endif; ?>
+								<?php echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) ); ?>
 							</div>
 						</div>
 		            </div>	
