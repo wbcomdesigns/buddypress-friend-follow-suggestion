@@ -38,7 +38,7 @@ window.bp = window.bp || {};
         },
 
         BPFollowAction: function() {
-            $('.widget_bp_friend_follow_suggestion_widget').on('click', '[data-bp-btn-action]', bp.Nouveau, bp.Nouveau.buttonAction);
+            $('.widget_bp_friend_follow_suggestion_widget,.widget_bp_friend_suggestion_slider_widget').on('click', '[data-bp-btn-action]', bp.Nouveau, bp.Nouveau.buttonAction);
         }
 
     };
