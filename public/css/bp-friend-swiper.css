@@ -65,7 +65,8 @@
     background: url("../images/nope.png") no-repeat scroll 0 0;
 }
 
-.bp-friend-swiper-slider .dislike:hover {
+.bp-friend-swiper-slider .dislike:hover,
+.bp-friend-swiper-slider .dislike.dislike-active {
     background-color: #FF0000 !important;
     background-image: url("../images/close.png");
 }
@@ -79,7 +80,8 @@
     -o-transition: all 0.3s;
 }
 
-.bp-friend-swiper-slider .like:hover {
+.bp-friend-swiper-slider .like:hover,
+.bp-friend-swiper-slider .like.like-active {
     background-color: #11c52a !important;
 }
 

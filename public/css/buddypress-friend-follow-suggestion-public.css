@@ -689,10 +689,13 @@ Youzify
     background-position: center;
     background-size: cover;
     width: 300px;
-    height: 300px;
 }
 
 .swiper-slide img {
     display: block;
     width: 100%;
+}
+
+.bffs-wrapper.members-list.swiper-wrapper .item-meta li {
+    display: inline-block !important;
 }
