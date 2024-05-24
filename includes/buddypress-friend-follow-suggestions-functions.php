@@ -12,6 +12,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 	 * @return  array
 	 */
 	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria, $suggest = '' ) {
+		$matched_members     = array();
 		if ( ! empty( $user_id ) ) {
 			global $wpdb;
 
@@ -41,7 +42,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 
 			$match_data          = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
 			$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
-			$matched_members     = array();
+			
 			foreach ( $users as $key => $user ) {
 				if ( $user_id !== $user->ID ) {
 					$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
@@ -81,9 +82,9 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 						}
 					}
 				}
-			}
-			return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
+			}			
 		}
+		return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
 	}
 }
 
