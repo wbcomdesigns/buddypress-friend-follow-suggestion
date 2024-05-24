@@ -48,8 +48,10 @@
 			$that = this;
 			
 			$(element).bind('touchstart mousedown', this.handler);
-			$(element).bind('touchmove mousemove', this.handler);
-			$(element).bind('touchend mouseup', this.handler);
+			//$(element).bind('touchmove mousemove', this.handler);
+			//$(element).bind('touchend mouseup', this.handler);			
+			$('body').bind('touchmove mousemove', this.handler);
+			$('body').bind('touchend mouseup', this.handler);
 		},
 
 		showPane: function (index) {
@@ -139,41 +141,43 @@
 				case 'mouseup':
 				case 'touchend':
 
-					touchStart = false;
-					var pageX = (typeof ev.pageX == 'undefined') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX;
-					var pageY = (typeof ev.pageY == 'undefined') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY;
-					var deltaX = parseInt(pageX) - parseInt(xStart);
-					var deltaY = parseInt(pageY) - parseInt(yStart);
+					if (touchStart == true) {
+						var pageX = (typeof ev.pageX == 'undefined') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX;
+						var pageY = (typeof ev.pageY == 'undefined') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY;
+						var deltaX = parseInt(pageX) - parseInt(xStart);
+						var deltaY = parseInt(pageY) - parseInt(yStart);
 
-					posX = deltaX + lastPosX;
-					posY = deltaY + lastPosY;
-					var opa = Math.abs((Math.abs(deltaX) / $that.settings.threshold) / 100 + 0.2);
+						posX = deltaX + lastPosX;
+						posY = deltaY + lastPosY;
+						var opa = Math.abs((Math.abs(deltaX) / $that.settings.threshold) / 100 + 0.2);
 
-					if (opa >= 1) {
-						if (posX > 0) {
-							panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
-								if($that.settings.onLike) {
-									$that.settings.onLike(panes.eq(current_pane));
-								}
-								$that.next();
-							});
+						if (opa >= 1) {
+							if (posX > 0) {
+								panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
+									if($that.settings.onLike) {
+										$that.settings.onLike(panes.eq(current_pane));
+									}
+									$that.next();
+								});
+							} else {
+								panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
+									if($that.settings.onDislike) {
+										$that.settings.onDislike(panes.eq(current_pane));
+									}
+									$that.next();
+								});
+							}
 						} else {
-							panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
-								if($that.settings.onDislike) {
-									$that.settings.onDislike(panes.eq(current_pane));
-								}
-								$that.next();
-							});
+							lastPosX = 0;
+							lastPosY = 0;
+							panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
+							panes.eq(current_pane).find($that.settings.likeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
+							panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
+							
+							panes.eq(current_pane).find($that.settings.likeSelector).removeClass('like-active');
+							panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
 						}
-					} else {
-						lastPosX = 0;
-						lastPosY = 0;
-						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
-						panes.eq(current_pane).find($that.settings.likeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
-						panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
-						
-						panes.eq(current_pane).find($that.settings.likeSelector).removeClass('like-active');
-						panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
+						touchStart = false;
 					}
 					break;
 			}
