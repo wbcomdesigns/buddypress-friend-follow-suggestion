@@ -235,8 +235,8 @@ window.bp = window.bp || {};
 				disableOnInteraction: false,
 			},
 			navigation: {
-				nextEl: ".bffs-button-next",
-				prevEl: ".bffs-button-prev",
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
 			},
 		});
 	}
