@@ -12,7 +12,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 	 * @return  array
 	 */
 	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria, $suggest = '' ) {
-		$matched_members     = array();
+		$matched_members = array();
 		if ( ! empty( $user_id ) ) {
 			global $wpdb;
 
@@ -42,7 +42,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 
 			$match_data          = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
 			$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
-			
+
 			foreach ( $users as $key => $user ) {
 				if ( $user_id !== $user->ID ) {
 					$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
@@ -82,7 +82,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 						}
 					}
 				}
-			}			
+			}
 		}
 		return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
 	}
@@ -91,13 +91,15 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 
 if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
 	function bp_suggestions_get_compose_message_url() {
-		if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
-			$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
-		} else {
-			$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
-		}
+		if ( bp_is_active( 'messages' ) ) {
+			if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
+				$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
+			} else {
+				$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
+			}
 
-		return apply_filters( 'bp_suggestions_compose_message_url', $messgae_url );
+			return apply_filters( 'bp_suggestions_compose_message_url', $messgae_url );
+		}
 	}
 }
 

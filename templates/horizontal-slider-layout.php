@@ -1,21 +1,22 @@
-<div id="bp-friend-swiper-slider-<?php echo rand();?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr($settings['layout'])?> bp-friend-swiper-slider">
+<div id="bp-friend-swiper-slider-<?php echo rand(); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bp-friend-swiper-slider">
 	<ul id="members-list" class="item-list item-list members-list " aria-live="polite" aria-relevant="all" aria-atomic="true">
 		<li class="pane1">
 			<div class="default demo-empty-slide">				
-				<img src="<?php echo BFFS_PLUGIN_URL . 'public/images/not-faund.png';?>">
+				<img src="<?php echo BFFS_PLUGIN_URL . 'public/images/not-faund.png'; ?>">
 				<span><?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?></span>
 			</div>
 		</li>
 		<?php
 		while ( bp_members() ) :
 			bp_the_member();
-			
-			if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
-				$messgae_url = wp_nonce_url(bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_get_member_user_id() ) );
-			} else {
-				$messgae_url = wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() ) );
+			if ( bp_is_active( 'messages' ) ) {
+				if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
+					$messgae_url = wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_get_member_user_id() ) );
+				} else {
+					$messgae_url = wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_members_get_user_slug( bp_get_member_user_id() ) );
+				}
 			}
-			
+
 			$member_timeline_url = bp_get_member_permalink() . 'activity/'
 			?>
 			<li <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
@@ -33,50 +34,52 @@
 										)
 									)
 								);
-							?>
+						?>
 					</div>
 
-	                <div class="bffs_swipe_layout_bottom_meta">
-	                <div class="bffs_swipe_layout_bottom">
+					<div class="bffs_swipe_layout_bottom_meta">
+					<div class="bffs_swipe_layout_bottom">
 						<div class="bffs_user_buttons">
 							<div class="dislike"></div>
 							<div class="like">
 								<?php echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) ); ?>
 							</div>
 						</div>
-		            </div>	
+					</div>	
 					<div class="bffs_item-title">
 						<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
-						<?php if ( bp_suggestions_is_user_online( bp_get_member_user_id() ) ):?>
+						<?php if ( bp_suggestions_is_user_online( bp_get_member_user_id() ) ) : ?>
 							<div class="bffs_user_online">
 								<span class="user_status"></span><?php esc_html_e( 'Online', 'buddypress-friend-follow-suggestion' ); ?>
 							</div>
-						<?php else:?>
+						<?php else : ?>
 							<div class="bffs_user_offline">
 								<span class="user_status"></span><?php esc_html_e( 'Offline', 'buddypress-friend-follow-suggestion' ); ?>
 							</div>
-						<?php endif;?>
+						<?php endif; ?>
 						
 						
 					</div>
 					
 					<div class="bffs_user_layout_button_list">
 						<div class="bffs_actvity_icon">
-							<a href="<?php echo esc_url( $member_timeline_url );?>">
+							<a href="<?php echo esc_url( $member_timeline_url ); ?>">
 								<svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M3.72087 15.2791C2.78754 14.3347 2.05213 13.2409 1.51463 11.9979C0.977116 10.7548 0.708359 9.42221 0.708359 7.99999C0.708359 6.56667 0.977116 5.22848 1.51463 3.98543C2.05213 2.74237 2.78754 1.65418 3.72087 0.720856L4.87917 1.87916C4.08472 2.6736 3.4618 3.59443 3.01042 4.64166C2.55903 5.68888 2.33333 6.80832 2.33333 7.99999C2.33333 9.20971 2.55903 10.3382 3.01042 11.3854C3.4618 12.4326 4.08472 13.3444 4.87917 14.1208L3.72087 15.2791ZM6.78128 12.2187C6.24518 11.6715 5.82122 11.0382 5.50942 10.3187C5.1976 9.59929 5.04169 8.82637 5.04169 7.99999C5.04169 7.1625 5.1976 6.38404 5.50942 5.66459C5.82122 4.94515 6.24518 4.31738 6.78128 3.78127L7.93958 4.93957C7.54236 5.33679 7.2309 5.79721 7.00521 6.32082C6.77951 6.84443 6.66667 7.40416 6.66667 7.99999C6.66667 8.59582 6.77951 9.15554 7.00521 9.67916C7.2309 10.2028 7.54236 10.6632 7.93958 11.0604L6.78128 12.2187ZM11 9.62496C10.557 9.62496 10.1754 9.46489 9.85524 9.14475C9.5351 8.82462 9.37503 8.44304 9.37503 7.99999C9.37503 7.55694 9.5351 7.17536 9.85524 6.85523C10.1754 6.53509 10.557 6.37502 11 6.37502C11.443 6.37502 11.8246 6.53509 12.1448 6.85523C12.4649 7.17536 12.625 7.55694 12.625 7.99999C12.625 8.44304 12.4649 8.82462 12.1448 9.14475C11.8246 9.46489 11.443 9.62496 11 9.62496ZM15.2187 12.2187L14.0604 11.0604C14.4576 10.6632 14.7691 10.2028 14.9948 9.67916C15.2205 9.15554 15.3333 8.59582 15.3333 7.99999C15.3333 7.40416 15.2205 6.84443 14.9948 6.32082C14.7691 5.79721 14.4576 5.33679 14.0604 4.93957L15.2187 3.78127C15.7548 4.31738 16.1788 4.94515 16.4906 5.66459C16.8024 6.38404 16.9583 7.1625 16.9583 7.99999C16.9583 8.82637 16.8024 9.59929 16.4906 10.3187C16.1788 11.0382 15.7548 11.6715 15.2187 12.2187ZM18.2791 15.2791L17.1208 14.1208C17.9153 13.3264 18.5382 12.4055 18.9896 11.3583C19.441 10.3111 19.6667 9.19166 19.6667 7.99999C19.6667 6.79722 19.441 5.67222 18.9896 4.625C18.5382 3.57778 17.9153 2.6625 17.1208 1.87916L18.2791 0.720856C19.2125 1.65418 19.9479 2.74237 20.4854 3.98543C21.0229 5.22848 21.2916 6.56667 21.2916 7.99999C21.2916 9.42221 21.0229 10.7548 20.4854 11.9979C19.9479 13.2409 19.2125 14.3347 18.2791 15.2791Z" fill="#FFFFFF"/>
 								</svg>
 								<?php esc_html_e( 'Discover', 'buddypress-friend-follow-suggestion' ); ?>
 							</a>
 						</div>
-						
+					<?php	if ( bp_is_active( 'messages' ) ) { ?>
 						<div class="bffs_msg_icon">
-							<a href="<?php echo esc_url( $messgae_url );?>" target="_blank">
+							<a href="<?php echo esc_url( $messgae_url ); ?>" target="_blank">
 								<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M4.25002 13.75H11.75V12.25H4.25002V13.75ZM4.25002 10.75H15.75V9.25004H4.25002V10.75ZM4.25002 7.74999H15.2211V7.68846C14.7903 7.56153 14.4025 7.37724 14.0577 7.13559C13.7128 6.89392 13.4115 6.59874 13.1538 6.25004H4.25002V7.74999ZM0.500023 21.0384V4.30774C0.500023 3.8026 0.675023 3.37504 1.02502 3.02504C1.37502 2.67504 1.80259 2.50004 2.30772 2.50004H12.35C12.2962 2.75004 12.2676 2.99843 12.2644 3.24521C12.2612 3.49201 12.2769 3.74361 12.3115 4.00001H2.30772C2.23079 4.00001 2.16026 4.03206 2.09615 4.09616C2.03205 4.16028 2 4.2308 2 4.30774V17.3846L3.40002 16H17.6923C17.7692 16 17.8397 15.968 17.9039 15.9039C17.968 15.8397 18 15.7692 18 15.6923V8.12119C18.2872 8.05709 18.5542 7.97504 18.801 7.87504C19.0477 7.77504 19.2807 7.64363 19.5 7.48081V15.6923C19.5 16.1974 19.325 16.625 18.975 16.975C18.625 17.325 18.1974 17.5 17.6923 17.5H4.03847L0.500023 21.0384ZM2 4.30774V16.6924V4.00001V4.30774ZM17 6.23079C16.2372 6.23079 15.5882 5.96316 15.0529 5.42791C14.5177 4.89266 14.25 4.24363 14.25 3.48081C14.25 2.71799 14.5177 2.06896 15.0529 1.53371C15.5882 0.998461 16.2372 0.730835 17 0.730835C17.7628 0.730835 18.4118 0.998461 18.9471 1.53371C19.4823 2.06896 19.75 2.71799 19.75 3.48081C19.75 4.24363 19.4823 4.89266 18.9471 5.42791C18.4118 5.96316 17.7628 6.23079 17 6.23079Z" fill="#A4B3D0"/>
 								</svg>
 							</a>
 						</div>
+					<?php } ?>
+
 						<div class="bffs_user_icon">
 							<a href="<?php bp_member_permalink(); ?>" target="_blank">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
