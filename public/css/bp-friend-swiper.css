@@ -336,13 +336,18 @@
     display: flex;
     justify-content: center;
     background: #f6f6f6;
-    align-content: center;
+    align-items: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .bffs_swiper_layout_wrapper .default.demo-empty-slide img {
-    width: 213px;
+    width: 80%;
     margin: 0 auto;
+}
+
+.bffs_swiper_layout_wrapper .default.demo-empty-slide span{
+    font-size: 16px;
 }
 
 
@@ -394,3 +399,38 @@
     background-color: transparent;
     padding: 0;
 }
+
+
+/* ================================
+
+BuddyBoss Theme Support
+
+================================ */
+
+
+ .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list .item-avatar img.avatar{
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+ .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list .list-wrap{
+    border:none;
+    background:none;
+    margin:0px;
+    padding:0px;
+    overflow: hidden;
+ }
+
+  .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list{
+    overflow: inherit;
+  }
+
+
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider  #members-list.members-list .item-avatar img.avatar{
+    border-radius: 20px 20px 0 0;
+}
+
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider  .default.demo-empty-slide{
+    height: 460px;
+}
+
