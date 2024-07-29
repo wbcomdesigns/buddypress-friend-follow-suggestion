@@ -204,6 +204,8 @@ class Buddypress_Friend_Follow_Suggestion {
 		$this->loader->add_action( 'wp_ajax_bffs_add_friend', $plugin_public, 'bffs_add_friend_widget' );
 		$this->loader->add_action( 'wp_ajax_bffs_follow_button', $plugin_public, 'bffs_follow_button_widget' );
 		$this->loader->add_action( 'rest_api_init', $plugin_public, 'bp_friend_follow_suggestion_register_user_meta' );
+		$this->loader->add_action( 'wp_ajax_member_dislike', $plugin_public, 'bp_friend_follow_suggestion_member_dislike' );
+		$this->loader->add_filter( 'bffs_remove_specific_role_from_suggestion_widget', $plugin_public, 'bp_friend_follow_suggestion_remove_dislike_members' );
 
 	}
 

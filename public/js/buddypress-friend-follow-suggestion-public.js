@@ -50,6 +50,7 @@ window.bp = window.bp || {};
 		 */		
 		$(".bp-friend-swiper-slider").jTinder({			
 			onDislike: function (item) {				
+                $(item).find('.bffs-dislike-friend').trigger('click');
 				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' ); 
 				item.remove();
 				let panes2 = $(">ul>li", '#' + parent_id );
@@ -78,6 +79,22 @@ window.bp = window.bp || {};
 			dislikeSelector: '.dislike'
 		});
 
+        $(document).on('click', '.bffs-dislike-friend', function (e) {
+            let rejectedMemberID = $(this).parents('li.item-entry').data('bp-item-id');
+           
+            $.post(bffs_ajax_object.ajaxurl,
+                {
+                    action:'member_dislike',
+                    member_id: rejectedMemberID,
+                    nonce: bffs_ajax_object.security
+                },
+                function(responce){
+                    console.log(responce);
+                }
+
+            );
+        });
+
 		/**
 		 * Set button action to trigger jTinder like & dislike.
 		 */
@@ -91,6 +108,8 @@ window.bp = window.bp || {};
 			e.preventDefault();			
 			$( this ).parents('.bp-friend-swiper-slider').jTinder( $(this).attr('class') );
 		});
+
+        
     });
 
     // Add swiper layout for the bp-friend-follow-swiper-widget

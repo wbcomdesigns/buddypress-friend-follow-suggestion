@@ -307,6 +307,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'bffs-widget-nonce' ) ) {
 			return false;
 		}
+
 		$friend_id = isset( $_POST['mem_id'] ) ? sanitize_text_field( wp_unslash( $_POST['mem_id'] ) ) : '';
 		if ( 'not_friends' === BP_Friends_Friendship::check_is_friend( bp_loggedin_user_id(), $friend_id ) ) {
 			if ( ! friends_add_friend( bp_loggedin_user_id(), $friend_id ) ) {
@@ -404,6 +405,43 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			),
 		);
 		register_meta( $object_type, 'swiped', $meta_args );
+	}
+
+	public function bp_friend_follow_suggestion_member_dislike() {
+		check_ajax_referer( 'bffs-swipe-' . get_current_user_id(), 'nonce' );
+
+		$rejected_member_id = sanitize_text_field( wp_unslash( $_POST['member_id'] ) );
+		$rejected_members   = get_transient( 'rejected_members_' . get_current_user_id() );
+
+		if ( false === $rejected_members ) {
+			$rejected_members[] = $rejected_member_id;
+		} else {
+			$rejected_members[] = $rejected_member_id;
+		}
+		$set = set_transient( 'rejected_members_' . get_current_user_id(), $rejected_members, 24 * HOUR_IN_SECONDS );
+
+		if ( $set ) {
+			wp_send_json_success();
+		} else {
+			wp_send_json_error();
+		}
+	}
+
+
+	public function bp_friend_follow_suggestion_remove_dislike_members( $members ) {
+
+		if ( ! is_user_logged_in() ) {
+			return $members;
+		}
+
+		if ( false === get_transient( 'rejected_members_' . get_current_user_id() ) ) {
+			return $members;
+		}
+
+		$rejected_members = get_transient( 'rejected_members_' . get_current_user_id() );
+		$members          = array_diff( $members, $rejected_members );
+
+		return apply_filters( 'bp_friend_follow_suggestion_remove_dislike_members', $members );
 	}
 }
 
