@@ -104,18 +104,26 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 
 
 if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
-	function bp_suggestions_get_compose_message_url() {
-		if ( bp_is_active( 'messages' ) ) {
-			if ( ( function_exists( 'buddypress' ) && isset( buddypress()->buddyboss ) ) ) {
-				$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
-			} else {
-				$messgae_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
-			}
 
-			return apply_filters( 'bp_suggestions_compose_message_url', $messgae_url );
-		}
-	}
+    /**
+     * Get the URL to compose a new BuddyPress message.
+     *
+     * @return string|false The compose message URL or false if messaging is inactive.
+     */
+    function bp_suggestions_get_compose_message_url() {
+        // Check if the messaging component is active.
+        if ( ! bp_is_active( 'messages' ) ) {
+            return false; // Return false if messaging is not active.
+        }
+
+        // Construct the compose message URL.
+        $message_url = bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=';
+
+        // Allow customization of the message URL.
+        return apply_filters( 'bp_suggestions_compose_message_url', $message_url );
+    }
 }
+
 
 
 
