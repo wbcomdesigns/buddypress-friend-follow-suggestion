@@ -5,88 +5,102 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 	/**
 	 * Get matched members
 	 *
-	 * @param  int $user_id             User whose match find.
-	 * @param  int $max_members         Maximum number of matched users.
-	 * @param  int $percentage_criteria percentage Critatia on behalf get the metched users.
+	 * @param  int    $user_id             User whose match to find.
+	 * @param  int    $max_members         Maximum number of matched users.
+	 * @param  int    $percentage_criteria Percentage criteria to get the matched users.
+	 * @param  string $suggest             Type of suggestion ('friends', 'follow', etc.).
 	 *
-	 * @return  array
+	 * @return array Matched members' IDs.
 	 */
 	function bp_suggestions_get_matched_users( $user_id, $max_members, $percentage_criteria, $suggest = '' ) {
 		$matched_members = array();
-		if ( ! empty( $user_id ) ) {
-			global $wpdb;
+		if ( empty( $user_id ) ) {
+			return $matched_members; // Return early if no user ID is provided.
+		}
 
+		global $wpdb;
+
+		$exclude_user = array();
+
+		// Caching exclusion list to reduce repeated DB hits.
+		$cache_key = "exclude_user_{$user_id}_{$suggest}";
+		$exclude_user = wp_cache_get( $cache_key );
+
+		if ( false === $exclude_user ) {
 			$exclude_user = array();
 			$is_confirmed = 0;
+
+			// Exclude friends or followers based on suggestion type.
 			if ( 'friends' === $suggest ) {
-				$sql          = $wpdb->prepare( "Select `friend_user_id` from {$wpdb->prefix}bp_friends where initiator_user_id = %d AND `is_confirmed` = %d", $user_id, $is_confirmed );
+				$sql = $wpdb->prepare(
+					"SELECT `friend_user_id` FROM {$wpdb->prefix}bp_friends WHERE initiator_user_id = %d AND `is_confirmed` = %d",
+					$user_id, $is_confirmed
+				);
 				$exclude_user = $wpdb->get_col( $sql );
 			} elseif ( 'follow' === $suggest ) {
-				$sql          = "select leader_id from {$wpdb->prefix}bp_follow where follower_id = {$user_id}";
+				$sql = $wpdb->prepare(
+					"SELECT `leader_id` FROM {$wpdb->prefix}bp_follow WHERE `follower_id` = %d",
+					$user_id
+				);
 				$exclude_user = $wpdb->get_col( $sql );
 			}
 
-			if ( ! empty( get_user_meta( $user_id, 'swiped', true ) ) ) {
-				$exclude_user = array_merge( $exclude_user, get_user_meta( $user_id, 'swiped', true ) );
+			// Merge with swiped users to exclude.
+			$swiped_users = get_user_meta( $user_id, 'swiped', true );
+			if ( ! empty( $swiped_users ) ) {
+				$exclude_user = array_merge( $exclude_user, (array) $swiped_users );
 			}
 
-			$bffs_general_setting = get_option( 'bffs_general_setting' );
-			$matche_obj           = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_VERSION );
-			$max_members          = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
-			$users                = get_users(
-				array(
-					'exclude' => $exclude_user,
-					'number'  => $max_members,
-				)
-			);
+			// Cache the exclusion list for 5 minutes.
+			wp_cache_set( $cache_key, $exclude_user, '', 300 );
+		}
 
-			$match_data          = ! empty( $bffs_general_setting['bffs_match_data'] ) ? $bffs_general_setting['bffs_match_data'] : '';
-			$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
+		$bffs_general_setting = get_option( 'bffs_general_setting' );
+		$matche_obj = new Buddypress_Friend_Follow_Suggestion_Public( 'buddypress-friend-follow-suggestion', BFFS_PLUGIN_VERSION );
 
-			foreach ( $users as $key => $user ) {
-				if ( $user_id !== $user->ID ) {
-					$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
-					if ( $percentage_criteria <= $matche_score ) {
-						if ( 'friends' === $suggest && function_exists( 'bp_is_friend' ) ) {
+		$max_members = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
+		$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
 
-							$is_friend = bp_is_friend( $user->ID );
-							if ( 'not_friends' === $is_friend ) {
-								$matched_members[] = $user->ID;
-							}
-						} elseif ( 'follow' === $suggest ) {
-							if ( function_exists( 'bp_add_follow_button' ) ) {
-								$is_following = bp_is_following(
-									array(
-										'leader_id'   => $user->ID,
-										'follower_id' => $user_id,
-									)
-								);
-								if ( 0 == $is_following ) {
-									$matched_members[] = $user->ID;
-								}
-							}
+		// Fetch users excluding the specified ones.
+		$users = get_users(
+			array(
+				'exclude' => $exclude_user,
+				'number'  => $max_members,
+				'fields'  => array( 'ID' ), // Fetch only necessary fields to reduce memory usage.
+			)
+		);
 
-							if ( function_exists( 'bp_follow_add_follow_button' ) ) {
-								$is_following = bp_follow_is_following(
-									array(
-										'leader_id'   => $user->ID,
-										'follower_id' => $user_id,
-									)
-								);
-								if ( 0 == $is_following ) {
-									$matched_members[] = $user->ID;
-								}
-							}
-						} else {
+		foreach ( $users as $user ) {
+			if ( $user_id !== $user->ID ) {
+				$matche_score = $matche_obj->buddypress_friend_follow_compatibility_score( $user_id, $user->ID );
+				if ( $percentage_criteria <= $matche_score ) {
+					// Check relationship status based on suggestion type.
+					if ( 'friends' === $suggest && function_exists( 'bp_is_friend' ) ) {
+						$is_friend = bp_is_friend( $user->ID );
+						if ( 'not_friends' === $is_friend ) {
 							$matched_members[] = $user->ID;
 						}
+					} elseif ( 'follow' === $suggest && function_exists( 'bp_is_following' ) ) {
+						$is_following = bp_is_following(
+							array(
+								'leader_id'   => $user->ID,
+								'follower_id' => $user_id,
+							)
+						);
+						if ( 0 === $is_following ) {
+							$matched_members[] = $user->ID;
+						}
+					} else {
+						$matched_members[] = $user->ID;
 					}
 				}
 			}
 		}
+
 		return apply_filters( 'bffs_remove_specific_role_from_suggestion_widget', $matched_members );
 	}
 }
+
 
 
 if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
