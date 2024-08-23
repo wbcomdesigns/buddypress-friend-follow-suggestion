@@ -116,22 +116,42 @@ if ( ! function_exists( 'bp_suggestions_get_compose_message_url' ) ) {
 if ( ! function_exists( 'bp_suggestions_is_user_online' ) ) {
 
 	function bp_suggestions_is_user_online( $user_id ) {
+		// Check if BuddyPress is active and the function is available
 		if ( ! function_exists( 'bp_get_user_last_activity' ) ) {
-			return;
+			return false;
 		}
 
-		$last_activity = strtotime( bp_get_user_last_activity( $user_id ) );
+		// Validate the user ID
+		if ( empty( $user_id ) || ! is_numeric( $user_id ) ) {
+			return false;
+		}
 
+		// Attempt to get the last activity time (cached if possible)
+		$last_activity = wp_cache_get( "bp_last_activity_{$user_id}" );
+		if ( false === $last_activity ) {
+			$last_activity = bp_get_user_last_activity( $user_id );
+			wp_cache_set( "bp_last_activity_{$user_id}", $last_activity, '', 300 ); // Cache for 5 minutes
+		}
+
+		// If no activity found, the user is considered offline
 		if ( empty( $last_activity ) ) {
 			return false;
 		}
 
-		// the activity timeframe is 5 minutes
-		$activity_timeframe = 5 * MINUTE_IN_SECONDS;
+		// Convert the last activity to a timestamp
+		$last_activity_timestamp = strtotime( $last_activity );
+		if ( false === $last_activity_timestamp ) {
+			return false;
+		}
 
-		return time() - $last_activity <= $activity_timeframe;
+		// Calculate the threshold for online status (5 minutes)
+		$activity_threshold = time() - ( 5 * MINUTE_IN_SECONDS );
+
+		// Compare the last activity timestamp with the threshold
+		return $last_activity_timestamp >= $activity_threshold;
 	}
 }
+
 
 /*
  * BuddyPress user status
