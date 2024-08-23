@@ -173,11 +173,24 @@ if ( ! function_exists( 'bp_suggestions_is_user_online' ) ) {
  * @param $user_id
  *
  */
-if ( ! function_exists( 'buddyx_user_status' ) ) {
+if ( ! function_exists( 'bp_suggestions_user_status' ) ) {
 
-	function bp_suggestions_user_status( $user_id ) {
-		if ( bp_suggestions_is_user_online( $user_id ) ) {
-			echo '<span class="member-status online"></span>';
-		}
-	}
+    /**
+     * Display BuddyPress user status.
+     *
+     * @param int $user_id The ID of the user whose status we want to display.
+     * @return string The HTML output for the user's status.
+     */
+    function bp_suggestions_user_status( $user_id ) {
+        // Validate user ID and check if the user is online.
+        if ( empty( $user_id ) || ! bp_suggestions_is_user_online( $user_id ) ) {
+            return ''; // Return an empty string if the user ID is invalid or the user is offline.
+        }
+
+        // Generate the status HTML (this can be customized).
+        $status_html = '<span class="member-status online"></span>';
+
+        // Allow developers to modify the status HTML via a filter.
+        return apply_filters( 'bp_suggestions_user_status_html', $status_html, $user_id );
+    }
 }
