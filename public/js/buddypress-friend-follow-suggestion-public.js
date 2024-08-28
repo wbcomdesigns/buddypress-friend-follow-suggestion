@@ -61,7 +61,8 @@ window.bp = window.bp || {};
 				}
 			},
 			onLike: function (item) {				
-				$(item).find('a.friendship-button[data-bp-btn-action]').trigger( 'click');
+				$(item).find('a.friendship-button[data-bp-btn-action]').trigger( 'click');				
+				$(item).find('a.follow').trigger( 'click');
 				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' );
 				item.remove();
 				let panes2 = $(">ul>li", '#' + parent_id);				
@@ -93,6 +94,16 @@ window.bp = window.bp || {};
                 }
 
             );
+        });
+		
+		$(document).on('click', '.slider-members-list .bffs_user_buttons .like a.follow', function (e) {
+            e.preventDefault();
+			
+			$.ajax({
+                    url: $( this ).attr( 'href' ),
+                    success: function (result) {                        
+                    }
+                });            
         });
 
 		/**

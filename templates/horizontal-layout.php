@@ -7,9 +7,12 @@
 		$suggest_is_follow 	= 'follow' === $settings['suggest'];
 		while ( bp_members() ) :
 			bp_the_member();
+			$member_id 			= bp_get_member_user_id();
+			$member_permalink 	= bp_get_member_permalink();
+			$member_name 		= bp_get_member_name();
 			?>
 			<div class="bffs-slide swiper-slide">
-				<div <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
+				<div <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php echo esc_attr($member_id); ?>" data-bp-item-component="members">
 					<div class="list-wrap">
 						<div class="item-avatar">
 							<?php
@@ -27,12 +30,12 @@
 						</div>
 						<div class="item">
 							<div class="item-title fn">
-								<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
+								<a href="<?php echo esc_url($member_permalink); ?>"><?php echo esc_html( $member_name ); ?></a>
 							</div>
 							<div class="item-meta">
 								<?php 
 									if ( $suggest_is_follow && $is_follow_active ) { 										
-										bp_follow_add_follow_button( 'leader_id=' . bp_get_member_user_id() ); 
+										bp_follow_add_follow_button( 'leader_id=' . $member_id ); 
 									
 									} elseif ( $suggest_is_follow ) { 
 										$button_args = wp_parse_args( $button_args, get_class_vars( 'BP_Button' ) );
