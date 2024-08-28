@@ -134,8 +134,7 @@
 							} else {
 								panes.eq(current_pane).find($that.settings.dislikeSelector).removeClass('dislike-active');
 							}
-						}
-						console.log(opa);
+						}						
 					}
 					break;
 				case 'mouseup':

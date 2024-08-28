@@ -40,7 +40,7 @@
 					<div class="bffs_swipe_layout_bottom_meta">
 					<div class="bffs_swipe_layout_bottom">
 						<div class="bffs_user_buttons">
-							<div class="dislike bffs-dislike-friend"></div>
+							<div class="dislike"></div>
 							<div class="like">
 								<?php echo wp_kses_post( bp_get_add_friend_button( bp_get_member_user_id() ) ); ?>
 							</div>

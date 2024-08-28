@@ -50,7 +50,7 @@ window.bp = window.bp || {};
 		 */		
 		$(".bp-friend-swiper-slider").jTinder({			
 			onDislike: function (item) {				
-                $(item).find('.bffs-dislike-friend').trigger('click');
+                $(item).find('.bffs_user_buttons .dislike').trigger('click');
 				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' ); 
 				item.remove();
 				let panes2 = $(">ul>li", '#' + parent_id );
@@ -79,7 +79,7 @@ window.bp = window.bp || {};
 			dislikeSelector: '.dislike'
 		});
 
-        $(document).on('click', '.bffs-dislike-friend', function (e) {
+        $(document).on('click', '.bffs_user_buttons .dislike', function (e) {
             let rejectedMemberID = $(this).parents('li.item-entry').data('bp-item-id');
            
             $.post(bffs_ajax_object.ajaxurl,
@@ -105,7 +105,7 @@ window.bp = window.bp || {};
 		});
 		*/
 		$( document ).on( 'click', '.bffs_user_buttons .like, .bffs_user_buttons .dislike', function(e) {
-			e.preventDefault();			
+			e.preventDefault();
 			$( this ).parents('.bp-friend-swiper-slider').jTinder( $(this).attr('class') );
 		});
 
