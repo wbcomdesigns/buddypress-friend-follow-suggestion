@@ -62,6 +62,7 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 		$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
 
 		// Fetch users excluding the specified ones.
+		$exclude_user[] = $user_id;
 		$users = get_users(
 			array(
 				'exclude' => $exclude_user,
