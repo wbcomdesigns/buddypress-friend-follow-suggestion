@@ -1,3 +1,4 @@
+.bp-friend-swiper-no-slider,
 .bp-friend-swiper-slider {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -6,7 +7,7 @@
     margin: auto;
     height: 100%;
 }
-
+.bp-friend-swiper-no-slider ul,
 .bp-friend-swiper-slider ul {
     margin: 0;
     position: relative;
@@ -15,6 +16,7 @@
     width: 100%;
 }
 
+.bp-friend-swiper-no-slider li,
 .bp-friend-swiper-slider li {
     display: block;
     width: 100% !important;
@@ -41,7 +43,7 @@
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 }
-
+.bp-friend-swiper-no-slider li.pane1,
 .bffs_swiper_layout_wrapper li.pane1 {
     width: 100% !important;
     margin: 0 !important;

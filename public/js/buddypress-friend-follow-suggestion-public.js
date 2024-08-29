@@ -48,36 +48,39 @@ window.bp = window.bp || {};
 		/**
 		 * jTinder initialization
 		 */		
-		$(".bp-friend-swiper-slider").jTinder({			
-			onDislike: function (item) {				
-                $(item).find('.bffs_user_buttons .dislike').trigger('click');
-				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' ); 
-				item.remove();
-				let panes2 = $(">ul>li", '#' + parent_id );
-				let pane_count2 = panes2.length - 1;
-				if(pane_count2 === 0 ){
-					$('.like').hide();
-					$('.dislike').hide();
-				}
-			},
-			onLike: function (item) {				
-				$(item).find('a.friendship-button[data-bp-btn-action="not_friends"]').trigger( 'click');				
-				$(item).find('a.follow').trigger( 'click');
-				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' );
-				item.remove();
-				let panes2 = $(">ul>li", '#' + parent_id);				
-				let pane_count2 = panes2.length - 1;
+		$( ".bp-friend-swiper-slider" ).each( function() {
+			var tinderslide_id = $( this ).attr( 'id' );
+			$( "#" + tinderslide_id ).jTinder({			
+				onDislike: function (item) {				
+					$(item).find('.bffs_user_buttons .dislike').trigger('click');					
+					item.remove();
+					let panes2 = $(">ul>li", '#' + tinderslide_id );
+					let pane_count2 = panes2.length - 1;
+					if(pane_count2 === 0 ){
+						$('.like').hide();
+						$('.dislike').hide();
+					}
+				},
+				onLike: function (item) {				
+					$(item).find('a.friendship-button[data-bp-btn-action="not_friends"]').trigger( 'click');				
+					$(item).find('a.follow').trigger( 'click');
+					console.log($(item));
+					console.log($(item).find('a.follow'));					
+					item.remove();
+					let panes2 = $(">ul>li", '#' + tinderslide_id);				
+					let pane_count2 = panes2.length - 1;
 
-				if(pane_count2 === 0 ){
-					$('.like').hide();
-					$('.dislike').hide();
-				}
-			},
-			animationRevertSpeed: 200,
-			animationSpeed: 400,
-			threshold: 1,
-			likeSelector: '.like',
-			dislikeSelector: '.dislike'
+					if(pane_count2 === 0 ){
+						$('.like').hide();
+						$('.dislike').hide();
+					}
+				},
+				animationRevertSpeed: 200,
+				animationSpeed: 400,
+				threshold: 1,
+				likeSelector: '#' + tinderslide_id + ' .like',
+				dislikeSelector: '#' + tinderslide_id + ' .dislike',
+			});
 		});
 
         $(document).on('click', '.bffs_user_buttons .dislike', function (e) {
@@ -117,6 +120,7 @@ window.bp = window.bp || {};
 		*/
 		$( document ).on( 'click', '.bffs_user_buttons .like, .bffs_user_buttons .dislike', function(e) {
 			e.preventDefault();
+			console.log($( this ).parents('.bp-friend-swiper-slider').attr( 'id' ) );
 			$( this ).parents('.bp-friend-swiper-slider').jTinder( $(this).attr('class') );
 		});
 
