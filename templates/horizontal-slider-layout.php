@@ -1,4 +1,4 @@
-<div id="bp-friend-swiper-slider-<?php echo rand(); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bp-friend-swiper-slider">
+<div id="bp-friend-swiper-slider-<?php echo rand(); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bffs_swiper_suggest_<?php echo esc_attr( $settings['suggest'] ); ?> bp-friend-swiper-slider">
 	<ul id="slider-members-list" class="item-list item-list members-list slider-members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
 		<li class="pane1">
 			<div class="default demo-empty-slide">				
