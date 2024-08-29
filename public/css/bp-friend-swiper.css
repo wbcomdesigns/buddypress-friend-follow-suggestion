@@ -1,4 +1,6 @@
 .bp-friend-swiper-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: relative;
     margin: auto;
@@ -15,7 +17,7 @@
 
 .bp-friend-swiper-slider li {
     display: block;
-    width: 100%;
+    width: 100% !important;
     overflow: hidden;
     position: absolute;
     background-color: #fff;
@@ -24,14 +26,13 @@
     left: 0;
     overflow: hidden;
     text-align: center;
-    padding: 10px 10px 10px 10px;
+    margin: 0 !important;
+    padding: 0 !important;
     font-size: 24px;
     border-radius: 20px;
     color: #000;
     -webkit-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
-    -moz-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     -ms-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
-    -o-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -41,13 +42,12 @@
     -o-border-radius: 20px;
 }
 
-
 /* Like & dislike badge images */
 
 .bp-friend-swiper-slider .like,
 .bp-friend-swiper-slider .dislike {
     background: url("../images/liked.png") no-repeat scroll 0 0;
-    opacity: 1!important;
+    opacity: 1 !important;
     height: 35px;
     width: 35px;
     background-color: #fff !important;
@@ -61,6 +61,7 @@
     right: 45px;
     cursor: pointer;
     left: auto;
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
     background: url("../images/nope.png") no-repeat scroll 0 0;
 }
@@ -93,9 +94,7 @@
     width: 100%;
     position: relative;
     -webkit-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
-    -moz-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     -ms-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
-    -o-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
     overflow: hidden;
     backface-visibility: hidden;
@@ -140,8 +139,6 @@
     background-color: #f7f7f7;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
     background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
-    background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
-    background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
     background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
     color: #a7a7a7;
     margin: 36px;
@@ -191,10 +188,16 @@
 }
 
 .bffs_user_layout_one .bffs_user_buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 10px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
     width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -220,7 +223,7 @@
 }
 
 .bp-friend-swiper-slider .bffs_user_layout_one .like a::before {
-    display: none!important;
+    display: none !important;
 }
 
 .bffs_user_layout_one .bffs_swipe_layout_bottom_meta {
@@ -229,13 +232,20 @@
     text-align: left;
     width: 100%;
     background: rgb(2, 0, 36);
+    background: -webkit-linear-gradient(90deg, rgba(2, 0, 36, 0.8715861344537815) 0%, rgba(0, 212, 255, 0) 100%);
     background: linear-gradient(0deg, rgba(2, 0, 36, 0.8715861344537815) 0%, rgba(0, 212, 255, 0) 100%);
     padding: 15px;
 }
 
 .bffs_user_layout_one .bffs_user_layout_button_list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     background-color: rgba(2, 88, 255, 0.15);
     padding: 5px;
@@ -261,7 +271,11 @@
     font-size: 12px;
     color: #fff;
     gap: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -296,7 +310,11 @@
 }
 
 .bffs_actvity_icon a {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 5px;
     font-size: 13px;
@@ -333,10 +351,19 @@
 
 .bffs_swiper_layout_wrapper .default.demo-empty-slide {
     height: 380px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     background: #f6f6f6;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
 }
@@ -346,7 +373,7 @@
     margin: 0 auto;
 }
 
-.bffs_swiper_layout_wrapper .default.demo-empty-slide span{
+.bffs_swiper_layout_wrapper .default.demo-empty-slide span {
     font-size: 16px;
 }
 
@@ -357,8 +384,24 @@
     height: 475px;
 }
 
+.bffs_swiper_layout_wrapper.bffs_swiper_layout_two {
+    display: block;
+}
+
+.bffs_swiper_layout_wrapper.bffs_swiper_layout_two>ul {
+    height: 472px;
+}
+
+.bffs_swiper_layout_wrapper.bffs_swiper_layout_two .bffs_item-title a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
 .bffs_swiper_layout_two .default.demo-empty-slide {
-    height: 475px;
+    height: 472px;
 }
 
 .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider .item-avatar img.avatar {
@@ -372,10 +415,15 @@
 
 .bffs_swiper_layout_two .bffs_swipe_layout_bottom_meta {
     position: unset;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     text-align: left;
     width: 100%;
     background: #fff !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding: 0 15px 15px 15px;
     border: 1px solid #eee;
@@ -400,37 +448,30 @@
     padding: 0;
 }
 
-
 /* ================================
-
 BuddyBoss Theme Support
-
 ================================ */
-
-
- .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list .item-avatar img.avatar{
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider #members-list.members-list .item-avatar img.avatar {
     max-width: 100%;
     border-radius: 20px;
 }
 
- .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list .list-wrap{
-    border:none;
-    background:none;
-    margin:0px;
-    padding:0px;
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider #members-list.members-list .list-wrap {
+    border: none;
+    background: none;
+    margin: 0px;
+    padding: 0px;
     overflow: hidden;
- }
+}
 
-  .buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider  #members-list.members-list{
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bp-friend-swiper-slider #members-list.members-list {
     overflow: inherit;
-  }
+}
 
-
-.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider  #members-list.members-list .item-avatar img.avatar{
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider #members-list.members-list .item-avatar img.avatar {
     border-radius: 20px 20px 0 0;
 }
 
-.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider  .default.demo-empty-slide{
+.buddypress.widget.widget_bp_friend_suggestion_slider_widget .bffs_swiper_layout_two.bp-friend-swiper-slider .default.demo-empty-slide {
     height: 460px;
 }
-
