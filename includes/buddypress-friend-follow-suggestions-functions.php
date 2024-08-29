@@ -25,7 +25,19 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 		// Caching exclusion list to reduce repeated DB hits.
 		$cache_key = "exclude_user_{$user_id}_{$suggest}";
 		$exclude_user = wp_cache_get( $cache_key );
-
+		
+		/*
+		 * Exclude rejected members from the exclude users
+		 */
+		$rejected_members = get_transient( 'rejected_members_' . $user_id );		
+		if( is_array($exclude_user) && is_array($rejected_members) ) {			
+			$exclude_user = array_merge( $exclude_user, $rejected_members);
+		}
+		if( !is_array($exclude_user) && is_array($rejected_members)) {
+			$exclude_user = $rejected_members;
+		}
+		
+		
 		if ( false === $exclude_user ) {
 			$exclude_user = array();
 			$is_confirmed = 0;

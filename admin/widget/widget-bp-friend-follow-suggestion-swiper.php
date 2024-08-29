@@ -96,10 +96,18 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 			require BFFS_PLUGIN_PATH . 'templates/horizontal-slider-layout.php';
 				
 		else : ?>
-
-			<div class="widget-error">
-				<?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?>
+			
+			<div id="bp-friend-swiper-slider-<?php echo rand(); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bp-friend-swiper-no-slider">
+				<ul id="slider-members-list" class="item-list item-list members-list slider-members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
+					<li class="pane1">
+						<div class="default demo-empty-slide">				
+							<img src="<?php echo BFFS_PLUGIN_URL . 'public/images/not-faund.png'; ?>">
+							<span><?php esc_html_e( 'No suggestion found.', 'buddypress-friend-follow-suggestion' ); ?></span>
+						</div>
+					</li>
+				</ul>
 			</div>
+			
 		<?php
 		endif;
 		echo wp_kses_post( $args['after_widget'] );
