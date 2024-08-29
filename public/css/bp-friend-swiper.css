@@ -42,6 +42,12 @@
     -o-border-radius: 20px;
 }
 
+.bffs_swiper_layout_wrapper li.pane1 {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 /* Like & dislike badge images */
 
 .bp-friend-swiper-slider .like,
