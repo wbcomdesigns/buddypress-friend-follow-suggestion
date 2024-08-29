@@ -61,7 +61,7 @@ window.bp = window.bp || {};
 				}
 			},
 			onLike: function (item) {				
-				$(item).find('a.friendship-button.not_friends').trigger( 'click');				
+				$(item).find('a.friendship-button[data-bp-btn-action="not_friends"]').trigger( 'click');				
 				$(item).find('a.follow').trigger( 'click');
 				let parent_id = $(item).parents('.bp-friend-swiper-slider').attr( 'id' );
 				item.remove();
