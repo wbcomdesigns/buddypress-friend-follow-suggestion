@@ -206,7 +206,8 @@
     line-height: 18px;
 }
 
-.widget_bp_friend_suggestion_slider_widget .bffs_user_layout_one .like a {
+.widget_bp_friend_suggestion_slider_widget .bffs_user_layout_one .like a,
+.widget_bp_friend_suggestion_slider_widget .bffs_user_layout_one .like button {
     border: none !important;
     background: transparent !important;
     width: 30px !important;
