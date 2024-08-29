@@ -57,16 +57,16 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( BFFS_PLUGI
 						</div>
 					</div>
 
-				<div class="wbcom-settings-section-wrap">
-				<div class="wbcom-settings-section-options-heading">
-					<label><?php esc_html_e( 'Weighted Field Matching', 'buddypress-friend-follow-suggestion' ); ?></label>
-					<p class="description"><?php esc_html_e( 'Weighted Field Matching helps the admin can adjust weightages to enhance the accuracy and relevance of networking or dating experience.', 'buddypress-friend-follow-suggestion' ); ?></p>
-				</div>
-				<div id="bffs-profile-match-fields" class="bffs-profile-match-fields wbcom-bp-row-settings" 
-				<?php
+				<div id="bffs-profile-match-fields" class="wbcom-settings-section-wrap" <?php
 				if ( ! isset( $bffs_general_setting['enable_profile_match'] ) || '' === $bffs_general_setting['enable_profile_match'] ) :
 					?>
 					style="display:none;"<?php endif; ?>>
+					<div class="wbcom-settings-section-options-heading">
+						<label><?php esc_html_e( 'Weighted Field Matching', 'buddypress-friend-follow-suggestion' ); ?></label>
+						<p class="description"><?php esc_html_e( 'Weighted Field Matching helps the admin can adjust weightages to enhance the accuracy and relevance of networking or dating experience.', 'buddypress-friend-follow-suggestion' ); ?></p>
+					</div>
+				<div class="bffs-profile-match-fields wbcom-bp-row-settings" >
+				
 					<div class="bffs-field-header">
 						<span class="bffs-col1">&nbsp;</span>
 						<span class="bffs-col2"><strong><?php esc_html_e( 'Profile Field', 'buddypress-friend-follow-suggestion' ); ?></strong></span>
