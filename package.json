@@ -5,7 +5,7 @@
   "license": "GPL-2.0+",
   "description": "Suggest users on the basis of there profile matching.",
   "devDependencies": {
-    "@wordpress/scripts": "^27.6.0",
+    "@wordpress/scripts": "^28.6.0",
     "grunt": "^1.1.0",
     "grunt-checktextdomain": "^1.0.1",
     "grunt-wp-i18n": "^1.0.3"
