@@ -26,18 +26,6 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 		$cache_key = "exclude_user_{$user_id}_{$suggest}";
 		$exclude_user = wp_cache_get( $cache_key );
 		
-		/*
-		 * Exclude rejected members from the exclude users
-		 */
-		$rejected_members = get_transient( 'rejected_members_' . $user_id );		
-		if( is_array($exclude_user) && is_array($rejected_members) ) {			
-			$exclude_user = array_merge( $exclude_user, $rejected_members);
-		}
-		if( !is_array($exclude_user) && is_array($rejected_members)) {
-			$exclude_user = $rejected_members;
-		}
-		
-		
 		if ( false === $exclude_user ) {
 			$exclude_user = array();
 			$is_confirmed = 0;
@@ -72,7 +60,18 @@ if ( ! function_exists( 'bp_suggestions_get_matched_users' ) ) {
 
 		$max_members = ! empty( $max_members ) ? $max_members : apply_filters( 'bp_suggestion_max_members', 5 );
 		$percentage_criteria = ! empty( $percentage_criteria ) ? $percentage_criteria : apply_filters( 'bp_suggestion_critaria', 10 );
-
+		
+		
+		/*
+		 * Exclude rejected members from the exclude users
+		 */
+		$rejected_members = get_transient( 'rejected_members_' . $user_id );		
+		if( is_array($exclude_user) && is_array($rejected_members) ) {			
+			$exclude_user = array_merge( $exclude_user, $rejected_members);
+		}
+		if( !is_array($exclude_user) && is_array($rejected_members)) {
+			$exclude_user = $rejected_members;
+		}		
 		// Fetch users excluding the specified ones.
 		$exclude_user[] = $user_id;
 		$users = get_users(
