@@ -61,8 +61,10 @@ window.bp = window.bp || {};
 						$('.dislike').hide();
 					}
 				},
-				onLike: function (item) {				
-					$(item).find('a.friendship-button[data-bp-btn-action="not_friends"]').trigger( 'click');				
+				onLike: function (item) {
+					
+					$(item).find('a.friendship-button[data-bp-btn-action="not_friends"]').trigger( 'click');
+					$(item).find('a.follow-button[data-bp-btn-action="not_following"]').trigger( 'click');
 					$(item).find('a.follow').trigger( 'click');
 					console.log($(item));
 					console.log($(item).find('a.follow'));					
