@@ -24,8 +24,8 @@ class BP_Friend_Follow_Suggestion_Swiper_Widget extends WP_Widget {
 	public function __construct() {
 
 		// Setup widget name & description.
-		$name        = _x( '(Swiper) BuddyPress Friend Suggestion', 'widget name', 'buddypress-friend-suggestion' );
-		$description = __( 'A dynamic suggestion list of matched members to your profile.', 'buddypress-friend-suggestion' );
+		$name        = _x( '(Swiper) BuddyPress Friend Suggestion', 'widget name', 'buddypress-friend-follow-suggestion' );
+		$description = __( 'A dynamic suggestion list of matched members to your profile.', 'buddypress-friend-follow-suggestion' );
 
 		// Call WP_Widget constructor.
 		parent::__construct(

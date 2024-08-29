@@ -313,7 +313,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			if ( ! friends_add_friend( bp_loggedin_user_id(), $friend_id ) ) {
 				$response['feedback'] = sprintf(
 					'<div class="bp-feedback error">%s</div>',
-					esc_html__( 'Friendship could not be requested.', 'buddypress' )
+					esc_html__( 'Friendship could not be requested.', 'buddypress-friend-follow-suggestion' )
 				);
 				wp_send_json_error( $response );
 			} else {
@@ -361,7 +361,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				$output = bp_get_button(
 					array_merge(
 						array(
-							'link_text' => __( 'Already following', 'buddypress-followers' ),
+							'link_text' => __( 'Already following', 'buddypress-friend-follow-suggestion' ),
 						),
 						$args
 					)
@@ -370,7 +370,7 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 				$output = bp_get_button(
 					array_merge(
 						array(
-							'link_text' => __( 'Error following user', 'buddypress-followers' ),
+							'link_text' => __( 'Error following user', 'buddypress-friend-follow-suggestion' ),
 						),
 						$args
 					)
