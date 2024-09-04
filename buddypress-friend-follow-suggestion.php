@@ -35,14 +35,18 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 
-if ( ! defined( 'BFFS_PLUGIN_VERSION' ) ) {
-	define( 'BFFS_PLUGIN_VERSION', '1.5.0' );
+ if ( ! defined( 'BFFS_PLUGIN_VERSION' ) ) {
+    define( 'BFFS_PLUGIN_VERSION', '1.5.0' );
 }
 if ( ! defined( 'BFFS_PLUGIN_FILE' ) ) {
-	define( 'BFFS_PLUGIN_FILE', __FILE__ );
+    define( 'BFFS_PLUGIN_FILE', __FILE__ );
 }
-define( 'BFFS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'BFFS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'BFFS_PLUGIN_PATH' ) ) {
+    define( 'BFFS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'BFFS_PLUGIN_URL' ) ) {
+    define( 'BFFS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
 
 /**
  * The code that runs during plugin activation.

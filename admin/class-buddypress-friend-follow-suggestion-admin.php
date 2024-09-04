@@ -53,12 +53,12 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 * @param      string $plugin_name       The name of this plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $plugin_name, $version = null ) {
 
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
+        $this->plugin_name = $plugin_name;
+        $this->version     = $version ?? ( defined( 'BFFS_PLUGIN_VERSION' ) ? BFFS_PLUGIN_VERSION : '1.0.0' );
 
-	}
+    }
 	/**
 	 * Define Plugin slug.
 	 *
@@ -75,25 +75,25 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Friend_Follow_Suggestion_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Buddypress_Friend_Follow_Suggestion_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Buddypress_Friend_Follow_Suggestion_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Buddypress_Friend_Follow_Suggestion_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-		$bffs_style = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+        $bffs_style = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
-		if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) || 'wbcom-plugins-page' === wp_unslash( $bffs_style ) || 'wbcom-support-page' === wp_unslash( $bffs_style ) || 'wbcom-license-page' === wp_unslash( $bffs_style ) ) ) {
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
-		}
+        if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) || 'wbcom-plugins-page' === wp_unslash( $bffs_style ) || 'wbcom-support-page' === wp_unslash( $bffs_style ) || 'wbcom-license-page' === wp_unslash( $bffs_style ) ) ) {
+            wp_enqueue_style( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
+        }
 
-	}
+    }
 
 	/**
 	 * Register the JavaScript for the admin area.
@@ -102,28 +102,28 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Friend_Follow_Suggestion_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Buddypress_Friend_Follow_Suggestion_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Buddypress_Friend_Follow_Suggestion_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Buddypress_Friend_Follow_Suggestion_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-		$bffs_scripts = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+        $bffs_scripts = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
-		if ( isset( $bffs_scripts ) && ( 'bffs-settings' === wp_unslash( $bffs_scripts ) || 'wbcomplugins' === wp_unslash( $bffs_scripts ) ) ) {
-			if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
-				wp_enqueue_script( 'jquery-ui-sortable' );
-			}
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
-		}
+        if ( isset( $bffs_scripts ) && ( 'bffs-settings' === wp_unslash( $bffs_scripts ) || 'wbcomplugins' === wp_unslash( $bffs_scripts ) ) ) {
+            if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
+                wp_enqueue_script( 'jquery-ui-sortable' );
+            }
+            wp_enqueue_script( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
+        }
 
-	}
+    }
 
 	/**
 		 * Hide all notices from the setting page.
