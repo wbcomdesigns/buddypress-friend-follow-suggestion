@@ -200,6 +200,10 @@ p.description.description-title {
         margin-bottom: 12px;
     }
 
+    .support-video iframe {
+        height: auto;
+    }
+
 }
 
 .wbcom-wrap .update-nag,
@@ -228,7 +232,6 @@ p.description.description-title {
     .support-video {
         padding: 20px;
     }
-
 }
 
 @media only screen and (min-width: 1175px) and (max-width: 1552px) {
