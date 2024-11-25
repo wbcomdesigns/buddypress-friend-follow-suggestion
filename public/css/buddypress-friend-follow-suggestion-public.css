@@ -712,23 +712,27 @@ Youzify
     border-radius: 100px;
 }
 
-.youzify-active .bffs_horizontal_layout.horizontal_swiper .bffs-wrapper.item-list {
+.bffs_horizontal_layout.horizontal_swiper .bffs-wrapper.item-list {
     flex-direction: unset;
     gap: 0;
     padding: 0 !important;    
 }
-.youzify-active .youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout {
+
+.youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout {
     border-radius: 7px;
 }
-.youzify-active .youzify-sidebar-column.youzify-sidebar .widget_bp_friend_suggestion_slider_widget,
-.youzify-active .youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget{
+
+.youzify-sidebar-column.youzify-sidebar .widget_bp_friend_suggestion_slider_widget,
+.youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget{
     padding: 0 20px 20px;
 }
-.youzify-active .youzify-sidebar-column.youzify-sidebar .widget_bp_friend_suggestion_slider_widget h3.widget-title,
-.youzify-active .youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget h3.widget-title{
+
+.youzify-sidebar-column.youzify-sidebar .widget_bp_friend_suggestion_slider_widget h3.widget-title,
+.youzify-sidebar-column.youzify-sidebar .widget_bp_friend_follow_suggestion_widget h3.widget-title{
     margin: 0 -20px 20px;
 }
-.youzify-active .widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .generic-button a {
+
+.widget_bp_friend_follow_suggestion_widget .bffs_horizontal_layout .generic-button a {
     max-height: 40px !important;
     gap: 5px;
 }
