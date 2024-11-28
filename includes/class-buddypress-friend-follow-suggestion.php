@@ -195,9 +195,14 @@ class Buddypress_Friend_Follow_Suggestion {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		if ( function_exists( 'buddypress' ) && buddypress()->buddyboss && 'BuddyBoss Theme' === $theme_name->Name ) {
 			$this->loader->add_action( 'bp_before_member_in_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
-		} else {
+		}else {
 			$this->loader->add_action( 'bp_before_member_header_meta', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 		}
+		include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		if( is_plugin_active('youzify/youzify.php') ){
+			$this->loader->add_action( 'youzify_after_header_cover_head_content', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
+		}
+		
 		$this->loader->add_action( 'socialv_member_header_fields', $plugin_public, 'buddypress_friend_follow_compatibility_match' );
 
 		$this->loader->add_action( 'wp_ajax_bffs_remove_user', $plugin_public, 'bffs_remove_user_form_widget' );
