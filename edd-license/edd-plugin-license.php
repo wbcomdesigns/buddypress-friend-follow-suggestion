@@ -298,11 +298,12 @@ function edd_wbcom_BFFS_admin_notices() {
 				<div class="notice notice-error is-dismissible">
 				<p>
 				<?php
-				echo $message = sprintf(
+				$message = sprintf(
 							/* translators: %1$s: Expire Time*/
 					__( 'Your BuddyPress Friend & Follow Suggestion plugin license key expired on %s.', 'buddypress-friend-follow-suggestion' ),
 					date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
 				);
+				echo esc_html( $message );
 				?>
 				</p>
 				</div>
