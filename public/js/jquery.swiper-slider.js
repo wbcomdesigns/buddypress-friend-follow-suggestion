@@ -51,8 +51,8 @@
             this.current_pane = this.pane_count - 1;
 
             $(this.element).bind('touchstart mousedown', this.handler.bind(this));
-            $("body").bind('touchmove mousemove', this.handler.bind(this));
-            $("body").bind('touchend mouseup', this.handler.bind(this));
+            $(".bffs_swiper_layout_wrapper").bind('touchmove mousemove', this.handler.bind(this));
+            $(".bffs_swiper_layout_wrapper").bind('touchend mouseup', this.handler.bind(this));
         },
 
         showPane: function (index) {
@@ -87,7 +87,7 @@
         },
 
         handler: function (ev) {
-            ev.preventDefault();
+            //ev.preventDefault();
 
             switch (ev.type) {
                 case 'touchstart':
