@@ -89,8 +89,15 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 
         $bffs_style = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
+		$rtl_css = is_rtl() ? '-rtl' : '';
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$css_extension = '.css';
+		} else {
+			$css_extension = '.min.css';
+		}
+
         if ( isset( $bffs_style ) && ( 'bffs-settings' === wp_unslash( $bffs_style ) || 'wbcomplugins' === wp_unslash( $bffs_style ) || 'wbcom-plugins-page' === wp_unslash( $bffs_style ) || 'wbcom-support-page' === wp_unslash( $bffs_style ) || 'wbcom-license-page' === wp_unslash( $bffs_style ) ) ) {
-            wp_enqueue_style( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/css/buddypress-friend-follow-suggestion-admin.css', array(), $this->version, 'all' );
+            wp_enqueue_style( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/css' . $rtl_css . '/buddypress-friend-follow-suggestion-admin' . $css_extension, array(), $this->version, 'all' );
         }
 
     }
@@ -116,11 +123,17 @@ class Buddypress_Friend_Follow_Suggestion_Admin {
 
         $bffs_scripts = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$js_extension = '.js';
+		} else {
+			$js_extension = '.min.js';
+		}
+
         if ( isset( $bffs_scripts ) && ( 'bffs-settings' === wp_unslash( $bffs_scripts ) || 'wbcomplugins' === wp_unslash( $bffs_scripts ) ) ) {
             if ( ! wp_script_is( 'jquery-ui-sortable', 'enqueued' ) ) {
                 wp_enqueue_script( 'jquery-ui-sortable' );
             }
-            wp_enqueue_script( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/js/buddypress-friend-follow-suggestion-admin.js', array( 'jquery' ), $this->version, false );
+            wp_enqueue_script( $this->plugin_name, BFFS_PLUGIN_URL . 'admin/js/buddypress-friend-follow-suggestion-admin' . $js_extension, array( 'jquery' ), $this->version, false );
         }
 
     }
