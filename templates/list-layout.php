@@ -13,7 +13,7 @@
 							<a href="<?php echo esc_url( $member_permalink ); ?>" class="bp-tooltip" data-bp-tooltip="<?php echo esc_attr( $member_name ); ?>"><?php bp_member_avatar(); ?></a>
 						</div>
 						<div class="item">
-							<div class="item-title fn"><a href="<?php esc_url( $member_permalink ); ?>"><?php echo esc_html( $member_name ); ?></a></div>
+							<div class="item-title fn"><a href="<?php echo esc_url( $member_permalink ); ?>"><?php echo esc_html( $member_name ); ?></a></div>
 							<div class="item-meta">
 								<ul>
 									<li>
