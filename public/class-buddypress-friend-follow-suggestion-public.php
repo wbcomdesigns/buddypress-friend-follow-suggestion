@@ -408,10 +408,11 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 	public function bp_friend_follow_suggestion_member_dislike() {
 		check_ajax_referer( 'bffs-swipe-' . get_current_user_id(), 'nonce' );
 
-		$rejected_member_id = sanitize_text_field( wp_unslash( $_POST['member_id'] ) );
-		$rejected_members   = get_transient( 'rejected_members_' . get_current_user_id() );
+		$rejected_member_id           = sanitize_text_field( wp_unslash( $_POST['member_id'] ) );
+		$rejected_members_transient   = get_transient( 'rejected_members_' . get_current_user_id() );
+		$rejected_members             = array();
 
-		if ( false === $rejected_members ) {
+		if ( false === $rejected_members_transient ) {
 			$rejected_members[] = $rejected_member_id;
 		} else {
 			$rejected_members[] = $rejected_member_id;

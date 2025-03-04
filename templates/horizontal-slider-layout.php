@@ -1,4 +1,7 @@
-<div id="<?php echo esc_attr( 'bp-friend-swiper-slider-'.rand() ); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bffs_swiper_suggest_<?php echo esc_attr( $settings['suggest'] ); ?> bp-friend-swiper-slider">
+<?php 
+$suggest_settings = isset( $settings['suggest'] ) ? $settings['suggest'] : '';
+?>
+<div id="<?php echo esc_attr( 'bp-friend-swiper-slider-'.rand() ); ?>" class="bffs_swiper_layout_wrapper bffs_swiper_<?php echo esc_attr( $settings['layout'] ); ?> bffs_swiper_suggest_<?php echo esc_attr( $suggest_settings ); ?> bp-friend-swiper-slider">
 	<ul id="slider-members-list" class="item-list item-list members-list slider-members-list" aria-live="polite" aria-relevant="all" aria-atomic="true">
 		<li class="pane1">
 			<div class="default demo-empty-slide">				
@@ -47,9 +50,9 @@
 									<div class="dislike"></div>
 									<div class="like">
 										<?php 
-											if ( 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) {
+											if ( isset( $settings['suggest'] ) && 'follow' === $settings['suggest'] && bp_is_active( 'follow' ) ) {
 												bp_follow_add_follow_button( 'leader_id=' . $member_id.'&wrapper=' );
-											} elseif ( 'follow' === $settings['suggest'] ) { 
+											} elseif ( isset( $settings['suggest'] ) && 'follow' === $settings['suggest'] ) { 
 												$button_args = wp_parse_args( $button_args, get_class_vars( 'BP_Button' ) );
 												if ( function_exists( 'bp_add_follow_button' ) ) {
 													bp_add_follow_button( $member_id, bp_loggedin_user_id(), $button_args );
