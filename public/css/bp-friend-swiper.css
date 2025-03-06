@@ -82,6 +82,10 @@
     background: url("../images/nope.png") no-repeat scroll 0 0;
 }
 
+[dir='rtl'] .bp-friend-swiper-slider .dislike {
+    order: 1;
+}
+
 .bp-friend-swiper-slider .dislike:hover,
 .bp-friend-swiper-slider .dislike.dislike-active {
     background-color: #FF0000 !important;

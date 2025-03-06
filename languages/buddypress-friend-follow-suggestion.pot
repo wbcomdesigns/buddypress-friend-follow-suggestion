@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-25T12:10:07+00:00\n"
+"POT-Creation-Date: 2025-03-06T10:11:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: buddypress-friend-follow-suggestion\n"
@@ -212,7 +212,7 @@ msgid "Action"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:12
-#: admin/wbcom/wbcom-admin-settings.php:354
+#: admin/wbcom/wbcom-admin-settings.php:356
 msgid "Themes & Extension"
 msgstr ""
 
@@ -231,8 +231,8 @@ msgstr ""
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:23
 #: admin/wbcom/templates/wbcom-plugins-page.php:362
-#: admin/wbcom/wbcom-admin-settings.php:273
-#: admin/wbcom/wbcom-admin-settings.php:274
+#: admin/wbcom/wbcom-admin-settings.php:275
+#: admin/wbcom/wbcom-admin-settings.php:276
 msgid "Our Themes"
 msgstr ""
 
@@ -660,7 +660,7 @@ msgid "Create group types on BuddyPress based on the interest areas of your comm
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-support-page.php:12
-#: admin/wbcom/wbcom-admin-settings.php:360
+#: admin/wbcom/wbcom-admin-settings.php:362
 msgid "Help & Support"
 msgstr ""
 
@@ -693,26 +693,26 @@ msgstr ""
 msgid "Create a new thread on our plugin page, participation is open to anyone from all around the world. We'll be there to help as well but can't guarantee any delay."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:221
+#: admin/wbcom/wbcom-admin-settings.php:223
 msgid "Activate"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:222
+#: admin/wbcom/wbcom-admin-settings.php:224
 msgid "Deactivate"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:265
-#: admin/wbcom/wbcom-admin-settings.php:266
+#: admin/wbcom/wbcom-admin-settings.php:267
+#: admin/wbcom/wbcom-admin-settings.php:268
 msgid "Our Plugins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:281
-#: admin/wbcom/wbcom-admin-settings.php:282
+#: admin/wbcom/wbcom-admin-settings.php:283
+#: admin/wbcom/wbcom-admin-settings.php:284
 #: buddypress-friend-follow-suggestion.php:295
 msgid "Support"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:348
+#: admin/wbcom/wbcom-admin-settings.php:350
 #: buddypress-friend-follow-suggestion.php:294
 msgid "Settings"
 msgstr ""
@@ -729,7 +729,7 @@ msgstr ""
 
 #: admin/widget/widget-bp-friend-follow-suggestion-swiper.php:105
 #: admin/widget/widget-bp-friend-follow-suggestion.php:106
-#: templates/horizontal-slider-layout.php:6
+#: templates/horizontal-slider-layout.php:9
 msgid "No suggestion found."
 msgstr ""
 
@@ -904,14 +904,14 @@ msgstr ""
 msgid "Error following user"
 msgstr ""
 
-#: templates/horizontal-slider-layout.php:68
+#: templates/horizontal-slider-layout.php:71
 msgid "Online"
 msgstr ""
 
-#: templates/horizontal-slider-layout.php:72
+#: templates/horizontal-slider-layout.php:75
 msgid "Offline"
 msgstr ""
 
-#: templates/horizontal-slider-layout.php:85
+#: templates/horizontal-slider-layout.php:88
 msgid "Discover"
 msgstr ""
