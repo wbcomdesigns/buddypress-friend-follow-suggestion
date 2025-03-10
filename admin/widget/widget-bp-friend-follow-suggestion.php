@@ -36,8 +36,49 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 				'classname'   => 'widget_bp_friend_follow_suggestion_widget buddypress widget',
 			)
 		);
+
+		add_action( 'bp_enqueue_community_scripts', array( $this, 'bp_enqueue_public_scripts' ) );
+		add_action( 'bp_enqueue_community_styles', array( $this, 'bp_enqueue_public_styles' ) );
 	}
 
+	/**
+	 * Function to enqueue public styles only when widgets are used.
+	 * 
+	 * @since 1.5.1
+	 * 
+	 */
+	public function bp_enqueue_public_styles() {
+		wp_enqueue_style( 'bp-friend-swiper-slider' );
+		wp_enqueue_style( 'bpffs-icon' );
+
+		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
+		foreach ( $widget_layout as $layout_widget ) {
+			if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
+				wp_enqueue_style( 'swiper-style' );
+			}
+		}
+		wp_enqueue_style( 'bp-friend-follow-public-css' );
+	}
+
+	/**
+	 * Function to enqueue public scripts only when widgets are used. 
+	 * 
+	 * @since 1.5.1
+	 * 
+	 */
+	public function bp_enqueue_public_scripts() {
+		wp_enqueue_script( 'bp-friend-suggestion-transfrom' );
+		wp_enqueue_script( 'bp-friend-suggestion-swiper-slider' );
+
+		wp_enqueue_script( 'bp-friend-follow-public-js' );
+
+		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
+		foreach ( $widget_layout as $layout_widget ) {
+			if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
+				wp_enqueue_script( 'bp-friend-follow-slider' );
+			}
+		}
+	}
 
 	/**
 	 * Display the Suggeation widget.
@@ -50,6 +91,7 @@ class BP_Friend_Follow_Suggestion_Widget extends WP_Widget {
 	 * @param array $instance Widget settings, as saved by the user.
 	 */
 	public function widget( $args, $instance ) {
+		do_action( 'bp_enqueue_community_styles' );
 		do_action( 'bp_enqueue_community_scripts' );
 		global $members_template;
 		global $follower_id;

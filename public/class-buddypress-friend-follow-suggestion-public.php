@@ -74,16 +74,16 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			$css_extension = '.min.css';
 		}
 
-		wp_enqueue_style( 'bp-friend-swiper-slider', BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/bp-friend-swiper' . $css_extension, array(), $this->version, 'all' );
-		wp_enqueue_style( 'bpffs-icon', BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/bpffs-icons' . $css_extension, array(), $this->version, 'all' );
+		wp_register_style( 'bp-friend-swiper-slider', BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/bp-friend-swiper' . $css_extension, array(), $this->version, 'all' );
+		wp_register_style( 'bpffs-icon', BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/bpffs-icons' . $css_extension, array(), $this->version, 'all' );
 
 		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
 		foreach ( $widget_layout as $layout_widget ) {
 			if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
-				wp_enqueue_style( 'swiper-style', BFFS_PLUGIN_URL . 'public/css/vendor/swiper-bundle.min.css', array(), $this->version, 'all' );
+				wp_register_style( 'swiper-style', BFFS_PLUGIN_URL . 'public/css/vendor/swiper-bundle.min.css', array(), $this->version, 'all' );
 			}
 		}
-		wp_enqueue_style( $this->plugin_name, BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/buddypress-friend-follow-suggestion-public' . $css_extension, array(), $this->version, 'all' );
+		wp_register_style( 'bp-friend-follow-public-css', BFFS_PLUGIN_URL . 'public/css' . $rtl_css . '/buddypress-friend-follow-suggestion-public' . $css_extension, array(), $this->version, 'all' );
 	}
 
 	/**
@@ -110,20 +110,20 @@ class Buddypress_Friend_Follow_Suggestion_Public {
 			$js_extension = '.min.js';
 		}
 
-		wp_enqueue_script( 'bp-friend-suggestion-transfrom', BFFS_PLUGIN_URL . 'public/js/vendor/jquery.transform2d.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'bp-friend-suggestion-swiper-slider', BFFS_PLUGIN_URL . 'public/js/vendor/jquery.swiper-slider.js', array( 'jquery' ), $this->version, true );
+		wp_register_script( 'bp-friend-suggestion-transfrom', BFFS_PLUGIN_URL . 'public/js/vendor/jquery.transform2d.js', array( 'jquery' ), $this->version, true );
+		wp_register_script( 'bp-friend-suggestion-swiper-slider', BFFS_PLUGIN_URL . 'public/js/vendor/jquery.swiper-slider.js', array( 'jquery' ), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name, BFFS_PLUGIN_URL . 'public/js/buddypress-friend-follow-suggestion-public' . $js_extension, array( 'jquery' ), $this->version, true );
+		wp_register_script( 'bp-friend-follow-public-js', BFFS_PLUGIN_URL . 'public/js/buddypress-friend-follow-suggestion-public' . $js_extension, array( 'jquery' ), $this->version, true );
 
 		$widget_layout = get_option( 'widget_bp_friend_follow_suggestion_widget' );
 		foreach ( $widget_layout as $layout_widget ) {
 			if ( isset( $layout_widget['layout'] ) && 'horizontal_layout' == $layout_widget['layout'] ) {
-				wp_enqueue_script( $this->plugin_name . '-slider', BFFS_PLUGIN_URL . 'public/js/vendor/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
+				wp_register_script( 'bp-friend-follow-slider', BFFS_PLUGIN_URL . 'public/js/vendor/buddypress-friend-follow-suggestion-swiper-slider.min.js', array( 'jquery' ) );
 			}
 		}
 
 		wp_localize_script(
-			$this->plugin_name,
+			'bp-friend-follow-public-js',
 			'bffs_ajax_object',
 			array(
 				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
