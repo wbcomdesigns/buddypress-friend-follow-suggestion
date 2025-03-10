@@ -242,7 +242,7 @@ add_action( 'admin_init', 'edd_wbcom_BFFS_check_license' );
 function edd_wbcom_BFFS_check_license() {
 	global $wp_version, $pagenow;
 
-	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) {
+	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$license_data = get_transient( 'edd_wbcom_BFFS_license_key_data' );
 		$license = trim( get_option( 'edd_wbcom_BFFS_license_key' ) );
@@ -412,7 +412,7 @@ function wbcom_BFFS_render_license_section() {
 function edd_BFFS_active_license_message() {
 	global $wp_version, $pagenow;
 
-	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) {
+	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$license_data = get_transient( 'edd_wbcom_BFFS_license_key_data' );
 		$license      = trim( get_option( 'edd_wbcom_BFFS_license_key' ) );
