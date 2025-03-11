@@ -78,8 +78,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-friend-follow-s
 
 require plugin_dir_path( __FILE__ ) . 'edd-license/edd-plugin-license.php';
 
-require_once __DIR__ . '/vendor/autoload.php';
-HardG\BuddyPress120URLPolyfills\Loader::init();
+
 
 /**
  * Begins execution of the plugin.
