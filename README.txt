@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/
 Tags: friends, follow, suggestion, buddypress, profile
 Requires at least: 3.0.1
-Tested up to: 6.6.2
-Stable tag: 1.5.0
+Tested up to: 6.7.2
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,20 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 
 == Changelog ==
+= 1.6.0 =
+* Added: Ensured scripts and styles load only when required for better performance.  
+* Added: Made the BuddyPress friend suggestion widget fully responsive on mobile and tablets.  
+* Fixed: Swiping right did not send a friend request.  
+* Fixed: Profile redirection issue in the suggestions widget.  
+* Fixed: PHP warnings related to suggestion widgets.  
+* Fixed: Profile match score not displaying correctly in Youzify.  
+* Fixed: UI spacing issue with BuddyPress friend suggestion widget in Youzify.  
+* Fixed: Widget slider issue in BuddyX & Reign themes.  
+* Fixed: Admin settings page UI issue with YouTube video display.  
+* Updated: Removed Hard-G dependency for better compatibility.  
+* Updated: Minified CSS and JS with RTL support for improved efficiency.  
+* Refactored: Optimized plugin code structure to improve performance and maintainability.  
+
 = 1.5.0 =
 * Fix: Resolved follow issue and friendship request withdrawal in Swiper slider with BuddyBoss using drag.
 * Fix: Addressed UI issues, including member counts on reload, text domain, cancel button, and static text appearance on the horizontal layout.
